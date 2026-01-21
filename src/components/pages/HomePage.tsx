@@ -118,10 +118,30 @@ export default function HomePage() {
 
   // Canonical Data Source: Categories
   const categories = [
-    { name: 'Body Sculpting', slug: 'body-sculpting', description: 'Advanced contouring technology.' },
-    { name: 'Facial Devices', slug: 'facial-devices', description: 'Precision rejuvenation systems.' },
-    { name: 'Hair Removal', slug: 'hair-removal', description: 'Professional laser solutions.' },
-    { name: 'Accessories', slug: 'accessories', description: 'Essential clinical supplies.' }
+    { 
+      name: 'Body Sculpting', 
+      slug: 'body-sculpting', 
+      description: 'Advanced contouring technology.',
+      image: 'https://static.wixstatic.com/media/5ea123_717d869dd55c4954b3c14ff53106ad9e~mv2.png?originWidth=576&originHeight=576'
+    },
+    { 
+      name: 'Facial Devices', 
+      slug: 'facial-devices', 
+      description: 'Precision rejuvenation systems.',
+      image: 'https://static.wixstatic.com/media/5ea123_5a097ab03d1f40d6972ab25bebceed9f~mv2.png?originWidth=576&originHeight=576'
+    },
+    { 
+      name: 'Hair Removal', 
+      slug: 'hair-removal', 
+      description: 'Professional laser solutions.',
+      image: 'https://static.wixstatic.com/media/5ea123_2ef7530ceb504628b3cf997505a7b4b1~mv2.png?originWidth=576&originHeight=576'
+    },
+    { 
+      name: 'Accessories', 
+      slug: 'accessories', 
+      description: 'Essential clinical supplies.',
+      image: 'https://static.wixstatic.com/media/5ea123_65964a7fc3984cc0ad590aa41245600c~mv2.png?originWidth=576&originHeight=576'
+    }
   ];
 
   return (
@@ -250,9 +270,34 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((item, index) => (
+            {[
+              {
+                name: 'CryoSlim Pro Body Contouring',
+                benefit: 'Non-invasive fat reduction with proven results',
+                price: 'From $450/mo with financing',
+                image: 'https://static.wixstatic.com/media/5ea123_37ae1ad498a844c7a454b0a731bb34c2~mv2.png?originWidth=384&originHeight=384'
+              },
+              {
+                name: 'HydraGlow Facial System',
+                benefit: 'Multi-step facial treatment for all skin types',
+                price: 'From $325/mo with financing',
+                image: 'https://static.wixstatic.com/media/5ea123_b2965f480d5a4a7387de10654972556d~mv2.png?originWidth=384&originHeight=384'
+              },
+              {
+                name: 'LaserTech Hair Removal Unit',
+                benefit: 'Professional-grade diode laser technology',
+                price: 'From $550/mo with financing',
+                image: 'https://static.wixstatic.com/media/5ea123_f2970848011f450d907930a99795a3aa~mv2.png?originWidth=384&originHeight=384'
+              },
+              {
+                name: 'RF Skin Tightening Device',
+                benefit: 'Radio frequency for collagen stimulation',
+                price: 'From $375/mo with financing',
+                image: 'https://static.wixstatic.com/media/5ea123_cecd1b3865e0428abc5925b25d8a98b3~mv2.png?originWidth=384&originHeight=384'
+              }
+            ].map((product, index) => (
               <motion.div
-                key={item}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -261,8 +306,8 @@ export default function HomePage() {
                 <Link to="/store" className="block">
                   <div className="relative overflow-hidden bg-background mb-3 aspect-square">
                     <Image
-                      src="https://static.wixstatic.com/media/5ea123_08aa4e7a2543404d8484969c20d3ce21~mv2.png?originWidth=576&originHeight=576"
-                      alt="Best Seller Product"
+                      src={product.image}
+                      alt={product.name}
                       width={400}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -276,10 +321,13 @@ export default function HomePage() {
                     ))}
                   </div>
                   <h3 className="font-heading text-lg text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
-                    Professional Equipment
+                    {product.name}
                   </h3>
-                  <div className="font-heading text-xl text-charcoal">
-                    From $12,500
+                  <p className="font-paragraph text-sm text-charcoal/60 mb-2">
+                    {product.benefit}
+                  </p>
+                  <div className="font-heading text-base text-charcoal">
+                    {product.price}
                   </div>
                 </Link>
               </motion.div>
@@ -408,7 +456,7 @@ export default function HomePage() {
                 <Link to="/store" className="block w-full h-full">
                   <div className="w-full h-full relative overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 transition-colors">
                     <Image
-                      src="https://static.wixstatic.com/media/5ea123_08aa4e7a2543404d8484969c20d3ce21~mv2.png?originWidth=576&originHeight=576"
+                      src={category.image}
                       alt={category.name}
                       width={600}
                       className="w-full h-3/4 object-cover transition-transform duration-700 group-hover:scale-105"
@@ -449,9 +497,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: 'Sarah M.', location: 'Miami, FL', role: 'Medical Spa Owner', text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
-              { name: 'James R.', location: 'Austin, TX', role: 'Wellness Clinic Director', text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
-              { name: 'Emily C.', location: 'Los Angeles, CA', role: 'Aesthetic Practitioner', text: 'Outstanding support team. They helped us choose the right equipment and provided guidance on setup.' }
+              { name: 'Sarah M.', location: 'Miami, FL', role: 'Medical Spa Owner', verified: true, text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
+              { name: 'James R.', location: 'Austin, TX', role: 'Wellness Clinic Director', verified: true, text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
+              { name: 'Emily C.', location: 'Los Angeles, CA', role: 'Aesthetic Practitioner', verified: true, text: 'Outstanding support team. They helped us choose the right equipment and provided guidance on setup.' }
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -461,10 +509,17 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white p-8 border border-charcoal/10"
               >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold-accent text-gold-accent" />
-                  ))}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-gold-accent text-gold-accent" />
+                    ))}
+                  </div>
+                  {testimonial.verified && (
+                    <span className="text-xs font-paragraph text-gold-accent border border-gold-accent px-2 py-1">
+                      VERIFIED BUYER
+                    </span>
+                  )}
                 </div>
                 <p className="font-paragraph text-charcoal/70 mb-6 leading-relaxed">
                   "{testimonial.text}"
@@ -570,7 +625,7 @@ export default function HomePage() {
             <div className="bg-background p-8 border border-charcoal/10">
               <h3 className="font-heading text-2xl text-charcoal mb-4">Warranty & Returns</h3>
               <p className="font-paragraph text-charcoal/70 mb-4">
-                2-year comprehensive warranty on all equipment. 30-day return window available*—see full terms for coverage details and conditions.
+                2-year comprehensive warranty on all equipment. 30-day evaluation period available*—return shipping costs apply for freight items. See full terms for coverage details and conditions.
               </p>
               <Link to="/returns" className="text-gold-accent hover:underline font-paragraph">
                 View Full Policy →
@@ -578,14 +633,15 @@ export default function HomePage() {
             </div>
 
             <div className="bg-background p-8 border border-charcoal/10">
-              <h3 className="font-heading text-2xl text-charcoal mb-4">Request a Quote</h3>
-              <p className="font-paragraph text-charcoal/70 mb-4">
-                Need help choosing equipment or bulk pricing? Our specialists are here to help.
-              </p>
-              <Link to="/contact">
-                <Button className="bg-charcoal text-white hover:bg-gold-accent rounded-none w-full">
-                  Get Custom Quote
-                </Button>
+              <h3 className="font-heading text-2xl text-charcoal mb-4">Freight Delivery & Setup</h3>
+              <ul className="font-paragraph text-charcoal/70 mb-4 space-y-2 text-sm">
+                <li>• Lead time: 2-4 weeks for most equipment</li>
+                <li>• Curbside or white-glove delivery available</li>
+                <li>• Scheduled appointment delivery</li>
+                <li>• Inspect equipment upon arrival</li>
+              </ul>
+              <Link to="/shipping" className="text-gold-accent hover:underline font-paragraph text-sm">
+                View Shipping Details →
               </Link>
             </div>
           </div>
@@ -656,8 +712,11 @@ export default function HomePage() {
               <h3 className="font-heading text-4xl text-charcoal mb-4">
                 Get a Quote + Equipment Checklist
               </h3>
-              <p className="font-paragraph text-charcoal/60 mb-8">
-                Let our specialists help you choose the right equipment for your practice. Receive a personalized quote and our comprehensive equipment checklist—absolutely free.
+              <p className="font-paragraph text-charcoal/60 mb-2">
+                Tell us your goals + budget → we'll recommend 2–3 options tailored to your practice.
+              </p>
+              <p className="font-paragraph text-charcoal/60 mb-8 text-sm">
+                Receive a personalized quote and our comprehensive equipment checklist—absolutely free.
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                 <Input

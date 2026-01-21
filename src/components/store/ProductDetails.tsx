@@ -91,6 +91,33 @@ export default function ProductDetails({
             </div>
           </div>
 
+          {/* Conversion Stack - Above the Fold */}
+          <div className="bg-surface-primary border border-brand-subtle rounded-lg p-6 space-y-4">
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <div className="text-content-muted mb-1">Financing</div>
+                <div className="font-semibold text-content-primary">From $350/mo</div>
+              </div>
+              <div>
+                <div className="text-content-muted mb-1">Warranty</div>
+                <div className="font-semibold text-content-primary">2-Year Coverage</div>
+              </div>
+              <div>
+                <div className="text-content-muted mb-1">Shipping</div>
+                <div className="font-semibold text-content-primary">2-4 Weeks</div>
+              </div>
+              <div>
+                <div className="text-content-muted mb-1">Included</div>
+                <div className="font-semibold text-content-primary">Training & Support</div>
+              </div>
+            </div>
+            <div className="pt-4 border-t border-brand-subtle">
+              <p className="text-xs text-content-muted">
+                ✓ Free US Shipping • ✓ White-Glove Delivery Available • ✓ 30-Day Evaluation
+              </p>
+            </div>
+          </div>
+
           {/* Product Description */}
           <ProductDescription as="plain" asChild>
             {({ description }) => (
@@ -218,7 +245,12 @@ export default function ProductDetails({
 
           {/* Add to Cart */}
           <div className="space-y-4">
-            <ProductActionButtons showBuyNow={true} />
+            <div className="flex gap-3">
+              <ProductActionButtons showBuyNow={false} />
+              <button className="flex-1 bg-content-primary text-primary-foreground hover:bg-content-primary/90 font-semibold py-3 px-6 rounded-lg transition-all duration-200">
+                Request a Quote
+              </button>
+            </div>
             <ProductVariantStock
               labels={{
                 inStock: 'In Stock',
