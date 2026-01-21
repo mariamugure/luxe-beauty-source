@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Image } from '@/components/ui/image';
 import { BaseCrudService } from '@/integrations';
-import { BrandBenefits, Testimonials, FAQs } from '@/entities';
+import { BrandBenefits, FAQs } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -50,10 +50,8 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
 export default function HomePage() {
   // --- Data Fidelity: State & Effects ---
   const [benefits, setBenefits] = useState<BrandBenefits[]>([]);
-  const [testimonials, setTestimonials] = useState<Testimonials[]>([]);
   const [faqs, setFaqs] = useState<FAQs[]>([]);
   const [isLoadingBenefits, setIsLoadingBenefits] = useState(true);
-  const [isLoadingTestimonials, setIsLoadingTestimonials] = useState(true);
   const [isLoadingFaqs, setIsLoadingFaqs] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [email, setEmail] = useState('');
@@ -68,7 +66,6 @@ export default function HomePage() {
 
   useEffect(() => {
     loadBenefits();
-    loadTestimonials();
     loadFaqs();
     
     const timer = setTimeout(() => {
@@ -86,17 +83,6 @@ export default function HomePage() {
       console.error('Error loading benefits:', error);
     } finally {
       setIsLoadingBenefits(false);
-    }
-  };
-
-  const loadTestimonials = async () => {
-    try {
-      const result = await BaseCrudService.getAll<Testimonials>('testimonials', [], { limit: 3 });
-      setTestimonials(result.items);
-    } catch (error) {
-      console.error('Error loading testimonials:', error);
-    } finally {
-      setIsLoadingTestimonials(false);
     }
   };
 
@@ -381,61 +367,6 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- TESTIMONIALS (Horizontal Flow) --- */}
-      <section className="w-full bg-background py-32">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <SectionLabel className="justify-center">Client Success Stories</SectionLabel>
-            <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">Trusted by Professionals</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {isLoadingTestimonials ? (
-              <div className="col-span-3 text-center py-12 text-charcoal/40">Loading reviews...</div>
-            ) : (
-              testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial._id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
-                >
-                  <div className="flex gap-1 mb-6">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`w-4 h-4 ${i < (testimonial.rating || 0) ? 'fill-gold-accent text-gold-accent' : 'text-gray-200'}`}
-                      />
-                    ))}
-                  </div>
-                  <blockquote className="font-heading text-2xl text-charcoal mb-8 flex-grow leading-snug">
-                    "{testimonial.reviewText}"
-                  </blockquote>
-                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100">
-                    {testimonial.customerImage && (
-                      <Image 
-                        src={testimonial.customerImage} 
-                        alt={testimonial.customerName || 'Client'}
-                        width={48}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                    )}
-                    <div>
-                      <cite className="font-paragraph font-medium text-charcoal not-italic block">
-                        {testimonial.customerName}
-                      </cite>
-                      <span className="text-xs text-charcoal/50 uppercase tracking-wider">Verified Owner</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))
-            )}
           </div>
         </div>
       </section>
