@@ -73,18 +73,19 @@ export default function HomePage() {
       setShowPopup(true);
     }, 15000);
 
-    // Exit intent handler - trigger popup when mouse leaves viewport at top
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) {
+    // Scroll-based trigger - show popup at 50% scroll
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      if (scrollPercent >= 50) {
         setShowPopup(true);
       }
     };
 
-    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       clearTimeout(timer);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -176,7 +177,7 @@ export default function HomePage() {
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <SectionLabel className="mb-6">
-                  <span className="text-white/90">Est. 2024 • Professional-Grade</span>
+                  <span className="text-white/90">Est. 2024 • Professional-Grade & FDA-cleared (where applicable)</span>
                 </SectionLabel>
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-lg">
                   Professional-Grade Equipment for Medical Spas & Clinics
@@ -225,13 +226,13 @@ export default function HomePage() {
                     Shop Best Sellers
                   </Button>
                 </Link>
-                <Link to="/financing">
+                <Link to="/contact">
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
+                    className="border-2 border-white bg-white/95 text-charcoal hover:bg-gold-accent hover:text-white hover:border-gold-accent rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
                   >
-                    Get Financing
+                    Request a Quote
                   </Button>
                 </Link>
               </motion.div>
@@ -275,7 +276,7 @@ export default function HomePage() {
                 name: 'CryoSlim Pro Body Contouring',
                 benefit: 'Non-invasive fat reduction with proven results',
                 price: 'From $450/mo with financing',
-                image: 'https://static.wixstatic.com/media/5ea123_37ae1ad498a844c7a454b0a731bb34c2~mv2.png?originWidth=384&originHeight=384'
+                image: 'https://static.wixstatic.com/media/5ea123_f2970848011f450d907930a99795a3aa~mv2.png?originWidth=384&originHeight=384'
               },
               {
                 name: 'HydraGlow Facial System',
@@ -313,6 +314,11 @@ export default function HomePage() {
                     />
                     <div className="absolute top-3 right-3 bg-gold-accent text-white px-2 py-1 text-xs font-paragraph tracking-wide">
                       BEST SELLER
+                    </div>
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300 flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-charcoal px-6 py-3 font-paragraph text-sm tracking-wide">
+                        View Details
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center gap-1 mb-2">
@@ -679,7 +685,7 @@ export default function HomePage() {
       <section className="w-full bg-secondary/20 py-12 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
           <p className="font-paragraph text-sm text-charcoal/60 max-w-4xl mx-auto">
-            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. FDA clearance status (where applicable) is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
+            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. FDA-cleared (where applicable) status is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
           </p>
         </div>
       </section>
@@ -713,7 +719,7 @@ export default function HomePage() {
                 Get Your Free Quote
               </h3>
               <p className="font-paragraph text-charcoal/60 mb-8 text-sm">
-                Enter your email to receive a personalized quote and our comprehensive equipment checklist—absolutely free.
+                Enter your email to receive a personalized quote and our comprehensive equipment checklist—absolutely free. <strong>Takes 30 seconds.</strong>
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                 <Input
@@ -728,8 +734,17 @@ export default function HomePage() {
                   type="submit"
                   className="w-full bg-charcoal hover:bg-gold-accent text-white font-paragraph py-6 rounded-none transition-all duration-300"
                 >
-                  Continue
+                  Continue (Takes 30 seconds)
                 </Button>
+                <Link to="/store" onClick={() => setShowPopup(false)}>
+                  <Button 
+                    type="button"
+                    variant="outline"
+                    className="w-full border-2 border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-white font-paragraph py-6 rounded-none transition-all duration-300"
+                  >
+                    Browse Products
+                  </Button>
+                </Link>
               </form>
               <p className="text-xs text-charcoal/40 mt-4 text-center">
                 We respect your privacy. Unsubscribe at any time.

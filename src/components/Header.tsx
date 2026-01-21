@@ -19,6 +19,17 @@ export default function Header() {
     { name: 'Contact', href: '/contact' },
   ];
 
+  const [showQuoteButton, setShowQuoteButton] = useState(false);
+
+  // Show sticky quote button after scrolling
+  useState(() => {
+    const handleScroll = () => {
+      setShowQuoteButton(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-secondary">
       <nav className="max-w-[100rem] mx-auto px-8 py-6">
@@ -43,6 +54,14 @@ export default function Header() {
 
           {/* Cart and Mobile Menu */}
           <div className="flex items-center gap-4">
+            <Link to="/contact" className="hidden lg:block">
+              <Button 
+                size="sm"
+                className="bg-gold-accent text-white hover:bg-charcoal rounded-none px-6 py-2 text-sm tracking-wide transition-all duration-300"
+              >
+                Request a Quote
+              </Button>
+            </Link>
             <MiniCart />
             
             {/* Mobile menu button */}

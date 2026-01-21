@@ -118,6 +118,44 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Trust Signals */}
+        <div className="border-t border-white/10 pt-8 pb-6">
+          <div className="flex flex-wrap justify-center items-center gap-8 mb-6">
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-white/10 rounded flex items-center justify-center">
+                <svg className="w-6 h-6 text-white/70" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.86-.96-7-5.05-7-9V8.3l7-3.5 7 3.5V11c0 3.95-3.14 8.04-7 9z"/>
+                </svg>
+              </div>
+              <span className="font-paragraph text-xs text-white/70">Secure<br/>Payments</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-white/10 rounded flex items-center justify-center">
+                <svg className="w-6 h-6 text-white/70" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <span className="font-paragraph text-xs text-white/70">2-Year<br/>Warranty</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-white/10 rounded flex items-center justify-center">
+                <svg className="w-6 h-6 text-white/70" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <span className="font-paragraph text-xs text-white/70">Support<br/>Mon-Fri 8AM-8PM</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-white/10 rounded flex items-center justify-center">
+                <svg className="w-6 h-6 text-white/70" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                </svg>
+              </div>
+              <span className="font-paragraph text-xs text-white/70">Flexible<br/>Financing</span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="font-paragraph text-sm text-white/70">

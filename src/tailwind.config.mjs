@@ -23,15 +23,15 @@ export default {
                 paragraph: "sora"
             },
             colors: {
-                charcoal: '#333333',
+                charcoal: '#2B2B2B',
                 white: '#FFFFFF',
                 'gold-accent': '#D4AF37',
                 destructive: '#CC0000',
                 'destructive-foreground': '#FFFFFF',
                 background: '#F8F8F8',
                 secondary: '#EAE0D5',
-                foreground: '#333333',
-                'secondary-foreground': '#333333',
+                foreground: '#2B2B2B',
+                'secondary-foreground': '#2B2B2B',
                 'primary-foreground': '#FFFFFF',
                 primary: '#C0A062'
             },
