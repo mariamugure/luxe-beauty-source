@@ -12,6 +12,8 @@ export default function Header() {
     { name: 'Shop', href: '/store' },
     { name: 'About', href: '/about' },
     { name: 'Financing', href: '/financing' },
+    { name: 'Shipping', href: '/shipping' },
+    { name: 'Returns', href: '/returns' },
     { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },

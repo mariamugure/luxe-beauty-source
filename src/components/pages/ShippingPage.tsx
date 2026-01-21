@@ -9,19 +9,19 @@ export default function ShippingPage() {
       icon: Truck,
       title: 'Standard Shipping',
       time: '5-7 Business Days',
-      description: 'Free on orders over $5,000. Reliable delivery to your business address.'
+      description: 'Free on orders over $5,000. Reliable delivery to commercial addresses.'
     },
     {
       icon: Package,
-      title: 'Express Shipping',
-      time: '2-3 Business Days',
-      description: 'Expedited delivery for urgent orders. Additional fees apply.'
+      title: 'Freight Delivery',
+      time: '7-14 Business Days',
+      description: 'For large equipment. Curbside or threshold delivery. Liftgate service available.'
     },
     {
       icon: MapPin,
-      title: 'White Glove Delivery',
+      title: 'White Glove Service',
       time: 'Scheduled',
-      description: 'Professional installation and setup service available for premium equipment.'
+      description: 'Professional delivery, unpacking, and room-of-choice placement. Installation available.'
     }
   ];
 
@@ -104,7 +104,10 @@ export default function ShippingPage() {
               </h2>
               <div className="space-y-6 font-paragraph text-lg text-foreground/80">
                 <p>
-                  At LuxeSpa Pro, we understand that timely delivery of your equipment is crucial to your business operations. We work with trusted shipping partners to ensure your order arrives safely and on schedule.
+                  We understand that timely delivery of your professional equipment is critical. We partner with trusted carriers to ensure safe, reliable delivery to your facility.
+                </p>
+                <p>
+                  <strong>Free Shipping:</strong> Standard shipping is free on orders over $5,000 to commercial addresses in the contiguous US. Residential delivery and expedited options available for additional fees.
                 </p>
               </div>
             </motion.div>
@@ -128,10 +131,26 @@ export default function ShippingPage() {
               viewport={{ once: true }}
             >
               <h3 className="font-heading text-3xl text-charcoal mb-4">
+                Freight Delivery Details
+              </h3>
+              <p className="font-paragraph text-lg text-foreground/80 mb-4">
+                Large equipment ships via freight carrier. Standard freight delivery includes curbside delivery (driver unloads at street level). Threshold delivery (inside first door) and liftgate service (for locations without loading dock) available for additional fees.
+              </p>
+              <p className="font-paragraph text-lg text-foreground/80">
+                <strong>Important:</strong> You must be present to receive freight shipments. Inspect all items before signing delivery receipt. Note any visible damage on the delivery receipt before the driver leaves.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-heading text-3xl text-charcoal mb-4">
                 Delivery Areas
               </h3>
               <p className="font-paragraph text-lg text-foreground/80 mb-4">
-                We ship to all 50 US states and select international locations. Shipping costs and delivery times vary by destination and equipment size. International orders may be subject to customs fees and import duties.
+                We ship to all 50 US states. Alaska, Hawaii, and US territories may require additional shipping time and fees. International shipping available on request—contact us for rates and transit times.
               </p>
             </motion.div>
 

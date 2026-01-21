@@ -46,8 +46,8 @@ export default function ReturnsPage() {
               <h2 className="font-heading text-5xl text-charcoal mb-4">
                 30-Day Return Window
               </h2>
-              <p className="font-paragraph text-xl text-foreground/80">
-                We offer a 30-day return period from the date of delivery for most items
+              <p className="font-paragraph text-xl text-foreground/80 max-w-2xl mx-auto">
+                We offer a 30-day return period from delivery date. Returns must be unused, in original packaging, with all accessories and documentation.
               </p>
             </motion.div>
 
@@ -194,17 +194,41 @@ export default function ReturnsPage() {
                 viewport={{ once: true }}
               >
                 <h3 className="font-heading text-3xl text-charcoal mb-6">
+                  Warranty Coverage
+                </h3>
+                <div className="space-y-4 font-paragraph text-lg text-foreground/80">
+                  <p>
+                    <strong>2-Year Comprehensive Warranty:</strong> All equipment includes a 2-year manufacturer warranty covering defects in materials and workmanship. Warranty service includes parts and labor.
+                  </p>
+                  <p>
+                    <strong>What's Covered:</strong> Manufacturing defects, component failures under normal use, and electrical/mechanical malfunctions.
+                  </p>
+                  <p>
+                    <strong>What's Not Covered:</strong> Damage from misuse, unauthorized modifications, normal wear and tear, or failure to follow maintenance guidelines.
+                  </p>
+                  <p>
+                    <strong>Extended Warranty:</strong> Extended warranty plans available at purchase for up to 5 years of coverage. Contact us for pricing.
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-heading text-3xl text-charcoal mb-6">
                   Refund Information
                 </h3>
                 <div className="space-y-4 font-paragraph text-lg text-foreground/80">
                   <p>
-                    Refunds will be issued to the original payment method. Please allow 5-7 business days for the refund to appear in your account after we process the return.
+                    Refunds issued to original payment method within 5-7 business days after we receive and inspect your return.
                   </p>
                   <p>
-                    A 15% restocking fee may apply to certain items. Original shipping charges are non-refundable unless the return is due to our error or a defective product.
+                    <strong>Restocking Fee:</strong> 15% restocking fee applies to returns (waived for defective items or our error).
                   </p>
                   <p>
-                    Return shipping costs are the responsibility of the customer unless the return is due to our error or a defective product.
+                    <strong>Shipping Costs:</strong> Original shipping is non-refundable. Return shipping is customer's responsibility unless return is due to defect or our error. We provide prepaid return labels for defective items.
                   </p>
                 </div>
               </motion.div>

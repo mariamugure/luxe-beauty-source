@@ -182,10 +182,9 @@ export default function FinancingPage() {
           </motion.h2>
           <div className="max-w-4xl mx-auto space-y-8">
             {[
-              { step: '1', title: 'Choose Your Equipment', description: 'Browse our premium collection and select the equipment that fits your needs.' },
-              { step: '2', title: 'Apply for Financing', description: 'Complete our simple online application in minutes. No impact on your credit score.' },
-              { step: '3', title: 'Get Approved', description: 'Receive instant approval decision and choose your preferred payment plan.' },
-              { step: '4', title: 'Start Using Your Equipment', description: 'Your equipment ships immediately, and you start making affordable monthly payments.' }
+              { step: '1', title: 'Apply Online', description: 'Complete a quick application with soft credit check (no impact on your credit score). Takes less than 5 minutes.' },
+              { step: '2', title: 'Get Approved', description: 'Receive decision within 24 hours from our financing partners. We work with multiple lenders to find you the best rates.' },
+              { step: '3', title: 'Choose Your Terms', description: 'Select from 12, 24, or 36-month payment plans. Review all terms and rates before finalizing your purchase.' }
             ].map((item, index) => (
               <motion.div
                 key={item.step}
@@ -211,6 +210,22 @@ export default function FinancingPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Financing Partners Note */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 max-w-4xl mx-auto bg-background p-8 border border-charcoal/10"
+          >
+            <h3 className="font-heading text-2xl text-charcoal mb-4">Financing Partners</h3>
+            <p className="font-paragraph text-base text-foreground/70 mb-4">
+              We partner with leading business financing providers to offer competitive rates and flexible terms. All financing is subject to credit approval and provided by third-party lenders.
+            </p>
+            <p className="font-paragraph text-sm text-foreground/60">
+              <strong>Important:</strong> Rates, terms, and approval are determined by our financing partners based on creditworthiness and business qualifications. We do not guarantee approval or specific rates.
+            </p>
+          </motion.div>
         </div>
       </section>
 

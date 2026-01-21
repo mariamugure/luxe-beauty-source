@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-charcoal text-white py-16">
       <div className="max-w-[100rem] mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div>
             <h3 className="font-heading text-2xl mb-4">Luxe Spa Equipment</h3>
@@ -66,13 +66,29 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/returns" className="font-paragraph text-sm text-white/70 hover:text-white transition-colors">
-                  Returns
+                  Returns & Warranty
                 </Link>
               </li>
               <li>
                 <Link to="/faq" className="font-paragraph text-sm text-white/70 hover:text-white transition-colors">
                   FAQ
                 </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-heading text-xl mb-4">Contact</h4>
+            <ul className="space-y-2">
+              <li className="font-paragraph text-sm text-white/70">
+                Phone: 1-800-SPA-EQUIP
+              </li>
+              <li className="font-paragraph text-sm text-white/70">
+                Email: support@luxespa.com
+              </li>
+              <li className="font-paragraph text-sm text-white/70">
+                Hours: Mon-Fri 8AM-8PM EST
               </li>
             </ul>
           </div>
