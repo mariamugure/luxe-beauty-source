@@ -122,9 +122,7 @@ export default function FAQPage() {
                         transition={{ duration: 0.3 }}
                         className="px-8 pb-8"
                       >
-                        <p className="font-paragraph text-lg text-foreground/80">
-                          {faq.answer}
-                        </p>
+                        <p className="font-paragraph text-lg text-foreground/80" dangerouslySetInnerHTML={{ __html: faq.answer || '' }} />
                         {faq.category && (
                           <div className="mt-4">
                             <span className="inline-block bg-primary/10 text-primary font-paragraph text-sm px-4 py-2 rounded">

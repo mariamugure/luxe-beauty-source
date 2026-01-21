@@ -3,3 +3,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Enhanced focus states for accessibility */
+  *:focus-visible {
+    outline: 3px solid #D4AF37;
+    outline-offset: 2px;
+  }
+
+  /* Ensure buttons and interactive elements have visible focus */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid #D4AF37;
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* High contrast text for gold on light backgrounds */
+  .text-gold-high-contrast {
+    color: #B8941F;
+  }
+  
+  /* Ensure small gold text meets WCAG AA standards */
+  .text-xs.text-gold-accent,
+  .text-sm.text-gold-accent {
+    color: #B8941F;
+  }
+}

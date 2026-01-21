@@ -184,6 +184,9 @@ export default function HomePage() {
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-2xl">
                   Professional-Grade Equipment for Medical Spas & Clinics
                 </h1>
+                <h2 className="font-heading text-2xl md:text-3xl text-white/95 font-semibold mb-8 drop-shadow-lg">
+                  Medical spa equipment with financing and warranty
+                </h2>
                 <p className="font-paragraph text-lg md:text-xl text-white font-medium max-w-2xl mb-8 leading-relaxed drop-shadow-lg">
                   High-performance spa equipment for wellness clinics and aesthetic professionals. Build your practice with proven technology.
                 </p>
@@ -313,6 +316,68 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* --- SHOP BY CATEGORY (Moved Higher for Better Navigation) --- */}
+      <section className="w-full bg-secondary/20 py-24 overflow-hidden">
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+              <SectionLabel>Curated Collections</SectionLabel>
+              <h2 className="font-heading text-4xl md:text-5xl text-charcoal">Shop by Category</h2>
+              <p className="font-paragraph text-charcoal/60 mt-4 max-w-2xl">
+                Browse our specialized equipment collections designed for medical spas and wellness clinics
+              </p>
+            </div>
+            <Link to="/store">
+              <Button variant="outline" className="hidden md:flex border-charcoal/20 hover:bg-charcoal hover:text-white rounded-none px-8 py-6">
+                View All Products
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
+              <motion.div
+                key={category.slug}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="group relative h-[400px]"
+              >
+                <Link to="/store" className="block w-full h-full">
+                  <div className="w-full h-full relative overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 transition-colors">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      width={600}
+                      className="w-full h-3/4 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    
+                    {/* Content */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-white p-6 border-t border-charcoal/10">
+                      <h3 className="font-heading text-2xl text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
+                        {category.name}
+                      </h3>
+                      <p className="font-paragraph text-charcoal/60 text-sm">
+                        {category.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="mt-12 md:hidden flex justify-center">
+            <Link to="/store">
+              <Button variant="outline" className="border-charcoal/20 hover:bg-charcoal hover:text-white rounded-none px-8 py-6">
+                View All Products
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* --- BEST SELLERS STRIP --- */}
       <section className="w-full bg-white py-16 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
@@ -393,7 +458,7 @@ export default function HomePage() {
                       4.9 ({product.reviews})
                     </span>
                   </div>
-                  <h3 className="font-heading text-lg text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
+                  <h3 className="font-heading text-lg text-charcoal mb-1 group-hover:text-[#B8941F] transition-colors">
                     {product.name}
                   </h3>
                   <p className="font-paragraph text-sm text-charcoal/60 mb-2">
@@ -419,13 +484,13 @@ export default function HomePage() {
                 <SectionLabel>Why Choose Us</SectionLabel>
                 <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-8 leading-tight">
                   Precision in <br />
-                  <span className="text-gold-accent italic">Every Detail</span>
+                  <span className="text-[#B8941F] italic">Every Detail</span>
                 </h2>
                 <p className="text-charcoal/60 text-lg leading-relaxed mb-12 max-w-sm">
                   We bridge the gap between medical-grade performance and aesthetic luxury, ensuring your clinic operates at the highest standard.
                 </p>
                 <Link to="/about">
-                  <Button variant="link" className="p-0 text-charcoal hover:text-gold-accent transition-colors text-lg group">
+                  <Button variant="link" className="p-0 text-charcoal hover:text-[#B8941F] transition-colors text-lg group">
                     Our Philosophy <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -463,7 +528,7 @@ export default function HomePage() {
                       )}
                     </div>
                     
-                    <h3 className="font-heading text-3xl text-charcoal mb-4 relative z-10 group-hover:text-gold-accent transition-colors">
+                    <h3 className="font-heading text-3xl text-charcoal mb-4 relative z-10 group-hover:text-[#B8941F] transition-colors">
                       {benefit.benefitTitle}
                     </h3>
                     <p className="font-paragraph text-charcoal/60 leading-relaxed relative z-10 max-w-lg">
@@ -479,13 +544,16 @@ export default function HomePage() {
 
 
 
-      {/* --- CATEGORIES (Compact Grid) --- */}
+      {/* --- SHOP BY CATEGORY (Moved Higher) --- */}
       <section className="w-full bg-secondary/20 py-24 overflow-hidden">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
               <SectionLabel>Curated Collections</SectionLabel>
               <h2 className="font-heading text-4xl md:text-5xl text-charcoal">Shop by Category</h2>
+              <p className="font-paragraph text-charcoal/60 mt-4 max-w-2xl">
+                Browse our specialized equipment collections designed for medical spas and wellness clinics
+              </p>
             </div>
             <Link to="/store">
               <Button variant="outline" className="hidden md:flex border-charcoal/20 hover:bg-charcoal hover:text-white rounded-none px-8 py-6">
@@ -775,14 +843,19 @@ export default function HomePage() {
                 Takes ~30 seconds
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full font-paragraph border-charcoal/20 focus:border-gold-accent rounded-none py-6"
-                />
+                <div>
+                  <Input
+                    type="email"
+                    placeholder="Email Address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full font-paragraph border-charcoal/20 focus:border-gold-accent rounded-none py-6"
+                  />
+                  <p className="text-xs text-charcoal/70 mt-2">
+                    No spam. Unsubscribe anytime.
+                  </p>
+                </div>
                 <Button 
                   type="submit"
                   className="w-full bg-charcoal hover:bg-gold-accent text-white font-paragraph py-6 rounded-none transition-all duration-300"
@@ -799,7 +872,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </form>
-              <p className="text-xs text-charcoal/40 mt-4 text-center">
+              <p className="text-xs text-charcoal/50 mt-4 text-center">
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </div>
@@ -832,7 +905,7 @@ const FAQItem = ({ question, answer, index }: { question?: string; answer?: stri
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-6 flex justify-between items-center text-left group"
       >
-        <span className="font-heading text-xl text-charcoal group-hover:text-gold-accent transition-colors">
+        <span className="font-heading text-xl text-charcoal group-hover:text-[#B8941F] transition-colors">
           {question}
         </span>
         <span className={`text-charcoal/40 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
