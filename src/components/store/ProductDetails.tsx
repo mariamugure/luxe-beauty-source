@@ -93,28 +93,44 @@ export default function ProductDetails({
 
           {/* Conversion Stack - Above the Fold */}
           <div className="bg-surface-primary border border-brand-subtle rounded-lg p-6 space-y-4">
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <div className="text-content-muted mb-1">Financing</div>
-                <div className="font-semibold text-content-primary">From $350/mo</div>
+            <h3 className="text-lg font-semibold text-content-primary mb-3">
+              What's Included
+            </h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-2">
+                <span className="text-content-primary mt-0.5">✓</span>
+                <div>
+                  <div className="font-semibold text-content-primary">Complete Equipment Package</div>
+                  <div className="text-content-muted">Device, accessories, user manual & training materials</div>
+                </div>
               </div>
-              <div>
-                <div className="text-content-muted mb-1">Warranty</div>
-                <div className="font-semibold text-content-primary">2-Year Coverage</div>
+              <div className="flex items-start gap-2">
+                <span className="text-content-primary mt-0.5">✓</span>
+                <div>
+                  <div className="font-semibold text-content-primary">2-Year Comprehensive Warranty</div>
+                  <div className="text-content-muted">Parts & labor coverage, manufacturer-backed</div>
+                </div>
               </div>
-              <div>
-                <div className="text-content-muted mb-1">Shipping</div>
-                <div className="font-semibold text-content-primary">2-4 Weeks</div>
+              <div className="flex items-start gap-2">
+                <span className="text-content-primary mt-0.5">✓</span>
+                <div>
+                  <div className="font-semibold text-content-primary">Expert Support</div>
+                  <div className="text-content-muted">24-48 hour response time, Mon-Fri 8AM-8PM EST</div>
+                </div>
               </div>
-              <div>
-                <div className="text-content-muted mb-1">Included</div>
-                <div className="font-semibold text-content-primary">Training & Support</div>
+              <div className="flex items-start gap-2">
+                <span className="text-content-primary mt-0.5">✓</span>
+                <div>
+                  <div className="font-semibold text-content-primary">Flexible Financing</div>
+                  <div className="text-content-muted">From $350/mo with approved credit</div>
+                </div>
               </div>
             </div>
             <div className="pt-4 border-t border-brand-subtle">
-              <p className="text-xs text-content-muted">
-                ✓ Free US Shipping • ✓ White-Glove Delivery Available • ✓ 30-Day Evaluation
-              </p>
+              <div className="text-xs text-content-muted space-y-1">
+                <div><strong>Delivery:</strong> 2-4 weeks lead time • Curbside or white-glove delivery available</div>
+                <div><strong>Returns:</strong> 30-day evaluation period (return shipping & 15% restocking fee apply)</div>
+              </div>
             </div>
           </div>
 

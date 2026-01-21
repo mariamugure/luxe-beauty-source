@@ -176,7 +176,7 @@ export default function HomePage() {
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <SectionLabel className="mb-6">
-                  <span className="text-white/90">Est. 2024 • Professional Grade</span>
+                  <span className="text-white/90">Est. 2024 • Professional-Grade</span>
                 </SectionLabel>
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-lg">
                   Professional-Grade Equipment for Medical Spas & Clinics
@@ -422,7 +422,7 @@ export default function HomePage() {
             </div>
             <div className="text-center">
               <div className="text-4xl font-heading text-gold-accent mb-2">30-Day</div>
-              <p className="font-paragraph text-charcoal/70">Returns*—See Policy</p>
+              <p className="font-paragraph text-charcoal/70">Evaluation Period*</p>
             </div>
           </div>
         </div>
@@ -625,7 +625,7 @@ export default function HomePage() {
             <div className="bg-background p-8 border border-charcoal/10">
               <h3 className="font-heading text-2xl text-charcoal mb-4">Warranty & Returns</h3>
               <p className="font-paragraph text-charcoal/70 mb-4">
-                2-year comprehensive warranty on all equipment. 30-day evaluation period available*—return shipping costs apply for freight items. See full terms for coverage details and conditions.
+                2-year comprehensive warranty on all equipment. 30-day evaluation period available*—return shipping costs apply for freight items. 15% restocking fee applies to returns (waived for defective items or our error). See full terms for coverage details and conditions.
               </p>
               <Link to="/returns" className="text-gold-accent hover:underline font-paragraph">
                 View Full Policy →
@@ -679,7 +679,7 @@ export default function HomePage() {
       <section className="w-full bg-secondary/20 py-12 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
           <p className="font-paragraph text-sm text-charcoal/60 max-w-4xl mx-auto">
-            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. Regulatory clearance status (including FDA clearance where applicable) is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
+            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. FDA clearance status (where applicable) is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
           </p>
         </div>
       </section>
@@ -710,13 +710,10 @@ export default function HomePage() {
               </button>
               <SectionLabel>Free Resources</SectionLabel>
               <h3 className="font-heading text-4xl text-charcoal mb-4">
-                Get a Quote + Equipment Checklist
+                Get Your Free Quote
               </h3>
-              <p className="font-paragraph text-charcoal/60 mb-2">
-                Tell us your goals + budget → we'll recommend 2–3 options tailored to your practice.
-              </p>
               <p className="font-paragraph text-charcoal/60 mb-8 text-sm">
-                Receive a personalized quote and our comprehensive equipment checklist—absolutely free.
+                Enter your email to receive a personalized quote and our comprehensive equipment checklist—absolutely free.
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                 <Input
@@ -731,7 +728,7 @@ export default function HomePage() {
                   type="submit"
                   className="w-full bg-charcoal hover:bg-gold-accent text-white font-paragraph py-6 rounded-none transition-all duration-300"
                 >
-                  Get Your Free Quote
+                  Continue
                 </Button>
               </form>
               <p className="text-xs text-charcoal/40 mt-4 text-center">

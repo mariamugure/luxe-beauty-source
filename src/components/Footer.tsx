@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="font-paragraph text-sm text-white/70">
-            © {new Date().getFullYear()} Luxe Spa Equipment. All rights reserved.
+            © 2026 Luxe Spa Equipment. All rights reserved.
           </p>
         </div>
       </div>
