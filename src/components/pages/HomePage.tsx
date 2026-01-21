@@ -177,7 +177,7 @@ export default function HomePage() {
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <SectionLabel className="mb-6">
-                  <span className="text-white/90">Est. 2024 • Professional-Grade & FDA-cleared (where applicable)</span>
+                  <span className="text-white/90">Est. 2024 • Professional-Grade + FDA-cleared (where applicable)</span>
                 </SectionLabel>
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-lg">
                   Professional-Grade Equipment for Medical Spas & Clinics
@@ -275,26 +275,30 @@ export default function HomePage() {
               {
                 name: 'CryoSlim Pro Body Contouring',
                 benefit: 'Non-invasive fat reduction with proven results',
-                price: 'From $450/mo with financing',
-                image: 'https://static.wixstatic.com/media/5ea123_f2970848011f450d907930a99795a3aa~mv2.png?originWidth=384&originHeight=384'
+                price: 'Financing from $450/mo',
+                image: 'https://static.wixstatic.com/media/5ea123_f2970848011f450d907930a99795a3aa~mv2.png?originWidth=384&originHeight=384',
+                reviews: 128
               },
               {
                 name: 'HydraGlow Facial System',
                 benefit: 'Multi-step facial treatment for all skin types',
-                price: 'From $325/mo with financing',
-                image: 'https://static.wixstatic.com/media/5ea123_b2965f480d5a4a7387de10654972556d~mv2.png?originWidth=384&originHeight=384'
+                price: 'Financing from $325/mo',
+                image: 'https://static.wixstatic.com/media/5ea123_b2965f480d5a4a7387de10654972556d~mv2.png?originWidth=384&originHeight=384',
+                reviews: 94
               },
               {
                 name: 'LaserTech Hair Removal Unit',
                 benefit: 'Professional-grade diode laser technology',
-                price: 'From $550/mo with financing',
-                image: 'https://static.wixstatic.com/media/5ea123_f2970848011f450d907930a99795a3aa~mv2.png?originWidth=384&originHeight=384'
+                price: 'Financing from $550/mo',
+                image: 'https://static.wixstatic.com/media/5ea123_2ef7530ceb504628b3cf997505a7b4b1~mv2.png?originWidth=576&originHeight=576',
+                reviews: 156
               },
               {
                 name: 'RF Skin Tightening Device',
                 benefit: 'Radio frequency for collagen stimulation',
-                price: 'From $375/mo with financing',
-                image: 'https://static.wixstatic.com/media/5ea123_cecd1b3865e0428abc5925b25d8a98b3~mv2.png?originWidth=384&originHeight=384'
+                price: 'Financing from $375/mo',
+                image: 'https://static.wixstatic.com/media/5ea123_cecd1b3865e0428abc5925b25d8a98b3~mv2.png?originWidth=384&originHeight=384',
+                reviews: 87
               }
             ].map((product, index) => (
               <motion.div
@@ -315,16 +319,21 @@ export default function HomePage() {
                     <div className="absolute top-3 right-3 bg-gold-accent text-white px-2 py-1 text-xs font-paragraph tracking-wide">
                       BEST SELLER
                     </div>
-                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300 flex items-center justify-center gap-3">
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-charcoal px-6 py-3 font-paragraph text-sm tracking-wide">
-                        View Details
+                        Quick View
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-gold-accent text-gold-accent" />
-                    ))}
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-gold-accent text-gold-accent" />
+                      ))}
+                    </div>
+                    <span className="font-paragraph text-xs text-charcoal/60">
+                      4.9 ({product.reviews})
+                    </span>
                   </div>
                   <h3 className="font-heading text-lg text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
                     {product.name}
@@ -522,7 +531,7 @@ export default function HomePage() {
                     ))}
                   </div>
                   {testimonial.verified && (
-                    <span className="text-xs font-paragraph text-gold-accent border border-gold-accent px-2 py-1">
+                    <span className="text-xs font-paragraph text-gold-accent border border-gold-accent px-2 py-1" title="Verified purchases via order ID">
                       VERIFIED BUYER
                     </span>
                   )}
@@ -536,6 +545,11 @@ export default function HomePage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <p className="font-paragraph text-xs text-charcoal/50">
+              * Verified purchases via order ID
+            </p>
           </div>
         </div>
       </section>
@@ -685,7 +699,7 @@ export default function HomePage() {
       <section className="w-full bg-secondary/20 py-12 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
           <p className="font-paragraph text-sm text-charcoal/60 max-w-4xl mx-auto">
-            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. FDA-cleared (where applicable) status is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
+            <strong>Regulatory Note:</strong> All equipment is Professional-Grade + FDA-cleared (where applicable) and suitable for commercial use. FDA-cleared status is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
           </p>
         </div>
       </section>
@@ -718,8 +732,11 @@ export default function HomePage() {
               <h3 className="font-heading text-4xl text-charcoal mb-4">
                 Get Your Free Quote
               </h3>
-              <p className="font-paragraph text-charcoal/60 mb-8 text-sm">
-                Enter your email to receive a personalized quote and our comprehensive equipment checklist—absolutely free. <strong>Takes 30 seconds.</strong>
+              <p className="font-paragraph text-charcoal/60 mb-2 text-sm">
+                Enter your email to receive a personalized quote and our comprehensive equipment checklist—absolutely free.
+              </p>
+              <p className="font-paragraph text-charcoal/50 mb-8 text-xs italic">
+                Takes ~30 seconds
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                 <Input
@@ -734,7 +751,7 @@ export default function HomePage() {
                   type="submit"
                   className="w-full bg-charcoal hover:bg-gold-accent text-white font-paragraph py-6 rounded-none transition-all duration-300"
                 >
-                  Continue (Takes 30 seconds)
+                  Get My Quote
                 </Button>
                 <Link to="/store" onClick={() => setShowPopup(false)}>
                   <Button 

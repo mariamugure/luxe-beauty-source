@@ -19,20 +19,21 @@ export default function Header() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const [showQuoteButton, setShowQuoteButton] = useState(false);
+  const [showStickyQuote, setShowStickyQuote] = useState(false);
 
   // Show sticky quote button after scrolling
   useState(() => {
     const handleScroll = () => {
-      setShowQuoteButton(window.scrollY > 300);
+      setShowStickyQuote(window.scrollY > 300);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white border-b border-secondary">
-      <nav className="max-w-[100rem] mx-auto px-8 py-6">
+    <>
+      <header className="sticky top-0 z-40 w-full bg-white border-b border-secondary">
+        <nav className="max-w-[100rem] mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -74,6 +75,17 @@ export default function Header() {
           </div>
         </div>
 
+        {/* Sticky Quote Button - Shows on scroll */}
+        {showStickyQuote && (
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block">
+            <Link to="/contact">
+              <button className="bg-gold-accent text-white hover:bg-charcoal px-6 py-3 text-sm tracking-wide transition-all duration-300 shadow-lg font-paragraph">
+                Request a Quote
+              </button>
+            </Link>
+          </div>
+        )}
+
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="lg:hidden mt-6 pb-4 space-y-4">
@@ -91,5 +103,6 @@ export default function Header() {
         )}
       </nav>
     </header>
+    </>
   );
 }

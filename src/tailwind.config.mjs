@@ -30,7 +30,7 @@ export default {
                 'destructive-foreground': '#FFFFFF',
                 background: '#F8F8F8',
                 secondary: '#EAE0D5',
-                foreground: '#2B2B2B',
+                foreground: '#1A1A1A',
                 'secondary-foreground': '#2B2B2B',
                 'primary-foreground': '#FFFFFF',
                 primary: '#C0A062'
