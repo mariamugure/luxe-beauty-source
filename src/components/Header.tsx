@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="font-heading text-3xl text-charcoal">LuxeSpa Pro</span>
+            <span className="font-heading text-3xl text-charcoal">Luxe Spa Equipment</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -140,8 +140,8 @@ export default function HomePage() {
         {/* Background Parallax Layer */}
         <div className="absolute inset-0 z-0">
           <ParallaxImage 
-            src="https://static.wixstatic.com/media/5ea123_53b48815580340f6a40397556410c330~mv2.png?originWidth=1152&originHeight=640"
-            alt="Luxury Spa Equipment Background"
+            src="https://static.wixstatic.com/media/5ea123_4c4ca7e27ade498d8fc051adea65a6af~mv2.png?originWidth=1152&originHeight=640"
+            alt="Luxury Massage Table in Professional Spa"
             className="w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/40 to-background/90" />
@@ -345,8 +345,8 @@ export default function HomePage() {
       <section className="w-full bg-charcoal text-white py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
            <Image 
-             src="https://static.wixstatic.com/media/5ea123_80475e8421f6499aaa6fa28ce97bbed6~mv2.png?originWidth=1152&originHeight=640"
-             alt="Texture"
+             src="https://static.wixstatic.com/media/5ea123_1b2e57fc0e3a433c86ae05f3361df4da~mv2.png?originWidth=1152&originHeight=640"
+             alt="Infrared Sauna Equipment"
              className="w-full h-full object-cover grayscale"
            />
         </div>
@@ -483,8 +483,8 @@ export default function HomePage() {
           >
             <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-secondary">
                <Image 
-                 src="https://static.wixstatic.com/media/5ea123_3ce86385046446e8aaa1e50f6da387c3~mv2.png?originWidth=576&originHeight=640"
-                 alt="Newsletter"
+                 src="https://static.wixstatic.com/media/5ea123_dd5ad1c7d86748559f6196f647e758bf~mv2.png?originWidth=576&originHeight=640"
+                 alt="High-End Spa Equipment"
                  className="w-full h-full object-cover"
                />
                <div className="absolute inset-0 bg-charcoal/10"></div>
