@@ -265,8 +265,11 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-heading text-3xl md:text-4xl text-charcoal">Best Sellers</h2>
             <Link to="/store">
-              <Button variant="link" className="text-charcoal hover:text-gold-accent transition-colors group">
-                View All <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Button 
+                variant="outline" 
+                className="border-2 border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-white hover:border-charcoal rounded-none px-6 py-3 font-paragraph font-medium tracking-wide transition-all duration-300 group"
+              >
+                View All Best Sellers <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </div>
