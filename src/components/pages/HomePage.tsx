@@ -124,25 +124,25 @@ export default function HomePage() {
       name: 'Body Sculpting', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
-      image: 'https://static.wixstatic.com/media/5ea123_717d869dd55c4954b3c14ff53106ad9e~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_b3d1dde6822d45d395f321095f7243b5~mv2.png?originWidth=576&originHeight=576'
     },
     { 
       name: 'Facial Devices', 
       slug: 'facial-devices', 
       description: 'Precision rejuvenation systems.',
-      image: 'https://static.wixstatic.com/media/5ea123_5a097ab03d1f40d6972ab25bebceed9f~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_3e279136a5cb4c159378206db0a4ce3b~mv2.png?originWidth=576&originHeight=576'
     },
     { 
       name: 'Hair Removal', 
       slug: 'hair-removal', 
       description: 'Professional laser solutions.',
-      image: 'https://static.wixstatic.com/media/5ea123_2ef7530ceb504628b3cf997505a7b4b1~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_a14f53368ca343148f020e37fdd6a80a~mv2.png?originWidth=576&originHeight=576'
     },
     { 
       name: 'Accessories', 
       slug: 'accessories', 
       description: 'Essential clinical supplies.',
-      image: 'https://static.wixstatic.com/media/5ea123_65964a7fc3984cc0ad590aa41245600c~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_0f7d5bf7f28544da9ca160007c0c3875~mv2.png?originWidth=576&originHeight=576'
     }
   ];
 
@@ -161,7 +161,7 @@ export default function HomePage() {
         {/* Background Parallax Layer */}
         <div className="absolute inset-0 z-0">
           <ParallaxImage 
-            src="https://static.wixstatic.com/media/5ea123_4c4ca7e27ade498d8fc051adea65a6af~mv2.png?originWidth=1152&originHeight=640"
+            src="https://static.wixstatic.com/media/5ea123_3978061dcd7c4adeae036ea00688d4b3~mv2.png?originWidth=1152&originHeight=640"
             alt="Luxury Massage Table in Professional Spa"
             className="w-full h-full"
           />
@@ -399,28 +399,28 @@ export default function HomePage() {
                 name: 'CryoSlim Pro Body Contouring',
                 benefit: 'Non-invasive fat reduction with proven results',
                 price: 'Financing from $450/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_f2970848011f450d907930a99795a3aa~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://static.wixstatic.com/media/5ea123_79991d1006ad4436b9619f53675439af~mv2.png?originWidth=384&originHeight=384',
                 reviews: 128
               },
               {
                 name: 'HydraGlow Facial System',
                 benefit: 'Multi-step facial treatment for all skin types',
                 price: 'Financing from $325/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_b2965f480d5a4a7387de10654972556d~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://static.wixstatic.com/media/5ea123_652867492c0541e89d5e5271acd6ba46~mv2.png?originWidth=384&originHeight=384',
                 reviews: 94
               },
               {
                 name: 'LaserTech Hair Removal Unit',
                 benefit: 'Professional-grade diode laser technology',
                 price: 'Financing from $550/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_2ef7530ceb504628b3cf997505a7b4b1~mv2.png?originWidth=576&originHeight=576',
+                image: 'https://static.wixstatic.com/media/5ea123_a14f53368ca343148f020e37fdd6a80a~mv2.png?originWidth=576&originHeight=576',
                 reviews: 156
               },
               {
                 name: 'RF Skin Tightening Device',
                 benefit: 'Radio frequency for collagen stimulation',
                 price: 'Financing from $375/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_cecd1b3865e0428abc5925b25d8a98b3~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://static.wixstatic.com/media/5ea123_357e3cee34f3477cb3dd61e38b7f3a82~mv2.png?originWidth=384&originHeight=384',
                 reviews: 87
               }
             ].map((product, index) => (
@@ -662,7 +662,7 @@ export default function HomePage() {
       <section className="w-full bg-charcoal text-white py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
            <Image 
-             src="https://static.wixstatic.com/media/5ea123_1b2e57fc0e3a433c86ae05f3361df4da~mv2.png?originWidth=1152&originHeight=640"
+             src="https://static.wixstatic.com/media/5ea123_720137a4e9c544cb942f86502c838d1e~mv2.png?originWidth=1152&originHeight=640"
              alt="Infrared Sauna Equipment"
              className="w-full h-full object-cover grayscale"
            />
@@ -819,7 +819,7 @@ export default function HomePage() {
           >
             <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-secondary">
                <Image 
-                 src="https://static.wixstatic.com/media/5ea123_dd5ad1c7d86748559f6196f647e758bf~mv2.png?originWidth=576&originHeight=640"
+                 src="https://static.wixstatic.com/media/5ea123_97e6f72e4bc3412f87ae0ffb7ef65782~mv2.png?originWidth=576&originHeight=640"
                  alt="High-End Spa Equipment"
                  className="w-full h-full object-cover"
                />
