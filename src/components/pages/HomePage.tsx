@@ -11,6 +11,7 @@ import { BaseCrudService } from '@/integrations';
 import { BrandBenefits, FAQs } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StickyCTA from '@/components/StickyCTA';
 
 // --- Utility Components for Layout & Design ---
 
@@ -217,25 +218,48 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col sm:flex-row gap-4 mb-12"
+                className="mb-12"
               >
-                <Link to="/contact">
-                  <Button 
-                    size="lg" 
-                    className="bg-gold-accent text-white hover:bg-gold-accent/90 rounded-none px-12 py-8 text-xl font-semibold tracking-wide transition-all duration-500 shadow-2xl hover:shadow-gold-accent/50 hover:scale-105"
-                  >
-                    Request a Quote
-                  </Button>
-                </Link>
-                <Link to="/store">
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-2 border-white/80 bg-transparent text-white hover:bg-white hover:text-charcoal hover:border-white rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
-                  >
-                    Shop Best Sellers
-                  </Button>
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <Link to="/contact">
+                    <Button 
+                      size="lg" 
+                      className="bg-gold-accent text-white hover:bg-gold-accent/90 rounded-none px-12 py-8 text-xl font-semibold tracking-wide transition-all duration-500 shadow-2xl hover:shadow-gold-accent/50 hover:scale-105"
+                    >
+                      Request a Quote
+                    </Button>
+                  </Link>
+                  <Link to="/store">
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      className="border-2 border-white/80 bg-transparent text-white hover:bg-white hover:text-charcoal hover:border-white rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
+                    >
+                      Shop Best Sellers
+                    </Button>
+                  </Link>
+                </div>
+                
+                {/* What happens next */}
+                <div className="bg-white/95 p-6 border border-white/20 shadow-lg max-w-2xl">
+                  <h4 className="font-paragraph text-xs font-semibold tracking-[0.2em] uppercase text-gold-accent mb-3">
+                    What Happens Next?
+                  </h4>
+                  <ul className="space-y-2 font-paragraph text-sm text-charcoal/80">
+                    <li className="flex items-start gap-2">
+                      <span className="text-gold-accent mt-1">•</span>
+                      <span>Get a personalized quote in 24 hours</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gold-accent mt-1">•</span>
+                      <span>We'll recommend the best configuration for your services and budget</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gold-accent mt-1">•</span>
+                      <span>No obligation—just expert guidance tailored to your practice</span>
+                    </li>
+                  </ul>
+                </div>
               </motion.div>
 
               {/* Purchase Confidence - Trust Stats */}
@@ -784,6 +808,9 @@ export default function HomePage() {
       )}
 
       <Footer />
+      
+      {/* Sticky CTA Bar */}
+      <StickyCTA />
     </div>
   );
 }

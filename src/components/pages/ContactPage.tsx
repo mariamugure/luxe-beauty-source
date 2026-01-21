@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StickyCTA from '@/components/StickyCTA';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -118,9 +119,30 @@ export default function ContactPage() {
               <h2 className="font-heading text-5xl text-charcoal mb-4">
                 Send Us a Message
               </h2>
-              <p className="font-paragraph text-lg text-foreground/70">
+              <p className="font-paragraph text-lg text-foreground/70 mb-6">
                 Fill out the form below and we'll get back to you as soon as possible
               </p>
+              
+              {/* What happens next */}
+              <div className="bg-secondary/30 p-6 rounded max-w-2xl mx-auto border border-primary/10">
+                <h4 className="font-paragraph text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-3">
+                  What Happens Next?
+                </h4>
+                <ul className="space-y-2 font-paragraph text-sm text-charcoal/80 text-left">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span>Get a personalized quote in 24 hours</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span>We'll recommend the best configuration for your services and budget</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span>No obligation—just expert guidance tailored to your practice</span>
+                  </li>
+                </ul>
+              </div>
             </motion.div>
 
             <motion.div
@@ -252,6 +274,9 @@ export default function ContactPage() {
       </section>
 
       <Footer />
+      
+      {/* Sticky CTA Bar */}
+      <StickyCTA />
     </div>
   );
 }
