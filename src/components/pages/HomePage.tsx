@@ -177,7 +177,7 @@ export default function HomePage() {
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <SectionLabel className="mb-6">
-                  <span className="text-white/90">Est. 2024 • Professional-Grade + FDA-cleared (where applicable)</span>
+                  <span className="text-white/90">Professional-Grade + FDA-cleared (where applicable)</span>
                 </SectionLabel>
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-lg">
                   Professional-Grade Equipment for Medical Spas & Clinics
