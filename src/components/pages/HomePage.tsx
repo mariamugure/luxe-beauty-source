@@ -164,7 +164,7 @@ export default function HomePage() {
             alt="Luxury Massage Table in Professional Spa"
             className="w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/70 to-charcoal/85" />
         </div>
 
         {/* Content Layer */}
@@ -175,17 +175,18 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-gradient-to-br from-charcoal/40 via-charcoal/30 to-transparent p-8 md:p-12 backdrop-blur-sm"
               >
                 <SectionLabel className="mb-6">
-                  <span className="text-white/90">Professional-Grade + FDA-cleared (where applicable)</span>
+                  <span className="text-white/95 font-semibold">Professional-Grade + FDA-cleared (where applicable)</span>
                 </SectionLabel>
-                <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-lg">
+                <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-2xl">
                   Professional-Grade Equipment for Medical Spas & Clinics
                 </h1>
-                <p className="font-paragraph text-lg md:text-xl text-white/95 max-w-2xl mb-8 leading-relaxed drop-shadow">
+                <p className="font-paragraph text-lg md:text-xl text-white font-medium max-w-2xl mb-8 leading-relaxed drop-shadow-lg">
                   High-performance spa equipment for wellness clinics and aesthetic professionals. Build your practice with proven technology.
                 </p>
-                <p className="font-paragraph text-base md:text-lg text-white/90 max-w-2xl mb-12 italic drop-shadow">
+                <p className="font-paragraph text-base md:text-lg text-white/95 font-medium max-w-2xl mb-12 italic drop-shadow-lg">
                   Free Shipping • 2-Year Warranty • Flexible Financing Available
                 </p>
               </motion.div>
@@ -218,21 +219,21 @@ export default function HomePage() {
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <Link to="/store">
-                  <Button 
-                    size="lg" 
-                    className="bg-charcoal text-white hover:bg-gold-accent hover:text-white rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
-                  >
-                    Shop Best Sellers
-                  </Button>
-                </Link>
                 <Link to="/contact">
                   <Button 
                     size="lg" 
-                    variant="outline"
-                    className="border-2 border-white bg-white/95 text-charcoal hover:bg-gold-accent hover:text-white hover:border-gold-accent rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
+                    className="bg-gold-accent text-white hover:bg-gold-accent/90 rounded-none px-12 py-8 text-xl font-semibold tracking-wide transition-all duration-500 shadow-2xl hover:shadow-gold-accent/50 hover:scale-105"
                   >
                     Request a Quote
+                  </Button>
+                </Link>
+                <Link to="/store">
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="border-2 border-white/80 bg-transparent text-white hover:bg-white hover:text-charcoal hover:border-white rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
+                  >
+                    Shop Best Sellers
                   </Button>
                 </Link>
               </motion.div>
