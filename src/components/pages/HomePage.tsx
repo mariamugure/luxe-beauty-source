@@ -217,7 +217,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-4 mb-12"
               >
                 <Link to="/contact">
                   <Button 
@@ -236,6 +236,36 @@ export default function HomePage() {
                     Shop Best Sellers
                   </Button>
                 </Link>
+              </motion.div>
+
+              {/* Purchase Confidence - Trust Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-white/95 p-8 border border-white/20 shadow-lg"
+              >
+                <h3 className="font-paragraph text-xs font-medium tracking-[0.2em] uppercase text-charcoal/60 mb-6 text-center">
+                  Purchase Confidence
+                </h3>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-heading text-gold-accent mb-1">Professional</div>
+                    <p className="font-paragraph text-xs md:text-sm text-charcoal/70">Equipment</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-heading text-gold-accent mb-1">2-Year</div>
+                    <p className="font-paragraph text-xs md:text-sm text-charcoal/70">Warranty Coverage</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-heading text-gold-accent mb-1">Support</div>
+                    <p className="font-paragraph text-xs md:text-sm text-charcoal/70">Mon-Fri 8AM-8PM EST</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-heading text-gold-accent mb-1">30-Day</div>
+                    <p className="font-paragraph text-xs md:text-sm text-charcoal/70">Evaluation Period*</p>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -423,29 +453,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- TRUST SIGNALS SECTION --- */}
-      <section className="w-full bg-white py-20 border-t border-charcoal/5">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">Professional</div>
-              <p className="font-paragraph text-charcoal/70">Equipment</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">2-Year</div>
-              <p className="font-paragraph text-charcoal/70">Warranty Coverage</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">Support</div>
-              <p className="font-paragraph text-charcoal/70">Mon-Fri 8AM-8PM EST</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">30-Day</div>
-              <p className="font-paragraph text-charcoal/70">Evaluation Period*</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* --- CATEGORIES (Compact Grid) --- */}
       <section className="w-full bg-secondary/20 py-24 overflow-hidden">
