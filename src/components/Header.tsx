@@ -55,14 +55,16 @@ export default function Header() {
 
           {/* Cart and Mobile Menu */}
           <div className="flex items-center gap-4">
-            <Link to="/contact" className="hidden lg:block">
-              <Button 
-                size="sm"
-                className="bg-gold-accent text-white hover:bg-charcoal rounded-none px-6 py-2 text-sm tracking-wide transition-all duration-300"
-              >
-                Request a Quote
-              </Button>
-            </Link>
+            {!showStickyQuote && (
+              <Link to="/contact" className="hidden lg:block">
+                <Button 
+                  size="sm"
+                  className="bg-gold-accent text-white hover:bg-charcoal rounded-none px-6 py-2 text-sm tracking-wide transition-all duration-300"
+                >
+                  Request a Quote
+                </Button>
+              </Link>
+            )}
             <MiniCart />
             
             {/* Mobile menu button */}
