@@ -68,11 +68,24 @@ export default function HomePage() {
     loadBenefits();
     loadFaqs();
     
+    // Delay popup to 15 seconds
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 3000);
+    }, 15000);
 
-    return () => clearTimeout(timer);
+    // Exit intent handler
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0) {
+        setShowPopup(true);
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, []);
 
   const loadBenefits = async () => {
@@ -143,9 +156,9 @@ export default function HomePage() {
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
                 <SectionLabel className="mb-6">Est. 2024 • Professional Grade</SectionLabel>
-                <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight text-charcoal mb-8">
-                  Professional-Grade Equipment <br />
-                  <span className="italic font-light text-charcoal/80">for Serious Practitioners</span>
+                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-charcoal mb-8">
+                  Professional-Grade Equipment for Medical Spas & Clinics <br />
+                  <span className="italic font-light text-charcoal/80">Free Shipping • 2-Year Warranty • Flexible Financing Available</span>
                 </h1>
                 <p className="font-paragraph text-xl md:text-2xl text-charcoal/80 max-w-3xl mb-12 leading-relaxed">
                   High-performance spa equipment trusted by medical spas, wellness clinics, and aesthetic professionals across the US. Build your practice with proven technology.
@@ -218,6 +231,57 @@ export default function HomePage() {
             />
           </div>
         </motion.div>
+      </section>
+
+      {/* --- BEST SELLERS STRIP --- */}
+      <section className="w-full bg-white py-16 border-t border-charcoal/5">
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="font-heading text-3xl md:text-4xl text-charcoal">Best Sellers</h2>
+            <Link to="/store">
+              <Button variant="link" className="text-charcoal hover:text-gold-accent transition-colors group">
+                View All <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((item, index) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group"
+              >
+                <Link to="/store" className="block">
+                  <div className="relative overflow-hidden bg-background mb-3 aspect-square">
+                    <Image
+                      src="https://static.wixstatic.com/media/5ea123_08aa4e7a2543404d8484969c20d3ce21~mv2.png?originWidth=576&originHeight=576"
+                      alt="Best Seller Product"
+                      width={400}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 bg-gold-accent text-white px-2 py-1 text-xs font-paragraph tracking-wide">
+                      BEST SELLER
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-gold-accent text-gold-accent" />
+                    ))}
+                  </div>
+                  <h3 className="font-heading text-lg text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
+                    Professional Equipment
+                  </h3>
+                  <div className="font-heading text-xl text-charcoal">
+                    From $12,500
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* --- BENEFITS SECTION (Sticky Layout) --- */}
@@ -293,20 +357,20 @@ export default function HomePage() {
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">500+</div>
-              <p className="font-paragraph text-charcoal/70">Clinics Equipped</p>
+              <div className="text-4xl font-heading text-gold-accent mb-2">Trusted</div>
+              <p className="font-paragraph text-charcoal/70">By Professionals</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-heading text-gold-accent mb-2">2-Year</div>
               <p className="font-paragraph text-charcoal/70">Warranty Coverage</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">24/7</div>
-              <p className="font-paragraph text-charcoal/70">Support Available</p>
+              <div className="text-4xl font-heading text-gold-accent mb-2">Support</div>
+              <p className="font-paragraph text-charcoal/70">Mon-Fri 8AM-8PM EST</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-heading text-gold-accent mb-2">30-Day</div>
-              <p className="font-paragraph text-charcoal/70">Return Policy</p>
+              <p className="font-paragraph text-charcoal/70">Returns—See Policy</p>
             </div>
           </div>
         </div>
@@ -367,65 +431,6 @@ export default function HomePage() {
                 View All Products
               </Button>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* --- BEST SELLERS SECTION --- */}
-      <section className="w-full bg-white py-24 border-t border-charcoal/5">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-              <SectionLabel>Top Rated</SectionLabel>
-              <h2 className="font-heading text-4xl md:text-5xl text-charcoal">Best Sellers</h2>
-            </div>
-            <Link to="/store">
-              <Button variant="link" className="text-charcoal hover:text-gold-accent transition-colors text-lg group">
-                View All <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
-              >
-                <Link to="/store" className="block">
-                  <div className="relative overflow-hidden bg-background mb-4 aspect-square">
-                    <Image
-                      src="https://static.wixstatic.com/media/5ea123_08aa4e7a2543404d8484969c20d3ce21~mv2.png?originWidth=576&originHeight=576"
-                      alt="Best Seller Product"
-                      width={600}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 right-4 bg-gold-accent text-white px-3 py-1 text-xs font-paragraph tracking-wide">
-                      BEST SELLER
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1 mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-gold-accent text-gold-accent" />
-                    ))}
-                    <span className="text-sm text-charcoal/60 ml-2">(120+ reviews)</span>
-                  </div>
-                  <h3 className="font-heading text-xl text-charcoal mb-2 group-hover:text-gold-accent transition-colors">
-                    Professional Equipment
-                  </h3>
-                  <p className="font-paragraph text-charcoal/60 text-sm mb-3">
-                    High-performance system for professional results
-                  </p>
-                  <div className="font-heading text-2xl text-charcoal">
-                    From $12,500
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -561,7 +566,7 @@ export default function HomePage() {
             <div className="bg-background p-8 border border-charcoal/10">
               <h3 className="font-heading text-2xl text-charcoal mb-4">Warranty & Returns</h3>
               <p className="font-paragraph text-charcoal/70 mb-4">
-                2-year comprehensive warranty on all equipment. 30-day return policy with free return shipping.
+                2-year comprehensive warranty on all equipment. 30-day return policy—see full terms for details.
               </p>
               <Link to="/returns" className="text-gold-accent hover:underline font-paragraph">
                 View Full Policy →
@@ -643,12 +648,12 @@ export default function HomePage() {
               >
                 <X className="w-6 h-6" />
               </button>
-              <SectionLabel>Join the Inner Circle</SectionLabel>
+              <SectionLabel>Exclusive Offer</SectionLabel>
               <h3 className="font-heading text-4xl text-charcoal mb-4">
-                Unlock 10% Off
+                Get a Custom Quote + Equipment Checklist
               </h3>
               <p className="font-paragraph text-charcoal/60 mb-8">
-                Subscribe to our newsletter for exclusive access to new arrivals, industry insights, and a welcome gift for your first order.
+                Let our specialists help you choose the right equipment for your practice. Receive a personalized quote and our comprehensive equipment checklist—absolutely free.
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                 <Input
@@ -663,7 +668,7 @@ export default function HomePage() {
                   type="submit"
                   className="w-full bg-charcoal hover:bg-gold-accent text-white font-paragraph py-6 rounded-none transition-all duration-300"
                 >
-                  Subscribe & Save
+                  Get Your Free Quote
                 </Button>
               </form>
               <p className="text-xs text-charcoal/40 mt-4 text-center">
