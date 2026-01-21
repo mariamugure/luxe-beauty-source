@@ -68,12 +68,12 @@ export default function HomePage() {
     loadBenefits();
     loadFaqs();
     
-    // Delay popup to 15 seconds
+    // Delay popup to 15 seconds (between 10-20 seconds as requested)
     const timer = setTimeout(() => {
       setShowPopup(true);
     }, 15000);
 
-    // Exit intent handler
+    // Exit intent handler - trigger popup when mouse leaves viewport at top
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
         setShowPopup(true);
@@ -143,7 +143,7 @@ export default function HomePage() {
             alt="Luxury Massage Table in Professional Spa"
             className="w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/40 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-background/90" />
         </div>
 
         {/* Content Layer */}
@@ -155,13 +155,17 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               >
-                <SectionLabel className="mb-6">Est. 2024 • Professional Grade</SectionLabel>
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-charcoal mb-8">
-                  Professional-Grade Equipment for Medical Spas & Clinics <br />
-                  <span className="italic font-light text-charcoal/80">Free Shipping • 2-Year Warranty • Flexible Financing Available</span>
+                <SectionLabel className="mb-6">
+                  <span className="text-white/90">Est. 2024 • Professional Grade</span>
+                </SectionLabel>
+                <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-lg">
+                  Professional-Grade Equipment for Medical Spas & Clinics
                 </h1>
-                <p className="font-paragraph text-xl md:text-2xl text-charcoal/80 max-w-3xl mb-12 leading-relaxed">
-                  High-performance spa equipment trusted by medical spas, wellness clinics, and aesthetic professionals across the US. Build your practice with proven technology.
+                <p className="font-paragraph text-lg md:text-xl text-white/95 max-w-2xl mb-8 leading-relaxed drop-shadow">
+                  High-performance spa equipment for wellness clinics and aesthetic professionals. Build your practice with proven technology.
+                </p>
+                <p className="font-paragraph text-base md:text-lg text-white/90 max-w-2xl mb-12 italic drop-shadow">
+                  Free Shipping • 2-Year Warranty • Flexible Financing Available
                 </p>
               </motion.div>
 
@@ -172,17 +176,17 @@ export default function HomePage() {
                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-wrap gap-6 mb-12"
               >
-                <div className="flex items-center gap-2 bg-white/80 px-4 py-3 border border-charcoal/10">
+                <div className="flex items-center gap-2 bg-white/95 px-4 py-3 border border-white/20 shadow-lg">
                   <Truck className="w-5 h-5 text-gold-accent" />
-                  <span className="font-paragraph text-sm text-charcoal">Free US Shipping</span>
+                  <span className="font-paragraph text-sm text-charcoal font-medium">Free US Shipping</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/80 px-4 py-3 border border-charcoal/10">
+                <div className="flex items-center gap-2 bg-white/95 px-4 py-3 border border-white/20 shadow-lg">
                   <Shield className="w-5 h-5 text-gold-accent" />
-                  <span className="font-paragraph text-sm text-charcoal">2-Year Warranty</span>
+                  <span className="font-paragraph text-sm text-charcoal font-medium">2-Year Warranty</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/80 px-4 py-3 border border-charcoal/10">
+                <div className="flex items-center gap-2 bg-white/95 px-4 py-3 border border-white/20 shadow-lg">
                   <Award className="w-5 h-5 text-gold-accent" />
-                  <span className="font-paragraph text-sm text-charcoal">Expert Support</span>
+                  <span className="font-paragraph text-sm text-charcoal font-medium">Expert Support</span>
                 </div>
               </motion.div>
 
@@ -357,8 +361,8 @@ export default function HomePage() {
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-heading text-gold-accent mb-2">Trusted</div>
-              <p className="font-paragraph text-charcoal/70">By Professionals</p>
+              <div className="text-4xl font-heading text-gold-accent mb-2">Professional</div>
+              <p className="font-paragraph text-charcoal/70">Equipment</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-heading text-gold-accent mb-2">2-Year</div>
@@ -370,7 +374,7 @@ export default function HomePage() {
             </div>
             <div className="text-center">
               <div className="text-4xl font-heading text-gold-accent mb-2">30-Day</div>
-              <p className="font-paragraph text-charcoal/70">Returns—See Policy</p>
+              <p className="font-paragraph text-charcoal/70">Returns*—See Policy</p>
             </div>
           </div>
         </div>
@@ -445,9 +449,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: 'Dr. Sarah Mitchell', role: 'Medical Spa Owner', text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
-              { name: 'James Rodriguez', role: 'Wellness Clinic Director', text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
-              { name: 'Emily Chen', role: 'Aesthetic Practitioner', text: 'Outstanding support team. They helped us choose the right equipment and provided excellent training.' }
+              { name: 'Sarah M.', location: 'Miami, FL', role: 'Medical Spa Owner', text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
+              { name: 'James R.', location: 'Austin, TX', role: 'Wellness Clinic Director', text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
+              { name: 'Emily C.', location: 'Los Angeles, CA', role: 'Aesthetic Practitioner', text: 'Outstanding support team. They helped us choose the right equipment and provided guidance on setup.' }
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -467,7 +471,7 @@ export default function HomePage() {
                 </p>
                 <div>
                   <div className="font-heading text-lg text-charcoal">{testimonial.name}</div>
-                  <div className="font-paragraph text-sm text-charcoal/60">{testimonial.role}</div>
+                  <div className="font-paragraph text-sm text-charcoal/60">{testimonial.role} • {testimonial.location}</div>
                 </div>
               </motion.div>
             ))}
@@ -566,7 +570,7 @@ export default function HomePage() {
             <div className="bg-background p-8 border border-charcoal/10">
               <h3 className="font-heading text-2xl text-charcoal mb-4">Warranty & Returns</h3>
               <p className="font-paragraph text-charcoal/70 mb-4">
-                2-year comprehensive warranty on all equipment. 30-day return policy—see full terms for details.
+                2-year comprehensive warranty on all equipment. 30-day return window available*—see full terms for coverage details and conditions.
               </p>
               <Link to="/returns" className="text-gold-accent hover:underline font-paragraph">
                 View Full Policy →
@@ -619,7 +623,7 @@ export default function HomePage() {
       <section className="w-full bg-secondary/20 py-12 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
           <p className="font-paragraph text-sm text-charcoal/60 max-w-4xl mx-auto">
-            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. FDA-cleared status is indicated on individual product pages where applicable. We only sell equipment that meets or exceeds industry safety standards.
+            <strong>Regulatory Note:</strong> All equipment is professional-grade and suitable for commercial use. Regulatory clearance status (including FDA clearance where applicable) is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
           </p>
         </div>
       </section>
@@ -648,9 +652,9 @@ export default function HomePage() {
               >
                 <X className="w-6 h-6" />
               </button>
-              <SectionLabel>Exclusive Offer</SectionLabel>
+              <SectionLabel>Free Resources</SectionLabel>
               <h3 className="font-heading text-4xl text-charcoal mb-4">
-                Get a Custom Quote + Equipment Checklist
+                Get a Quote + Equipment Checklist
               </h3>
               <p className="font-paragraph text-charcoal/60 mb-8">
                 Let our specialists help you choose the right equipment for your practice. Receive a personalized quote and our comprehensive equipment checklist—absolutely free.

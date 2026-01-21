@@ -8,7 +8,7 @@ export default function AboutPage() {
     {
       icon: Award,
       title: 'Quality Excellence',
-      description: 'We source only the finest, FDA-approved equipment that meets the highest industry standards.'
+      description: 'We source only the finest professional-grade equipment that meets the highest industry standards.'
     },
     {
       icon: Users,
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 LuxeSpa Pro was founded with a singular vision: to provide beauty and spa professionals with access to the world's finest equipment, backed by exceptional service and support.
               </p>
               <p>
-                We understand that your equipment is more than just tools—it's an investment in your business, your reputation, and your clients' experience. That's why we've curated a collection of premium, FDA-approved devices that deliver outstanding results and stand the test of time.
+                We understand that your equipment is more than just tools—it's an investment in your business, your reputation, and your clients' experience. That's why we've curated a collection of premium, professional-grade devices that deliver outstanding results and stand the test of time.
               </p>
               <p>
                 Our team brings decades of combined experience in the beauty and wellness industry. We don't just sell equipment; we partner with you to ensure you have everything you need to succeed and grow your practice.
