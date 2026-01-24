@@ -829,7 +829,6 @@ export default function HomePage() {
               >
                 <X className="w-6 h-6" />
               </button>
-              <SectionLabel>Free Resources</SectionLabel>
               <h3 className="font-heading text-4xl text-charcoal mb-4">
                 Get Your Free Quote
               </h3>
