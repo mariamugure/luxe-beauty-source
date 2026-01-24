@@ -62,7 +62,7 @@ export default function ProductDetails({
         {/* Product Images */}
         <div className="space-y-4">
           {/* Main Image */}
-          <div className="aspect-square bg-surface-primary rounded-2xl overflow-hidden border border-brand-subtle relative">
+          <div className="aspect-square bg-surface-primary rounded-2xl overflow-hidden border border-brand-subtle relative shadow-lg">
             <StyledMediaGallery.Viewport />
             <StyledMediaGallery.Previous />
             <StyledMediaGallery.Next />

@@ -11,13 +11,13 @@ export const Viewport: React.FC<
 > = ({ className, ...props }) => (
   <MediaGalleryPrimitive.Viewport
     className={cn(
-      'w-full h-full flex items-center justify-center [&>img]:max-w-full [&>img]:max-h-full [&>img]:object-contain',
+      'w-full h-full flex items-center justify-center [&>img]:max-w-full [&>img]:max-h-full [&>img]:object-cover [&>img]:transition-transform [&>img]:duration-500 [&>img]:ease-out',
       className
     )}
     emptyState={
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary/40 to-secondary/20">
         <svg
-          className="w-24 h-24 text-content-subtle"
+          className="w-24 h-24 text-content-subtle/40"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -122,13 +122,13 @@ export const ThumbnailItem: React.FC<
 > = ({ className, ...props }) => (
   <MediaGalleryPrimitive.ThumbnailItem
     className={cn(
-      'aspect-square bg-surface-primary rounded-lg border cursor-pointer transition-all data-[active=true]:border-brand-medium data-[active=true]:ring-2 data-[active=true]:ring-brand-light data-[active=false]:border-brand-subtle data-[active=false]:hover:border-brand-light',
+      'aspect-square bg-surface-primary rounded-lg border cursor-pointer transition-all duration-300 data-[active=true]:border-primary data-[active=true]:ring-2 data-[active=true]:ring-primary/30 data-[active=false]:border-brand-subtle data-[active=false]:hover:border-primary data-[active=false]:hover:shadow-md [&>img]:object-cover [&>img]:w-full [&>img]:h-full',
       className
     )}
     emptyState={
-      <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary/40 to-secondary/20">
         <svg
-          className="w-6 h-6 text-content-subtle"
+          className="w-6 h-6 text-content-subtle/40"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
