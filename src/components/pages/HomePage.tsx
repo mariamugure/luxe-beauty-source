@@ -68,26 +68,45 @@ export default function HomePage() {
   useEffect(() => {
     loadBenefits();
     loadFaqs();
-    
+  }, []);
+
+  useEffect(() => {
     // Delay popup to 15 seconds (between 10-20 seconds as requested)
     const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 15000);
-
-    // Scroll-based trigger - show popup at 50% scroll
-    const handleScroll = () => {
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercent >= 50) {
+      const popupDismissed = sessionStorage.getItem('popupDismissed');
+      if (!popupDismissed) {
         setShowPopup(true);
       }
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    }, 15000);
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    // Check if popup was already dismissed in this session
+    const popupDismissed = sessionStorage.getItem('popupDismissed');
+    
+    // Only set up scroll listener if popup hasn't been dismissed
+    if (!popupDismissed) {
+      let scrollTriggered = false;
+      const handleScroll = () => {
+        if (!scrollTriggered) {
+          const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+          if (scrollPercent >= 50) {
+            setShowPopup(true);
+            scrollTriggered = true;
+          }
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
   }, []);
 
   const loadBenefits = async () => {
@@ -116,6 +135,14 @@ export default function HomePage() {
     e.preventDefault();
     setEmail('');
     setShowPopup(false);
+    // Mark popup as dismissed so it doesn't show again
+    sessionStorage.setItem('popupDismissed', 'true');
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    // Mark popup as dismissed so it doesn't show again
+    sessionStorage.setItem('popupDismissed', 'true');
   };
 
   // Canonical Data Source: Categories
@@ -824,7 +851,7 @@ export default function HomePage() {
             </div>
             <div className="w-full md:w-1/2 p-12 relative">
               <button
-                onClick={() => setShowPopup(false)}
+                onClick={handleClosePopup}
                 className="absolute top-6 right-6 text-charcoal/40 hover:text-charcoal transition-colors"
               >
                 <X className="w-6 h-6" />
@@ -858,7 +885,7 @@ export default function HomePage() {
                 >
                   Get My Quote
                 </Button>
-                <Link to="/store" onClick={() => setShowPopup(false)}>
+                <Link to="/store" onClick={handleClosePopup}>
                   <Button 
                     type="button"
                     variant="outline"
