@@ -165,17 +165,17 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                 {/* Products Grid */}
                 <Products>
                   <ProductRepeater>
-                    <Card className="relative hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-white border-0 justify-between overflow-hidden">
+                    <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                       {/* Product Ribbon */}
                       <ProductRibbon />
                       <CardContent className="p-0 pb-0">
                         {/* Product Image */}
-                        <div className="aspect-square bg-gradient-to-br from-secondary/60 to-secondary/40 overflow-hidden relative shadow-sm">
+                        <div className="aspect-square bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5">
                           <ProductMediaGallery>
-                            <StyledMediaGallery.Viewport className="w-full h-full group-hover:scale-110 transition-transform duration-700 ease-out" />
+                            <StyledMediaGallery.Viewport className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                           </ProductMediaGallery>
-                          {/* Subtle overlay effect */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          {/* Enhanced overlay effect */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
 
                         {/* Product Title */}

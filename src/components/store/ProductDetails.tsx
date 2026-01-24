@@ -62,8 +62,8 @@ export default function ProductDetails({
         {/* Product Images */}
         <div className="space-y-4">
           {/* Main Image */}
-          <div className="aspect-square bg-surface-primary rounded-2xl overflow-hidden border border-brand-subtle relative shadow-lg">
-            <StyledMediaGallery.Viewport />
+          <div className="aspect-square bg-gradient-to-br from-secondary/80 to-secondary/60 rounded-lg overflow-hidden border border-charcoal/10 relative shadow-lg">
+            <StyledMediaGallery.Viewport className="w-full h-full object-cover" />
             <StyledMediaGallery.Previous />
             <StyledMediaGallery.Next />
             <StyledMediaGallery.Indicator />
@@ -72,7 +72,7 @@ export default function ProductDetails({
           {/* Thumbnail Images */}
           <StyledMediaGallery.Thumbnails>
             <StyledMediaGallery.ThumbnailRepeater>
-              <StyledMediaGallery.ThumbnailItem />
+              <StyledMediaGallery.ThumbnailItem className="border border-charcoal/10 hover:border-gold-accent/30 transition-colors" />
             </StyledMediaGallery.ThumbnailRepeater>
           </StyledMediaGallery.Thumbnails>
         </div>
