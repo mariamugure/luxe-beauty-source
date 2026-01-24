@@ -11,7 +11,7 @@ export const Viewport: React.FC<
 > = ({ className, ...props }) => (
   <MediaGalleryPrimitive.Viewport
     className={cn(
-      'w-full h-full flex items-center justify-center [&>img]:max-w-full [&>img]:max-h-full [&>img]:object-cover [&>img]:transition-transform [&>img]:duration-500 [&>img]:ease-out',
+      'w-full h-full flex items-center justify-center [&>img]:w-full [&>img]:h-full [&>img]:object-cover [&>img]:transition-transform [&>img]:duration-500 [&>img]:ease-out',
       className
     )}
     emptyState={
