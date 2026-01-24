@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -43,12 +43,6 @@ export default function ContactPage() {
       title: 'Call Us',
       content: '1-800-LUXE-SPA',
       description: 'Monday - Friday, 9am - 6pm EST'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      content: '123 Luxury Lane, Suite 100',
-      description: 'New York, NY 10001'
     }
   ];
 
@@ -81,7 +75,7 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="w-full bg-white py-24">
         <div className="max-w-[100rem] mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
