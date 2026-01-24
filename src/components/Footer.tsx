@@ -118,7 +118,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Trust Signals */}
+        {/* Trust Signals & Compliance */}
         <div className="border-t border-white/10 pt-8 pb-6">
           <div className="flex flex-wrap justify-center items-center gap-8 mb-6">
             <div className="flex items-center gap-2">
@@ -153,6 +153,11 @@ export default function Footer() {
               </div>
               <span className="font-paragraph text-xs text-white/70">Flexible<br/>Financing</span>
             </div>
+          </div>
+          <div className="text-center pt-6 border-t border-white/10">
+            <p className="font-paragraph text-xs text-white/60">
+              Professional-grade equipment. FDA-cleared where applicable—see product pages for documentation.
+            </p>
           </div>
         </div>
 

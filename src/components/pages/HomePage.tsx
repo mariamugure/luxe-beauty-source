@@ -187,11 +187,8 @@ export default function HomePage() {
                 <h2 className="font-heading text-2xl md:text-3xl text-white/95 font-semibold mb-8 drop-shadow-lg">
                   Medical spa equipment with financing and warranty
                 </h2>
-                <p className="font-paragraph text-lg md:text-xl text-white font-medium max-w-2xl mb-8 leading-relaxed drop-shadow-lg">
+                <p className="font-paragraph text-lg md:text-xl text-white font-medium max-w-2xl mb-12 leading-relaxed drop-shadow-lg">
                   High-performance spa equipment for wellness clinics and aesthetic professionals. Build your practice with proven technology.
-                </p>
-                <p className="font-paragraph text-base md:text-lg text-white/95 font-medium max-w-2xl mb-12 italic drop-shadow-lg">
-                  Free Shipping • 2-Year Warranty • Flexible Financing Available
                 </p>
               </motion.div>
 

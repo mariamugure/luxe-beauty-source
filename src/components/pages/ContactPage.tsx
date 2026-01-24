@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,10 +17,14 @@ export default function ContactPage() {
     subject: '',
     message: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitted(true);
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    // Reset submitted state after 3 seconds
+    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -122,27 +126,6 @@ export default function ContactPage() {
               <p className="font-paragraph text-lg text-foreground/70 mb-6">
                 Fill out the form below and we'll get back to you as soon as possible
               </p>
-              
-              {/* What happens next */}
-              <div className="bg-secondary/30 p-6 rounded max-w-2xl mx-auto border border-primary/10">
-                <h4 className="font-paragraph text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-3">
-                  What Happens Next?
-                </h4>
-                <ul className="space-y-2 font-paragraph text-sm text-charcoal/80 text-left">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Get a personalized quote in 24 hours</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>We'll recommend the best configuration for your services and budget</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>No obligation—just expert guidance tailored to your practice</span>
-                  </li>
-                </ul>
-              </div>
             </motion.div>
 
             <motion.div
@@ -151,6 +134,16 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
+              {isSubmitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mb-6 p-4 bg-green-50 border border-green-200 rounded text-green-800 text-center font-paragraph"
+                >
+                  ✓ Thank you! We've received your message and will respond within 24 hours.
+                </motion.div>
+              )}
               <Card className="bg-white border-0 p-10">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -91,24 +91,31 @@ export default function ProductDetails({
             </div>
           </div>
 
-          {/* Conversion Stack - Above the Fold */}
+          {/* High-Ticket Ready Conversion Stack - Above the Fold */}
           <div className="bg-surface-primary border border-brand-subtle rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-content-primary mb-3">
-              What's Included
+              High-Ticket Ready Details
             </h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
                 <span className="text-content-primary mt-0.5">✓</span>
                 <div>
-                  <div className="font-semibold text-content-primary">Complete Equipment Package</div>
-                  <div className="text-content-muted">Device, accessories, user manual & training materials</div>
+                  <div className="font-semibold text-content-primary">What's Included</div>
+                  <div className="text-content-muted">Complete equipment package with accessories, user manual & training materials</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-content-primary mt-0.5">✓</span>
                 <div>
-                  <div className="font-semibold text-content-primary">2-Year Comprehensive Warranty</div>
+                  <div className="font-semibold text-content-primary">2-Year Warranty</div>
                   <div className="text-content-muted">Parts & labor coverage, manufacturer-backed</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-content-primary mt-0.5">✓</span>
+                <div>
+                  <div className="font-semibold text-content-primary">Financing Available</div>
+                  <div className="text-content-muted">From $350/mo with approved credit</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
@@ -118,20 +125,18 @@ export default function ProductDetails({
                   <div className="text-content-muted">24-48 hour response time, Mon-Fri 8AM-8PM EST</div>
                 </div>
               </div>
-              <div className="flex items-start gap-2">
-                <span className="text-content-primary mt-0.5">✓</span>
-                <div>
-                  <div className="font-semibold text-content-primary">Flexible Financing</div>
-                  <div className="text-content-muted">From $350/mo with approved credit</div>
-                </div>
-              </div>
             </div>
-            <div className="pt-4 border-t border-brand-subtle">
-              <div className="text-xs text-content-muted space-y-1">
-                <div><strong>Delivery:</strong> 2-4 weeks lead time • Curbside or white-glove delivery available</div>
+            <div className="pt-4 border-t border-brand-subtle space-y-2">
+              <div className="text-xs text-content-muted">
+                <div><strong>Shipping Lead Time:</strong> 2-4 weeks</div>
+                <div><strong>Delivery Type:</strong> Curbside or white-glove delivery available</div>
                 <div><strong>Returns:</strong> 30-day evaluation period (return shipping & 15% restocking fee apply)</div>
+                <div><strong>Compliance:</strong> Professional-grade equipment. FDA-cleared where applicable—see documentation link below.</div>
               </div>
             </div>
+            <a href="#documentation" className="text-primary hover:text-primary/80 text-xs font-semibold underline">
+              View Documentation & Manual →
+            </a>
           </div>
 
           {/* Product Description */}

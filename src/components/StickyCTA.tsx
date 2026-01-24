@@ -9,6 +9,13 @@ export default function StickyCTA() {
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
+    // Check if dismissed in this session
+    const dismissed = sessionStorage.getItem('stickyCTADismissed');
+    if (dismissed) {
+      setIsDismissed(true);
+      return;
+    }
+
     const handleScroll = () => {
       // Show sticky CTA after scrolling 300px
       if (window.scrollY > 300 && !isDismissed) {
@@ -23,6 +30,7 @@ export default function StickyCTA() {
   }, [isDismissed]);
 
   const handleDismiss = () => {
+    sessionStorage.setItem('stickyCTADismissed', 'true');
     setIsDismissed(true);
     setIsVisible(false);
   };
