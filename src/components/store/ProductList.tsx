@@ -170,10 +170,12 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                       <ProductRibbon />
                       <CardContent className="p-4 pb-0">
                         {/* Product Image */}
-                        <div className="aspect-square bg-surface-primary rounded-lg mb-4 overflow-hidden relative">
+                        <div className="aspect-square bg-gradient-to-br from-secondary/40 to-secondary/20 rounded-lg mb-4 overflow-hidden relative border border-charcoal/5 shadow-sm">
                           <ProductMediaGallery>
-                            <StyledMediaGallery.Viewport className="object-cover group-hover:scale-110 transition-transform duration-300" />
+                            <StyledMediaGallery.Viewport className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out" />
                           </ProductMediaGallery>
+                          {/* Premium overlay effect */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
 
                         {/* Product Title */}

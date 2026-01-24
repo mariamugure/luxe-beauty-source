@@ -25,7 +25,7 @@ const SectionLabel = ({ children, className = "" }: { children: React.ReactNode;
 );
 
 const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -88,25 +88,23 @@ export default function HomePage() {
     // Check if popup was already dismissed in this session
     const popupDismissed = sessionStorage.getItem('popupDismissed');
     
-    // Only set up scroll listener if popup hasn't been dismissed
-    if (!popupDismissed) {
-      let scrollTriggered = false;
-      const handleScroll = () => {
-        if (!scrollTriggered) {
-          const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-          if (scrollPercent >= 50) {
-            setShowPopup(true);
-            scrollTriggered = true;
-          }
+    let scrollTriggered = false;
+    const handleScroll = () => {
+      if (!scrollTriggered && !popupDismissed) {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        if (scrollPercent >= 50) {
+          setShowPopup(true);
+          scrollTriggered = true;
         }
-      };
+      }
+    };
 
-      window.addEventListener('scroll', handleScroll);
+    // Always set up the listener to ensure refs are properly hydrated
+    window.addEventListener('scroll', handleScroll);
 
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const loadBenefits = async () => {
