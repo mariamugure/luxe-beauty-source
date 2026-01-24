@@ -40,7 +40,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="font-heading text-6xl md:text-7xl text-charcoal mb-8"
           >
-            About LuxeSpa Pro
+            About Luxe Spa Equipment
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -73,7 +73,7 @@ export default function AboutPage() {
               className="space-y-6 font-paragraph text-lg text-foreground/80"
             >
               <p>
-                LuxeSpa Pro was founded with a singular vision: to provide beauty and spa professionals with access to the world's finest equipment, backed by exceptional service and support.
+                Luxe Spa Equipment was founded with a singular vision: to provide beauty and spa professionals with access to the world's finest equipment, backed by exceptional service and support.
               </p>
               <p>
                 We understand that your equipment is more than just tools—it's an investment in your business, your reputation, and your clients' experience. That's why we've curated a collection of premium, professional-grade devices that deliver outstanding results and stand the test of time.
