@@ -165,74 +165,76 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                 {/* Products Grid */}
                 <Products>
                   <ProductRepeater>
-                    <Card className="relative hover:shadow-lg transition-all duration-200 hover:scale-105 group h-full flex flex-col bg-surface-card border-surface-subtle justify-between">
+                    <Card className="relative hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-white border-0 justify-between overflow-hidden">
                       {/* Product Ribbon */}
                       <ProductRibbon />
-                      <CardContent className="p-4 pb-0">
+                      <CardContent className="p-0 pb-0">
                         {/* Product Image */}
-                        <div className="aspect-square bg-gradient-to-br from-secondary/40 to-secondary/20 rounded-lg mb-4 overflow-hidden relative border border-charcoal/5 shadow-sm">
+                        <div className="aspect-square bg-gradient-to-br from-secondary/60 to-secondary/40 overflow-hidden relative">
                           <ProductMediaGallery>
-                            <StyledMediaGallery.Viewport className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out" />
+                            <StyledMediaGallery.Viewport className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out" />
                           </ProductMediaGallery>
-                          {/* Premium overlay effect */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          {/* Subtle overlay effect */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
 
                         {/* Product Title */}
-                        <ProductSlug asChild>
-                          {({ slug }) => (
-                            <Navigation
-                              data-testid="title-navigation"
-                              route={`${productPageRoute}/${slug}`}
-                            >
-                              <CardTitle className="text-primary mb-2 line-clamp-2 hover:text-brand-primary transition-colors">
-                                <ProductName variant="paragraph" />
-                              </CardTitle>
-                            </Navigation>
-                          )}
-                        </ProductSlug>
-                        {/* Enhanced Product Variants */}
-                        <ProductVariants>
-                          <ProductVariantOptions>
-                            <div className="mb-3 space-y-2">
-                              <ProductVariantOptionRepeater>
-                                <div className="space-y-2">
-                                  <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
-                                  <OptionChoices>
-                                    <div className="flex flex-wrap gap-1.5">
-                                      <OptionChoiceRepeater>
-                                        <>
-                                          <ChoiceColor className="w-7 h-7 border-2" />
-                                          <ChoiceText className="text-xs" />
-                                        </>
-                                      </OptionChoiceRepeater>
-                                    </div>
-                                  </OptionChoices>
-                                </div>
-                              </ProductVariantOptionRepeater>
-                            </div>
-                          </ProductVariantOptions>
-                        </ProductVariants>
+                        <div className="p-4 pb-0">
+                          <ProductSlug asChild>
+                            {({ slug }) => (
+                              <Navigation
+                                data-testid="title-navigation"
+                                route={`${productPageRoute}/${slug}`}
+                              >
+                                <CardTitle className="text-charcoal mb-2 line-clamp-2 hover:text-primary transition-colors font-heading text-lg">
+                                  <ProductName variant="paragraph" />
+                                </CardTitle>
+                              </Navigation>
+                            )}
+                          </ProductSlug>
+                          {/* Enhanced Product Variants */}
+                          <ProductVariants>
+                            <ProductVariantOptions>
+                              <div className="mb-3 space-y-2">
+                                <ProductVariantOptionRepeater>
+                                  <div className="space-y-2">
+                                    <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
+                                    <OptionChoices>
+                                      <div className="flex flex-wrap gap-1.5">
+                                        <OptionChoiceRepeater>
+                                          <>
+                                            <ChoiceColor className="w-7 h-7 border-2" />
+                                            <ChoiceText className="text-xs" />
+                                          </>
+                                        </OptionChoiceRepeater>
+                                      </div>
+                                    </OptionChoices>
+                                  </div>
+                                </ProductVariantOptionRepeater>
+                              </div>
+                            </ProductVariantOptions>
+                          </ProductVariants>
 
-                        {/* Reset Selections */}
-                        <ProductVariantSelectorReset className="text-xs underline p-0" />
-                        {/* Product Description */}
-                        <ProductDescription
-                          as="html"
-                          className="text-content-muted text-sm mb-3 line-clamp-2 leading-relaxed"
-                        />
+                          {/* Reset Selections */}
+                          <ProductVariantSelectorReset className="text-xs underline p-0" />
+                          {/* Product Description */}
+                          <ProductDescription
+                            as="html"
+                            className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed"
+                          />
+                        </div>
                       </CardContent>
 
-                      <CardFooter className="p-4 pt-0 flex-col space-y-2">
+                      <CardFooter className="p-4 pt-0 flex-col space-y-3">
                         {/* Enhanced Price and Stock */}
-                        <div className="mt-auto w-full py-2">
+                        <div className="w-full">
                           <div className="w-full flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                              <ProductPrice className="text-xl font-bold text-content-primary" />
-                              <ProductCompareAtPrice className="text-sm font-medium text-content-faded line-through" />
+                              <ProductPrice className="text-lg font-bold text-charcoal" />
+                              <ProductCompareAtPrice className="text-sm font-medium text-foreground/50 line-through" />
                             </div>
                             <ProductStock
-                              className="flex items-center gap-1 text-xs font-medium"
+                              className="flex items-center gap-1 text-xs font-medium text-foreground/70"
                               labels={{
                                 inStock: 'In Stock',
                                 limitedStock: 'In Stock',
@@ -254,7 +256,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                               <Button
                                 variant="secondary"
                                 size="lg"
-                                className="w-full"
+                                className="w-full bg-primary text-white hover:bg-charcoal transition-colors"
                               >
                                 View Product
                                 <svg
