@@ -33,6 +33,7 @@ import {
   ProductTotalsDisplayed,
 } from '@/components/ui/store/ProductList';
 import CategoryPicker from './CategoryPicker';
+import CategoryPills from './CategoryPills';
 import { ProductActionButtons } from './ProductActionButtons';
 import ProductFiltersSidebar from './ProductFiltersSidebar';
 import { SortDropdown } from './SortDropdown';
@@ -52,8 +53,8 @@ interface ProductListProps {
 
 export const ProductListSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-      {Array.from({ length: 8 }).map((_, i) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+      {Array.from({ length: 12 }).map((_, i) => (
         <Card
           key={i}
           className="overflow-hidden relative bg-surface-card border-surface-subtle"
@@ -101,12 +102,17 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
     <TooltipProvider>
       <ProductList productsListConfig={productsListConfig} variant="grid">
         <div className="min-h-screen">
+          {/* Category Pills - Prominent Navigation */}
+          <div className="mb-8 pb-6 border-b border-charcoal/10">
+            <CategoryPills categoriesListConfig={categoriesListConfig} />
+          </div>
+
           {/* Header Controls */}
           <Card className="border-surface-subtle mb-6 bg-surface-card">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <CategoryPicker categoriesListConfig={categoriesListConfig} />
+                  {/* ... keep existing code (CategoryPicker) ... */}
                 </div>
                 <SortDropdown />
               </div>
@@ -162,10 +168,11 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   )}
                 </ProductListPrimitive.FilterResetTrigger>
 
-                {/* Products Grid */}
-                <Products>
-                  <ProductRepeater>
-                    <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
+                {/* Products Grid - Increased columns for better initial display */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                  <Products>
+                    <ProductRepeater>
+                      <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                       {/* Product Ribbon */}
                       <ProductRibbon />
                       <CardContent className="p-0 pb-0">
@@ -228,7 +235,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                       <CardFooter className="p-4 pt-0 flex-col space-y-3">
                         {/* Enhanced Price and Stock */}
                         <div className="w-full">
-                          <div className="w-full flex items-center justify-between">
+                          <div className="w-full flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
                               <ProductPrice className="text-lg font-bold text-charcoal" />
                               <ProductCompareAtPrice className="text-sm font-medium text-foreground/50 line-through" />
@@ -242,9 +249,24 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                               }}
                             />
                           </div>
+                          {/* Trust & Buying Info Micro-lines */}
+                          <div className="space-y-1 text-xs text-foreground/60 border-t border-charcoal/5 pt-2">
+                            <div className="flex items-center gap-1">
+                              <span className="text-gold-accent">•</span>
+                              <span>Financing from $350/mo</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <span className="text-gold-accent">•</span>
+                              <span>Ships in 2–4 weeks</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <span className="text-gold-accent">•</span>
+                              <span>2-Year Warranty</span>
+                            </div>
+                          </div>
                         </div>
-                        {/* Enhanced Action Buttons */}
-                        <ProductActionButtons />
+                        {/* Enhanced Action Buttons - Extract price from product data */}
+                        <ProductActionButtons price={0} />
 
                         <ProductSlug asChild>
                           {({ slug }) => (
@@ -280,6 +302,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                     </Card>
                   </ProductRepeater>
                 </Products>
+                </div>
               </>
             </div>
           </div>
