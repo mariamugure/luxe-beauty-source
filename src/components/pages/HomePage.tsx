@@ -80,6 +80,7 @@ export default function HomePage() {
     let exitIntentTriggered = false;
 
     const isMobile = window.innerWidth < 768;
+    const cleanups: Array<() => void> = [];
 
     // Mobile: Time-based trigger (45-60 seconds)
     if (isMobile) {
@@ -90,6 +91,7 @@ export default function HomePage() {
           timeTriggered = true;
         }
       }, delay);
+      cleanups.push(() => clearTimeout(timer));
 
       // Mobile: Scroll-based trigger (35-50% scroll)
       const handleScroll = () => {
@@ -103,11 +105,7 @@ export default function HomePage() {
       };
 
       window.addEventListener('scroll', handleScroll);
-
-      return () => {
-        clearTimeout(timer);
-        window.removeEventListener('scroll', handleScroll);
-      };
+      cleanups.push(() => window.removeEventListener('scroll', handleScroll));
     } else {
       // Desktop: Exit-intent trigger only
       const handleMouseLeave = (e: MouseEvent) => {
@@ -118,11 +116,12 @@ export default function HomePage() {
       };
 
       document.addEventListener('mouseleave', handleMouseLeave);
-
-      return () => {
-        document.removeEventListener('mouseleave', handleMouseLeave);
-      };
+      cleanups.push(() => document.removeEventListener('mouseleave', handleMouseLeave));
     }
+
+    return () => {
+      cleanups.forEach(cleanup => cleanup());
+    };
   }, []);
 
   const loadBenefits = async () => {
@@ -167,25 +166,25 @@ export default function HomePage() {
       name: 'Body Sculpting', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
-      image: 'https://static.wixstatic.com/media/5ea123_12620dcbc3da48ea9c52af47130276c1~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://static.wixstatic.com/media/5ea123_1c1cd20196a949af8632cac11530e0bb~mv2.png?originWidth=576&originHeight=384'
     },
     { 
       name: 'Facial Devices', 
       slug: 'facial-devices', 
       description: 'Precision rejuvenation systems.',
-      image: 'https://static.wixstatic.com/media/5ea123_6e5fa0a5622e46f896f38cf4e1bb5410~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://static.wixstatic.com/media/5ea123_861dc5a35cc74d3b9a8f5c33ee6f6c1e~mv2.png?originWidth=576&originHeight=384'
     },
     { 
       name: 'Hair Removal', 
       slug: 'hair-removal', 
       description: 'Professional laser solutions.',
-      image: 'https://static.wixstatic.com/media/5ea123_6c0349b0974043f7b6ea687eb6140781~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://static.wixstatic.com/media/5ea123_d1b7cf3ea1784e5889eedd00669929d0~mv2.png?originWidth=576&originHeight=384'
     },
     { 
       name: 'Accessories', 
       slug: 'accessories', 
       description: 'Essential clinical supplies.',
-      image: 'https://static.wixstatic.com/media/5ea123_e9a2cf36fb0f4cbe83545a89a15e9bf9~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://static.wixstatic.com/media/5ea123_e3d3682fb38843d1b165c3cefc894af7~mv2.png?originWidth=576&originHeight=384'
     }
   ];
 
@@ -204,8 +203,8 @@ export default function HomePage() {
         {/* Background Parallax Layer */}
         <div className="absolute inset-0 z-0">
           <ParallaxImage 
-            src="https://static.wixstatic.com/media/5ea123_3978061dcd7c4adeae036ea00688d4b3~mv2.png?originWidth=1152&originHeight=640"
-            alt="Luxury Massage Table in Professional Spa"
+            src="https://static.wixstatic.com/media/5ea123_c7851d202c8e49ff90c4b4287721a44e~mv2.png?originWidth=1152&originHeight=640"
+            alt="Professional luxury medical spa treatment room with high-end body contouring equipment"
             className="w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/70 to-charcoal/85" />
@@ -450,28 +449,28 @@ export default function HomePage() {
                 name: 'CryoSlim Pro Body Contouring',
                 benefit: 'Non-invasive fat reduction with proven results',
                 price: 'Financing from $450/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_79991d1006ad4436b9619f53675439af~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://static.wixstatic.com/media/5ea123_e1233e1c61624217b71cd5645ff03582~mv2.png?originWidth=384&originHeight=384',
                 shipsIn: '2-3 weeks'
               },
               {
                 name: 'HydraGlow Facial System',
                 benefit: 'Multi-step facial treatment for all skin types',
                 price: 'Financing from $325/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_652867492c0541e89d5e5271acd6ba46~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://static.wixstatic.com/media/5ea123_0e1f995485b24e18ad0b08dd2bcc828b~mv2.png?originWidth=384&originHeight=384',
                 shipsIn: '2-3 weeks'
               },
               {
                 name: 'LaserTech Hair Removal Unit',
                 benefit: 'Professional-grade diode laser technology',
                 price: 'Financing from $550/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_a14f53368ca343148f020e37fdd6a80a~mv2.png?originWidth=576&originHeight=576',
+                image: 'https://static.wixstatic.com/media/5ea123_7d2d3d197bd445588aa0659ad0c0a22d~mv2.png?originWidth=576&originHeight=576',
                 shipsIn: '3-4 weeks'
               },
               {
                 name: 'RF Skin Tightening Device',
                 benefit: 'Radio frequency for collagen stimulation',
                 price: 'Financing from $375/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_357e3cee34f3477cb3dd61e38b7f3a82~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://static.wixstatic.com/media/5ea123_4865ef7ea79640e082d190c87df19781~mv2.png?originWidth=384&originHeight=384',
                 shipsIn: '2-3 weeks'
               }
             ].map((product, index) => (
@@ -647,8 +646,8 @@ export default function HomePage() {
       <section className="w-full bg-charcoal text-white py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
            <Image 
-             src="https://static.wixstatic.com/media/5ea123_720137a4e9c544cb942f86502c838d1e~mv2.png?originWidth=1152&originHeight=640"
-             alt="Infrared Sauna Equipment"
+             src="https://static.wixstatic.com/media/5ea123_03f67f9b51dd4f688ce4de8590f834da~mv2.png?originWidth=1152&originHeight=640"
+             alt="Luxury infrared sauna equipment in professional medical spa setting"
              className="w-full h-full object-cover grayscale"
            />
         </div>
