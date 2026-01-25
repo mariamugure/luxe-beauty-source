@@ -204,7 +204,7 @@ export default function HomePage() {
                 className="bg-gradient-to-br from-charcoal/40 via-charcoal/30 to-transparent p-8 md:p-12 backdrop-blur-sm"
               >
                 <SectionLabel className="mb-6">
-                  <span className="text-white/95 font-semibold">Professional-Grade + FDA-cleared (where applicable)</span>
+                  <span className="text-white/95 font-semibold">Professional-Grade Equipment</span>
                 </SectionLabel>
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-8 drop-shadow-2xl">
                   Professional-Grade Equipment for Medical Spas & Clinics
@@ -262,6 +262,14 @@ export default function HomePage() {
                     >
                       Shop Best Sellers
                     </Button>
+                  </Link>
+                </div>
+                
+                {/* FDA-Cleared Link */}
+                <div className="mb-6">
+                  <Link to="/store" className="inline-flex items-center gap-2 text-white/90 hover:text-gold-accent transition-colors text-sm font-paragraph">
+                    <span>View FDA-cleared devices</span>
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
                 
