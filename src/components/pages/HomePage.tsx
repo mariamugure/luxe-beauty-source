@@ -71,39 +71,44 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    // Delay popup to 15 seconds (between 10-20 seconds as requested)
-    const timer = setTimeout(() => {
-      const popupDismissed = sessionStorage.getItem('popupDismissed');
-      if (!popupDismissed) {
-        setShowPopup(true);
-      }
-    }, 15000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Check if popup was already dismissed in this session
+    // Popup triggers: 45 seconds, 40% scroll, or exit-intent
     const popupDismissed = sessionStorage.getItem('popupDismissed');
-    
     let scrollTriggered = false;
+    let timeTriggered = false;
+
+    // Time-based trigger: 45 seconds
+    const timer = setTimeout(() => {
+      if (!popupDismissed && !scrollTriggered) {
+        setShowPopup(true);
+        timeTriggered = true;
+      }
+    }, 45000);
+
+    // Scroll-based trigger: 40% scroll
     const handleScroll = () => {
-      if (!scrollTriggered && !popupDismissed) {
+      if (!scrollTriggered && !popupDismissed && !timeTriggered) {
         const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        if (scrollPercent >= 50) {
+        if (scrollPercent >= 40) {
           setShowPopup(true);
           scrollTriggered = true;
         }
       }
     };
 
-    // Always set up the listener to ensure refs are properly hydrated
+    // Exit-intent trigger: detect mouse leaving viewport at top
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (!popupDismissed && !scrollTriggered && !timeTriggered && e.clientY <= 0) {
+        setShowPopup(true);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
@@ -430,28 +435,28 @@ export default function HomePage() {
                 benefit: 'Non-invasive fat reduction with proven results',
                 price: 'Financing from $450/mo',
                 image: 'https://static.wixstatic.com/media/5ea123_79991d1006ad4436b9619f53675439af~mv2.png?originWidth=384&originHeight=384',
-                reviews: 128
+                shipsIn: '2-3 weeks'
               },
               {
                 name: 'HydraGlow Facial System',
                 benefit: 'Multi-step facial treatment for all skin types',
                 price: 'Financing from $325/mo',
                 image: 'https://static.wixstatic.com/media/5ea123_652867492c0541e89d5e5271acd6ba46~mv2.png?originWidth=384&originHeight=384',
-                reviews: 94
+                shipsIn: '2-3 weeks'
               },
               {
                 name: 'LaserTech Hair Removal Unit',
                 benefit: 'Professional-grade diode laser technology',
                 price: 'Financing from $550/mo',
                 image: 'https://static.wixstatic.com/media/5ea123_a14f53368ca343148f020e37fdd6a80a~mv2.png?originWidth=576&originHeight=576',
-                reviews: 156
+                shipsIn: '3-4 weeks'
               },
               {
                 name: 'RF Skin Tightening Device',
                 benefit: 'Radio frequency for collagen stimulation',
                 price: 'Financing from $375/mo',
                 image: 'https://static.wixstatic.com/media/5ea123_357e3cee34f3477cb3dd61e38b7f3a82~mv2.png?originWidth=384&originHeight=384',
-                reviews: 87
+                shipsIn: '2-3 weeks'
               }
             ].map((product, index) => (
               <motion.div
@@ -470,7 +475,7 @@ export default function HomePage() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-3 right-3 bg-gold-accent text-white px-2 py-1 text-xs font-paragraph tracking-wide">
-                      BEST SELLER
+                      TOP SELLER
                     </div>
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300 flex items-center justify-center gap-3">
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-charcoal px-6 py-3 font-paragraph text-sm tracking-wide">
@@ -478,20 +483,16 @@ export default function HomePage() {
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-gold-accent text-gold-accent" />
-                      ))}
+                  <div className="space-y-1 mb-3">
+                    <div className="flex items-center gap-2 text-xs font-paragraph text-charcoal/70">
+                      <span className="inline-block w-1.5 h-1.5 bg-gold-accent rounded-full"></span>
+                      Ships in {product.shipsIn}
                     </div>
-                    <span className="font-paragraph text-xs text-charcoal/60">
-                      4.9 ({product.reviews})
-                    </span>
                   </div>
                   <h3 className="font-heading text-lg text-charcoal mb-1 group-hover:text-[#B8941F] transition-colors">
                     {product.name}
                   </h3>
-                  <p className="font-paragraph text-sm text-charcoal/60 mb-2">
+                  <p className="font-paragraph text-sm text-charcoal/60 mb-3">
                     {product.benefit}
                   </p>
                   <div className="font-heading text-base text-charcoal">
@@ -769,7 +770,7 @@ export default function HomePage() {
       <section className="w-full bg-secondary/20 py-12 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
           <p className="font-paragraph text-sm text-charcoal/60 max-w-4xl mx-auto">
-            <strong>Regulatory Note:</strong> All equipment is Professional-Grade + FDA-cleared (where applicable) and suitable for commercial use. FDA-cleared status is indicated on individual product pages with supporting documentation. We only sell equipment that meets or exceeds industry safety standards.
+            <strong>Regulatory Note:</strong> Professional-grade equipment. Select devices are FDA-cleared—see product pages for documentation.
           </p>
         </div>
       </section>
@@ -804,8 +805,11 @@ export default function HomePage() {
               <p className="font-paragraph text-charcoal/60 mb-2 text-sm">
                 Enter your email to receive a personalized quote and our comprehensive equipment checklist—absolutely free.
               </p>
-              <p className="font-paragraph text-charcoal/50 mb-8 text-xs italic">
+              <p className="font-paragraph text-charcoal/50 mb-2 text-xs italic">
                 Takes ~30 seconds
+              </p>
+              <p className="font-paragraph text-charcoal/50 mb-8 text-xs">
+                Prefer to browse? No problem.
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                 <div>
