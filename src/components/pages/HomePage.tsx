@@ -32,6 +32,7 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
   });
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
+  // Always render the ref container unconditionally to ensure proper hydration
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
       <motion.div style={{ y }} className="w-full h-[120%] -mt-[10%]">
@@ -45,6 +46,7 @@ const ParallaxImage = ({ src, alt, className }: { src: string; alt: string; clas
     </div>
   );
 };
+
 
 // --- Main Component ---
 
@@ -71,45 +73,56 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    // Popup triggers: 45 seconds, 40% scroll, or exit-intent
+    // Popup triggers: exit-intent on desktop, 45-60s delay or 35-50% scroll on mobile
     const popupDismissed = sessionStorage.getItem('popupDismissed');
     let scrollTriggered = false;
     let timeTriggered = false;
+    let exitIntentTriggered = false;
 
-    // Time-based trigger: 45 seconds
-    const timer = setTimeout(() => {
-      if (!popupDismissed && !scrollTriggered) {
-        setShowPopup(true);
-        timeTriggered = true;
-      }
-    }, 45000);
+    const isMobile = window.innerWidth < 768;
 
-    // Scroll-based trigger: 40% scroll
-    const handleScroll = () => {
-      if (!scrollTriggered && !popupDismissed && !timeTriggered) {
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        if (scrollPercent >= 40) {
+    // Mobile: Time-based trigger (45-60 seconds)
+    if (isMobile) {
+      const delay = 45000 + Math.random() * 15000; // 45-60 seconds
+      const timer = setTimeout(() => {
+        if (!popupDismissed && !scrollTriggered) {
           setShowPopup(true);
-          scrollTriggered = true;
+          timeTriggered = true;
         }
-      }
-    };
+      }, delay);
 
-    // Exit-intent trigger: detect mouse leaving viewport at top
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (!popupDismissed && !scrollTriggered && !timeTriggered && e.clientY <= 0) {
-        setShowPopup(true);
-      }
-    };
+      // Mobile: Scroll-based trigger (35-50% scroll)
+      const handleScroll = () => {
+        if (!scrollTriggered && !popupDismissed && !timeTriggered) {
+          const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+          if (scrollPercent >= 35) {
+            setShowPopup(true);
+            scrollTriggered = true;
+          }
+        }
+      };
 
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mouseleave', handleMouseLeave);
+      window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-    };
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } else {
+      // Desktop: Exit-intent trigger only
+      const handleMouseLeave = (e: MouseEvent) => {
+        if (!popupDismissed && !exitIntentTriggered && e.clientY <= 0) {
+          setShowPopup(true);
+          exitIntentTriggered = true;
+        }
+      };
+
+      document.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        document.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
   }, []);
 
   const loadBenefits = async () => {
@@ -154,25 +167,25 @@ export default function HomePage() {
       name: 'Body Sculpting', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
-      image: 'https://static.wixstatic.com/media/5ea123_b3d1dde6822d45d395f321095f7243b5~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_12620dcbc3da48ea9c52af47130276c1~mv2.png?originWidth=576&originHeight=384'
     },
     { 
       name: 'Facial Devices', 
       slug: 'facial-devices', 
       description: 'Precision rejuvenation systems.',
-      image: 'https://static.wixstatic.com/media/5ea123_3e279136a5cb4c159378206db0a4ce3b~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_6e5fa0a5622e46f896f38cf4e1bb5410~mv2.png?originWidth=576&originHeight=384'
     },
     { 
       name: 'Hair Removal', 
       slug: 'hair-removal', 
       description: 'Professional laser solutions.',
-      image: 'https://static.wixstatic.com/media/5ea123_a14f53368ca343148f020e37fdd6a80a~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_6c0349b0974043f7b6ea687eb6140781~mv2.png?originWidth=576&originHeight=384'
     },
     { 
       name: 'Accessories', 
       slug: 'accessories', 
       description: 'Essential clinical supplies.',
-      image: 'https://static.wixstatic.com/media/5ea123_0f7d5bf7f28544da9ca160007c0c3875~mv2.png?originWidth=576&originHeight=576'
+      image: 'https://static.wixstatic.com/media/5ea123_e9a2cf36fb0f4cbe83545a89a15e9bf9~mv2.png?originWidth=576&originHeight=384'
     }
   ];
 
@@ -268,7 +281,7 @@ export default function HomePage() {
                       variant="outline"
                       className="border-2 border-white/80 bg-transparent text-white hover:bg-white hover:text-charcoal hover:border-white rounded-none px-10 py-8 text-lg tracking-wide transition-all duration-500"
                     >
-                      Shop Best Sellers
+                      Browse Devices
                     </Button>
                   </Link>
                 </div>
