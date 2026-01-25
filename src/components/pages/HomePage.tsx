@@ -229,9 +229,12 @@ export default function HomePage() {
                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-wrap gap-6 mb-12"
               >
-                <div className="flex items-center gap-2 bg-white/95 px-4 py-3 border border-white/20 shadow-lg">
-                  <Truck className="w-5 h-5 text-gold-accent" />
-                  <span className="font-paragraph text-sm text-charcoal font-medium">Free US Shipping</span>
+                <div className="flex flex-col items-start gap-1 bg-white/95 px-4 py-3 border border-white/20 shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <Truck className="w-5 h-5 text-gold-accent" />
+                    <span className="font-paragraph text-sm text-charcoal font-medium">Free US Shipping</span>
+                  </div>
+                  <span className="font-paragraph text-xs text-charcoal/60 ml-7">Free curbside freight (contiguous US). White-glove available.</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/95 px-4 py-3 border border-white/20 shadow-lg">
                   <Shield className="w-5 h-5 text-gold-accent" />
@@ -475,7 +478,7 @@ export default function HomePage() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-3 right-3 bg-gold-accent text-white px-2 py-1 text-xs font-paragraph tracking-wide">
-                      TOP SELLER
+                      BEST SELLER
                     </div>
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300 flex items-center justify-center gap-3">
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-charcoal px-6 py-3 font-paragraph text-sm tracking-wide">
@@ -583,9 +586,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: 'Sarah M.', location: 'Miami, FL', role: 'Medical Spa Owner', verified: true, text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
-              { name: 'James R.', location: 'Austin, TX', role: 'Wellness Clinic Director', verified: true, text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
-              { name: 'Emily C.', location: 'Los Angeles, CA', role: 'Aesthetic Practitioner', verified: true, text: 'Outstanding support team. They helped us choose the right equipment and provided guidance on setup.' }
+              { name: 'Sarah M.', location: 'Miami, FL', role: 'Medical Spa Owner', purchased: 'CryoSlim Pro', clinic: 'Luxury Medical Spa', outcome: 'Increased body contouring revenue by 40%', verified: true, text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
+              { name: 'James R.', location: 'Austin, TX', role: 'Wellness Clinic Director', purchased: 'HydraGlow Facial System', clinic: 'Dermatology Clinic', outcome: 'Reduced treatment time by 30%', verified: true, text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
+              { name: 'Emily C.', location: 'Los Angeles, CA', role: 'Aesthetic Practitioner', purchased: 'LaserTech Hair Removal', clinic: 'Aesthetic Center', outcome: 'Booked out 3 months in advance', verified: true, text: 'Outstanding support team. They helped us choose the right equipment and provided guidance on setup.' }
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -612,7 +615,9 @@ export default function HomePage() {
                 </p>
                 <div>
                   <div className="font-heading text-lg text-charcoal">{testimonial.name}</div>
-                  <div className="font-paragraph text-sm text-charcoal/60">{testimonial.role} • {testimonial.location}</div>
+                  <div className="font-paragraph text-xs text-charcoal/60 mb-3">Purchased: {testimonial.purchased} • {testimonial.clinic}</div>
+                  <div className="font-paragraph text-sm text-gold-accent font-medium">{testimonial.outcome}</div>
+                  <div className="font-paragraph text-sm text-charcoal/60 mt-2">{testimonial.role} • {testimonial.location}</div>
                 </div>
               </motion.div>
             ))}
