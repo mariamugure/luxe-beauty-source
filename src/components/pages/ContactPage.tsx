@@ -35,7 +35,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: 'Email Us',
-      content: 'support@luxespapro.com',
+      content: 'info@luxespaequipment.com',
       description: 'We typically respond within 24 hours'
     },
     {

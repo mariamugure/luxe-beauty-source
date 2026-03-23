@@ -85,7 +85,7 @@ export default function Footer() {
                 Phone: 855-LUXE652 or (855) 589-3652
               </li>
               <li className="font-paragraph text-sm text-white/70">
-                Email: support@luxespa.com
+                Email: info@luxespaequipment.com
               </li>
               <li className="font-paragraph text-sm text-white/70">
                 Address: 113 S Perry Street Suite 206, Lawrenceville, GA 30046
