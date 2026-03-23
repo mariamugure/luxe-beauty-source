@@ -52,7 +52,7 @@ interface ProductListProps {
 
 export const ProductListSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {Array.from({ length: 12 }).map((_, i) => (
         <Card
           key={i}
@@ -63,7 +63,7 @@ export const ProductListSkeleton = () => {
 
           {/* Content Skeleton */}
           <CardContent className="p-4">
-            <div className="aspect-[3/4] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
+            <div className="min-h-[320px] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
             <div className="space-y-3">
               <div className="h-4 bg-surface-loading rounded animate-pulse"></div>
               <div className="h-3 bg-surface-loading rounded w-2/3 animate-pulse"></div>
@@ -167,16 +167,16 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   )}
                 </ProductListPrimitive.FilterResetTrigger>
 
-                {/* Products Grid - Max 2 columns for larger cards */}
+                {/* Products Grid - Single column on mobile, 2 on large screens */}
                 <Products>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                         {/* Product Ribbon */}
                         <ProductRibbon />
                         <CardContent className="p-0 pb-0">
                           {/* Product Image */}
-                          <div className="aspect-[3/4] bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
+                          <div className="min-h-[320px] bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
                             <ProductMediaGallery>
                               <StyledMediaGallery.Root className="w-full h-full">
                                 <StyledMediaGallery.Viewport className="transition-transform duration-700 ease-out group-hover:scale-105" />
@@ -194,7 +194,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                                   data-testid="title-navigation"
                                   route={`${productPageRoute}/${slug}`}
                                 >
-                                  <CardTitle className="text-charcoal mb-3 line-clamp-2 hover:text-primary transition-colors font-heading text-xl">
+                                  <CardTitle className="text-charcoal mb-3 hover:text-primary transition-colors font-heading text-xl">
                                     <ProductName variant="paragraph" />
                                   </CardTitle>
                                 </Navigation>
@@ -228,7 +228,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                             {/* Product Description */}
                             <ProductDescription
                               as="html"
-                              className="text-foreground/70 text-base mb-4 line-clamp-3 leading-relaxed"
+                              className="text-foreground/70 text-base mb-4 leading-relaxed"
                             />
                           </div>
                         </CardContent>
