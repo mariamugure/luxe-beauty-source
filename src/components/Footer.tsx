@@ -88,6 +88,9 @@ export default function Footer() {
                 Email: support@luxespa.com
               </li>
               <li className="font-paragraph text-sm text-white/70">
+                Address: 113 S Perry Street Suite 206, Lawrenceville, GA 30046
+              </li>
+              <li className="font-paragraph text-sm text-white/70">
                 Hours: Mon-Fri 8AM-8PM EST
               </li>
             </ul>

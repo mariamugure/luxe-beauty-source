@@ -43,6 +43,12 @@ export default function ContactPage() {
       title: 'Call Us',
       content: '855-LUXE-3652 or (855) 589-3652',
       description: 'Monday - Friday, 9am - 6pm EST'
+    },
+    {
+      icon: Phone,
+      title: 'Visit Us',
+      content: '113 S Perry Street Suite 206, Lawrenceville, GA 30046',
+      description: 'Our showroom location'
     }
   ];
 
@@ -75,7 +81,7 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="w-full bg-white py-24">
         <div className="max-w-[100rem] mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
