@@ -82,7 +82,7 @@ export default function Footer() {
             <h4 className="font-heading text-xl mb-4">Contact</h4>
             <ul className="space-y-2">
               <li className="font-paragraph text-sm text-white/70">
-                Phone: 855-luxe652
+                Phone: <a href="tel:855-589-3652" className="hover:text-white transition-colors">855-LUXE-652</a>
               </li>
               <li className="font-paragraph text-sm text-white/70">
                 Email: info@luxespaequipment.com
