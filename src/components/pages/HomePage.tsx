@@ -719,7 +719,7 @@ export default function HomePage() {
               <h3 className="font-heading text-2xl text-charcoal mb-4">Contact Us</h3>
               <div className="space-y-3">
                 <p className="font-paragraph text-charcoal/70">
-                  <strong>Phone:</strong> 855-LUXE-3652 or (855) 589-3652
+                  <strong>Phone:</strong> 855-LUXE652 or (855) 589-3652
                 </p>
                 <p className="font-paragraph text-charcoal/70">
                   <strong>Email:</strong> support@luxespa.com
