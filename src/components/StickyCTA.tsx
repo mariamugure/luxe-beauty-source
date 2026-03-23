@@ -67,14 +67,14 @@ export default function StickyCTA() {
                     Request a Quote
                   </Button>
                 </Link>
-                <a href="tel:855-589-3652">
+                <a href="tel:855-5893652">
                   <Button
                     size="lg"
                     variant="outline"
                     className="border-2 border-white/80 bg-transparent text-white hover:bg-white hover:text-charcoal font-paragraph font-semibold px-6 md:px-8 py-5 md:py-6 rounded-none transition-all duration-300 flex items-center gap-2"
                   >
                     <Phone className="w-4 h-4" />
-                    <span className="hidden sm:inline">Call </span>855-LUXE-3652
+                    <span className="hidden sm:inline">Call </span>855-LUXE652
                   </Button>
                 </a>
                 
