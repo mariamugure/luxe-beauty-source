@@ -9,7 +9,7 @@ import {
 } from '@wix/stores/services';
 
 import React from 'react';
-import { useNavigation } from '../NavigationContext';
+import { useNavigation } from './NavigationContext';
 
 import { ChoiceColor, ChoiceText } from '@/components/ui/store/Choice';
 import {
@@ -258,7 +258,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                             </div>
                           </div>
 
-                          <ProductActionButtons price={0} />
+                          <ProductActionButtons />
 
                           <ProductSlug asChild>
                             {({ slug }) => (
