@@ -169,8 +169,8 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                 </ProductListPrimitive.FilterResetTrigger>
 
                 {/* Products Grid - Increased columns for better initial display */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-                  <Products>
+                <Products>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                       {/* Product Ribbon */}
@@ -300,9 +300,9 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                         </ProductSlug>
                       </CardFooter>
                     </Card>
-                  </ProductRepeater>
+                    </ProductRepeater>
+                  </div>
                 </Products>
-                </div>
               </>
             </div>
           </div>
