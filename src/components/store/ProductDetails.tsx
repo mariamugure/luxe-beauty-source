@@ -62,8 +62,8 @@ export default function ProductDetails({
         {/* Product Images */}
         <div className="space-y-4">
           {/* Main Image */}
-          <div className="aspect-square bg-gradient-to-br from-secondary/80 to-secondary/60 rounded-lg overflow-hidden border border-charcoal/10 relative shadow-lg">
-            <StyledMediaGallery.Viewport className="w-full h-full object-cover" />
+          <div className="w-full bg-gradient-to-br from-secondary/80 to-secondary/60 rounded-lg overflow-hidden border border-charcoal/10 relative shadow-lg" style={{ aspectRatio: '1 / 1', minHeight: '500px' }}>
+            <StyledMediaGallery.Viewport className="w-full h-full" />
             <StyledMediaGallery.Previous />
             <StyledMediaGallery.Next />
             <StyledMediaGallery.Indicator />
