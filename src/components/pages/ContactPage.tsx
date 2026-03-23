@@ -55,7 +55,6 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       {/* Hero Section */}
       <section className="w-full bg-secondary py-24">
         <div className="max-w-[100rem] mx-auto px-8 text-center">
@@ -77,7 +76,6 @@ export default function ContactPage() {
           </motion.p>
         </div>
       </section>
-
       {/* Contact Info Cards */}
       <section className="w-full bg-white py-24">
         <div className="max-w-[100rem] mx-auto px-8">
@@ -100,16 +98,13 @@ export default function ContactPage() {
                   <p className="font-paragraph text-lg text-foreground mb-2">
                     {info.content}
                   </p>
-                  <p className="font-paragraph text-sm text-foreground/60">
-                    {info.description}
-                  </p>
+
                 </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Contact Form */}
       <section className="w-full bg-background py-24">
         <div className="max-w-[100rem] mx-auto px-8">
@@ -240,7 +235,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
       {/* Business Hours */}
       <section className="w-full bg-primary py-20">
         <div className="max-w-[100rem] mx-auto px-8 text-center">
@@ -265,9 +259,7 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
-
       <Footer />
-      
       {/* Sticky CTA Bar */}
       <StickyCTA />
     </div>
