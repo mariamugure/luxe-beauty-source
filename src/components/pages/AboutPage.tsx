@@ -73,13 +73,16 @@ export default function AboutPage() {
               className="space-y-6 font-paragraph text-lg text-foreground/80"
             >
               <p>
-                Luxe Spa Equipment was founded with a singular vision: to provide beauty and spa professionals with access to the world's finest equipment, backed by exceptional service and support.
+                My name is Maria Mbugua, founder of Luxe Spa Equipment. Growing up, I struggled with sensitive skin for most of my life. That personal challenge turned into a lifelong passion — researching ingredients, treatments, and technologies that actually work. I became the person friends and family called when they needed advice on skincare, equipment, or finding a trustworthy clinic.
               </p>
               <p>
-                We understand that your equipment is more than just tools—it's an investment in your business, your reputation, and your clients' experience. That's why we've curated a collection of premium, professional-grade devices that deliver outstanding results and stand the test of time.
+                Over time I realized something: the best professional-grade spa and wellness equipment was hard to find, overpriced, or only available to large clinics with deep pockets. Independent beauty professionals, small spas, and wellness studios were being left behind.
               </p>
               <p>
-                Our team brings decades of combined experience in the beauty and wellness industry. We don't just sell equipment; we partner with you to ensure you have everything you need to succeed and grow your practice.
+                That's why I built Luxe Spa Equipment — to give every professional access to the same high-performance devices that top medical spas use, backed by real support, financing options, and a 2-year warranty.
+              </p>
+              <p>
+                We don't just sell equipment. We partner with you to make sure every device you invest in delivers results for your clients and returns for your business.
               </p>
             </motion.div>
           </div>
@@ -140,7 +143,7 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="font-paragraph text-xl text-primary-foreground/90 max-w-4xl mx-auto"
           >
-            To empower beauty and wellness professionals with premium equipment, expert guidance, and exceptional support, enabling them to deliver transformative experiences and build thriving practices.
+            To make professional-grade spa and wellness technology accessible to every clinic, studio, and aesthetic professional — with the support, financing, and guidance to use it confidently
           </motion.p>
         </div>
       </section>
