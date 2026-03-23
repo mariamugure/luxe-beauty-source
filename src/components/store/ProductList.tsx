@@ -173,133 +173,135 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
-                      {/* Product Ribbon */}
-                      <ProductRibbon />
-                      <CardContent className="p-0 pb-0">
-                        {/* Product Image */}
-                        <div className="aspect-square bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
-                          <ProductMediaGallery>
-                            <StyledMediaGallery.Viewport className="transition-transform duration-700 ease-out group-hover:scale-105" />
-                          </ProductMediaGallery>
-                          {/* Enhanced overlay effect */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                        </div>
+                        {/* Product Ribbon */}
+                        <ProductRibbon />
+                        <CardContent className="p-0 pb-0">
+                          {/* Product Image */}
+                          <div className="aspect-square bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
+                            <ProductMediaGallery>
+                              <StyledMediaGallery.Root>
+                                <StyledMediaGallery.Viewport className="transition-transform duration-700 ease-out group-hover:scale-105" />
+                              </StyledMediaGallery.Root>
+                            </ProductMediaGallery>
+                            {/* Enhanced overlay effect */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          </div>
 
-                        {/* Product Title */}
-                        <div className="p-4 pb-0">
+                          {/* Product Title */}
+                          <div className="p-4 pb-0">
+                            <ProductSlug asChild>
+                              {({ slug }) => (
+                                <Navigation
+                                  data-testid="title-navigation"
+                                  route={`${productPageRoute}/${slug}`}
+                                >
+                                  <CardTitle className="text-charcoal mb-2 line-clamp-2 hover:text-primary transition-colors font-heading text-lg">
+                                    <ProductName variant="paragraph" />
+                                  </CardTitle>
+                                </Navigation>
+                              )}
+                            </ProductSlug>
+                            {/* Enhanced Product Variants */}
+                            <ProductVariants>
+                              <ProductVariantOptions>
+                                <div className="mb-3 space-y-2">
+                                  <ProductVariantOptionRepeater>
+                                    <div className="space-y-2">
+                                      <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
+                                      <OptionChoices>
+                                        <div className="flex flex-wrap gap-1.5">
+                                          <OptionChoiceRepeater>
+                                            <>
+                                              <ChoiceColor className="w-7 h-7 border-2" />
+                                              <ChoiceText className="text-xs" />
+                                            </>
+                                          </OptionChoiceRepeater>
+                                        </div>
+                                      </OptionChoices>
+                                    </div>
+                                  </ProductVariantOptionRepeater>
+                                </div>
+                              </ProductVariantOptions>
+                            </ProductVariants>
+
+                            {/* Reset Selections */}
+                            <ProductVariantSelectorReset className="text-xs underline p-0" />
+                            {/* Product Description */}
+                            <ProductDescription
+                              as="html"
+                              className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed"
+                            />
+                          </div>
+                        </CardContent>
+
+                        <CardFooter className="p-4 pt-0 flex-col space-y-3">
+                          {/* Enhanced Price and Stock */}
+                          <div className="w-full">
+                            <div className="w-full flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <ProductPrice className="text-lg font-bold text-charcoal" />
+                                <ProductCompareAtPrice className="text-sm font-medium text-foreground/50 line-through" />
+                              </div>
+                              <ProductStock
+                                className="flex items-center gap-1 text-xs font-medium text-foreground/70"
+                                labels={{
+                                  inStock: 'In Stock',
+                                  limitedStock: 'In Stock',
+                                  outOfStock: 'Out of Stock',
+                                }}
+                              />
+                            </div>
+                            {/* Trust & Buying Info Micro-lines */}
+                            <div className="space-y-1 text-xs text-foreground/60 border-t border-charcoal/5 pt-2">
+                              <div className="flex items-center gap-1">
+                                <span className="text-gold-accent">•</span>
+                                <span>Financing from $350/mo</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <span className="text-gold-accent">•</span>
+                                <span>Ships in 2–4 weeks</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <span className="text-gold-accent">•</span>
+                                <span>2-Year Warranty</span>
+                              </div>
+                            </div>
+                          </div>
+                          {/* Enhanced Action Buttons - Extract price from product data */}
+                          <ProductActionButtons price={0} />
+
                           <ProductSlug asChild>
                             {({ slug }) => (
                               <Navigation
-                                data-testid="title-navigation"
+                                data-testid="view-product-button"
                                 route={`${productPageRoute}/${slug}`}
+                                className="w-full"
                               >
-                                <CardTitle className="text-charcoal mb-2 line-clamp-2 hover:text-primary transition-colors font-heading text-lg">
-                                  <ProductName variant="paragraph" />
-                                </CardTitle>
+                                <Button
+                                  variant="secondary"
+                                  size="lg"
+                                  className="w-full bg-primary text-white hover:bg-charcoal transition-colors"
+                                >
+                                  View Product
+                                  <svg
+                                    className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </Button>
                               </Navigation>
                             )}
                           </ProductSlug>
-                          {/* Enhanced Product Variants */}
-                          <ProductVariants>
-                            <ProductVariantOptions>
-                              <div className="mb-3 space-y-2">
-                                <ProductVariantOptionRepeater>
-                                  <div className="space-y-2">
-                                    <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
-                                    <OptionChoices>
-                                      <div className="flex flex-wrap gap-1.5">
-                                        <OptionChoiceRepeater>
-                                          <>
-                                            <ChoiceColor className="w-7 h-7 border-2" />
-                                            <ChoiceText className="text-xs" />
-                                          </>
-                                        </OptionChoiceRepeater>
-                                      </div>
-                                    </OptionChoices>
-                                  </div>
-                                </ProductVariantOptionRepeater>
-                              </div>
-                            </ProductVariantOptions>
-                          </ProductVariants>
-
-                          {/* Reset Selections */}
-                          <ProductVariantSelectorReset className="text-xs underline p-0" />
-                          {/* Product Description */}
-                          <ProductDescription
-                            as="html"
-                            className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed"
-                          />
-                        </div>
-                      </CardContent>
-
-                      <CardFooter className="p-4 pt-0 flex-col space-y-3">
-                        {/* Enhanced Price and Stock */}
-                        <div className="w-full">
-                          <div className="w-full flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <ProductPrice className="text-lg font-bold text-charcoal" />
-                              <ProductCompareAtPrice className="text-sm font-medium text-foreground/50 line-through" />
-                            </div>
-                            <ProductStock
-                              className="flex items-center gap-1 text-xs font-medium text-foreground/70"
-                              labels={{
-                                inStock: 'In Stock',
-                                limitedStock: 'In Stock',
-                                outOfStock: 'Out of Stock',
-                              }}
-                            />
-                          </div>
-                          {/* Trust & Buying Info Micro-lines */}
-                          <div className="space-y-1 text-xs text-foreground/60 border-t border-charcoal/5 pt-2">
-                            <div className="flex items-center gap-1">
-                              <span className="text-gold-accent">•</span>
-                              <span>Financing from $350/mo</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <span className="text-gold-accent">•</span>
-                              <span>Ships in 2–4 weeks</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <span className="text-gold-accent">•</span>
-                              <span>2-Year Warranty</span>
-                            </div>
-                          </div>
-                        </div>
-                        {/* Enhanced Action Buttons - Extract price from product data */}
-                        <ProductActionButtons price={0} />
-
-                        <ProductSlug asChild>
-                          {({ slug }) => (
-                            <Navigation
-                              data-testid="view-product-button"
-                              route={`${productPageRoute}/${slug}`}
-                              className="w-full"
-                            >
-                              <Button
-                                variant="secondary"
-                                size="lg"
-                                className="w-full bg-primary text-white hover:bg-charcoal transition-colors"
-                              >
-                                View Product
-                                <svg
-                                  className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </Button>
-                            </Navigation>
-                          )}
-                        </ProductSlug>
-                      </CardFooter>
-                    </Card>
+                        </CardFooter>
+                      </Card>
                     </ProductRepeater>
                   </div>
                 </Products>
@@ -341,7 +343,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
               </div>
               <ProductTotalsDisplayed
                 className="text-content-muted text-sm mt-4"
-                label={'{length} products loaded'}
+                label="{length} products loaded"
               />
             </div>
           </div>
