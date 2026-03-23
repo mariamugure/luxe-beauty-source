@@ -176,7 +176,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                         <ProductRibbon />
                         <CardContent className="p-0 pb-0">
                           {/* Product Image */}
-                          <div className="aspect-square bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
+                          <div className="aspect-video bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
                             <ProductMediaGallery>
                               <StyledMediaGallery.Root>
                                 <StyledMediaGallery.Viewport className="transition-transform duration-700 ease-out group-hover:scale-105" />
