@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, Send } from 'lucide-react';
+import { Mail, Phone, Send, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -41,11 +41,11 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Call Us',
-      content: '855-LUXE-3652 or (855) 589-3652',
+      content: "855-LUXE652",
       description: 'Monday - Friday, 9am - 6pm EST'
     },
     {
-      icon: Phone,
+      icon: MapPin,
       title: 'Visit Us',
       content: '113 S Perry Street Suite 206, Lawrenceville, GA 30046',
       description: 'Our showroom location'
