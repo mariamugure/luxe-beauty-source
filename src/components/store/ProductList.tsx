@@ -52,7 +52,7 @@ interface ProductListProps {
 
 export const ProductListSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {Array.from({ length: 12 }).map((_, i) => (
         <Card
           key={i}
@@ -63,7 +63,7 @@ export const ProductListSkeleton = () => {
 
           {/* Content Skeleton */}
           <CardContent className="p-4">
-            <div className="aspect-square bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
+            <div className="aspect-[4/3] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
             <div className="space-y-3">
               <div className="h-4 bg-surface-loading rounded animate-pulse"></div>
               <div className="h-3 bg-surface-loading rounded w-2/3 animate-pulse"></div>
@@ -167,16 +167,16 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   )}
                 </ProductListPrimitive.FilterResetTrigger>
 
-                {/* Products Grid - Increased columns for better initial display */}
+                {/* Products Grid - Max 3 columns to accommodate sidebar */}
                 <Products>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                         {/* Product Ribbon */}
                         <ProductRibbon />
                         <CardContent className="p-0 pb-0">
                           {/* Product Image */}
-                          <div className="aspect-video bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
+                          <div className="aspect-[4/3] bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
                             <ProductMediaGallery>
                               <StyledMediaGallery.Root>
                                 <StyledMediaGallery.Viewport className="transition-transform duration-700 ease-out group-hover:scale-105" />
