@@ -58,10 +58,8 @@ export const ProductListSkeleton = () => {
           key={i}
           className="overflow-hidden relative bg-surface-card border-surface-subtle"
         >
-          {/* Shimmer Effect */}
-          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-surface-loading/30 to-transparent"></div>
+          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-surface-loading/30 to-transparent" />
 
-          {/* Content Skeleton */}
           <CardContent className="p-4">
             <div className="aspect-[4/3] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
             <div className="space-y-3">
@@ -78,6 +76,7 @@ export const ProductListSkeleton = () => {
               </div>
             </div>
           </CardContent>
+
           <CardFooter className="p-4 pt-0">
             <div className="space-y-2 w-full">
               <div className="h-10 bg-surface-loading rounded animate-pulse"></div>
@@ -101,32 +100,26 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
     <TooltipProvider>
       <ProductList productsListConfig={productsListConfig} variant="grid">
         <div className="min-h-screen">
-          {/* Category Pills - Prominent Navigation */}
           <div className="mb-8 pb-6 border-b border-charcoal/10">
             <CategoryPills categoriesListConfig={categoriesListConfig} />
           </div>
 
-          {/* Header Controls */}
           <Card className="border-surface-subtle mb-6 bg-surface-card">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  {/* ... keep existing code (CategoryPicker) ... */}
+                  {/* keep existing CategoryPicker code here if needed */}
                 </div>
                 <SortDropdown />
               </div>
             </CardContent>
           </Card>
 
-          {/* Filters Section */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-            {/* Filters Sidebar */}
             <ProductFiltersSidebar />
 
-            {/* Main Content Area */}
             <div className="flex-1 min-w-0">
               <>
-                {/* Filter Status Bar */}
                 <ProductListPrimitive.FilterResetTrigger asChild>
                   {React.forwardRef(
                     ({ resetFilters, isFiltered }, ref) =>
@@ -154,6 +147,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                               label="Showing {length} products"
                             />
                           </div>
+
                           <Button
                             variant="link"
                             size="sm"
@@ -167,54 +161,40 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   )}
                 </ProductListPrimitive.FilterResetTrigger>
 
-                {/* Products Grid - Larger cards with better spacing */}
                 <Products>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                     <ProductRepeater>
-                      <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
-                        {/* Product Ribbon */}
+                      <Card className="relative group h-full flex flex-col justify-between overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 hover:shadow-2xl transition-all duration-300">
                         <ProductRibbon />
-                        <CardContent className="p-0 pb-0">
-                          {/*
-                            KEY FIXES FOR IMAGE DISPLAY:
-                            1. Increased aspect ratio to [3/2] for larger images
-                            2. Removed heavy gradient background (was painting over images)
-                            3. Using relative positioning for container
-                          */}
-                          <div className="aspect-[3/2] overflow-hidden relative shadow-md border-b border-charcoal/5 bg-secondary/20">
+
+                        <CardContent className="p-0 flex-1 flex flex-col">
+                          <div className="aspect-[3/2] overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery>
-                              {/*
-                                KEY FIXES:
-                                4. Added absolute inset-0 so gallery fills entire container
-                                5. Added w-full h-full object-cover on Viewport
-                              */}
-                              <StyledMediaGallery.Root className="w-full h-full absolute inset-0">
-                                <StyledMediaGallery.Viewport className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                              <StyledMediaGallery.Root className="absolute inset-0 w-full h-full">
+                                <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" />
                               </StyledMediaGallery.Root>
                             </ProductMediaGallery>
-                            {/* Subtle hover overlay — does NOT cover image at rest */}
+
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                           </div>
 
-                          {/* Product Title */}
-                          <div className="p-5 pb-0">
+                          <div className="p-5 pb-0 flex-1">
                             <ProductSlug asChild>
                               {({ slug }) => (
                                 <Navigation
                                   data-testid="title-navigation"
                                   route={`${productPageRoute}/${slug}`}
                                 >
-                                  <CardTitle className="text-charcoal mb-3 line-clamp-2 hover:text-primary transition-colors font-heading text-lg">
+                                  <CardTitle className="text-charcoal mb-3 line-clamp-2 hover:text-primary transition-colors font-heading text-lg min-h-[3.5rem]">
                                     <ProductName variant="paragraph" />
                                   </CardTitle>
                                 </Navigation>
                               )}
                             </ProductSlug>
 
-                            {/* Product Variants */}
                             <ProductVariants>
                               <ProductVariantOptions>
-                                <div className="mb-3 space-y-2">
+                                <div className="mb-3 space-y-2 min-h-[3rem]">
                                   <ProductVariantOptionRepeater>
                                     <div className="space-y-2">
                                       <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
@@ -234,25 +214,24 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                               </ProductVariantOptions>
                             </ProductVariants>
 
-                            {/* Reset Selections */}
-                            <ProductVariantSelectorReset className="text-xs underline p-0" />
+                            <div className="mb-3 min-h-[1.25rem]">
+                              <ProductVariantSelectorReset className="text-xs underline p-0" />
+                            </div>
 
-                            {/* Description - reduced to 2 lines */}
-                            <ProductDescription
-                              as="html"
-                              className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed"
-                            />
+                            <div className="min-h-[3rem]">
+                              <ProductDescription className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed" />
+                            </div>
                           </div>
                         </CardContent>
 
                         <CardFooter className="p-5 pt-0 flex-col space-y-3">
-                          {/* Price and Stock */}
                           <div className="w-full">
-                            <div className="w-full flex items-center justify-between mb-2">
-                              <div className="flex items-center gap-2">
+                            <div className="w-full flex items-center justify-between mb-2 gap-3">
+                              <div className="flex items-center gap-2 flex-wrap">
                                 <ProductPrice className="text-xl font-bold text-charcoal" />
                                 <ProductCompareAtPrice className="text-sm font-medium text-foreground/50 line-through" />
                               </div>
+
                               <ProductStock
                                 className="flex items-center gap-1 text-xs font-medium text-foreground/70"
                                 labels={{
@@ -262,7 +241,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                                 }}
                               />
                             </div>
-                            {/* Trust & Buying Info */}
+
                             <div className="space-y-1 text-xs text-foreground/60 border-t border-charcoal/5 pt-2">
                               <div className="flex items-center gap-1">
                                 <span className="text-gold-accent">•</span>
@@ -279,7 +258,6 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                             </div>
                           </div>
 
-                          {/* Action Buttons */}
                           <ProductActionButtons price={0} />
 
                           <ProductSlug asChild>
@@ -321,7 +299,6 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
             </div>
           </div>
 
-          {/* Load More Section */}
           <div className="text-center mt-12 mb-8">
             <div className="flex flex-col items-center gap-4">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -353,6 +330,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   }
                 />
               </div>
+
               <ProductTotalsDisplayed
                 className="text-content-muted text-sm mt-4"
                 label="{length} products loaded"
