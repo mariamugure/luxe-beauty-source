@@ -1,6 +1,6 @@
-import * as StyledMediaGallery from '@/components/ui/media/MediaGallery';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
+import * as StyledMediaGallery from '@/components/ui/media/MediaGallery';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ProductList as ProductListPrimitive } from '@wix/stores/components';
 import {
@@ -11,14 +11,20 @@ import {
 import React from 'react';
 import { useNavigation } from '../NavigationContext';
 
+import { ChoiceColor, ChoiceText } from '@/components/ui/store/Choice';
+import {
+  OptionChoiceRepeater,
+  OptionChoices,
+  OptionName,
+} from '@/components/ui/store/Option';
 import {
   ProductCompareAtPrice,
   ProductDescription,
   ProductMediaGallery,
   ProductName,
   ProductPrice,
-  ProductSlug,
   ProductRibbon,
+  ProductSlug,
   ProductStock,
   ProductVariantOptionRepeater,
   ProductVariantOptions,
@@ -26,23 +32,16 @@ import {
   ProductVariantSelectorReset,
 } from '@/components/ui/store/Product';
 import {
-  ProductLoadMoreTrigger,
   ProductList,
+  ProductLoadMoreTrigger,
   ProductRepeater,
   Products,
   ProductTotalsDisplayed,
 } from '@/components/ui/store/ProductList';
-import CategoryPicker from './CategoryPicker';
 import CategoryPills from './CategoryPills';
 import { ProductActionButtons } from './ProductActionButtons';
 import ProductFiltersSidebar from './ProductFiltersSidebar';
 import { SortDropdown } from './SortDropdown';
-import {
-  OptionChoiceRepeater,
-  OptionChoices,
-  OptionName,
-} from '@/components/ui/store/Option';
-import { ChoiceColor, ChoiceText } from '@/components/ui/store/Choice';
 
 interface ProductListProps {
   productsListConfig: ProductsListServiceConfig;
@@ -170,7 +169,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
 
                 {/* Products Grid - Increased columns for better initial display */}
                 <Products>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                         {/* Product Ribbon */}
