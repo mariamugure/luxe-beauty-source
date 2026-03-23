@@ -167,9 +167,9 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   )}
                 </ProductListPrimitive.FilterResetTrigger>
 
-                {/* Products Grid - 3 columns max for proper card sizing */}
+                {/* Products Grid - Larger cards with better spacing */}
                 <Products>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                         {/* Product Ribbon */}
@@ -177,11 +177,11 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                         <CardContent className="p-0 pb-0">
                           {/*
                             KEY FIXES FOR IMAGE DISPLAY:
-                            1. Removed heavy gradient background (was painting over images)
-                            2. Changed to landscape aspect-[4/3]
+                            1. Increased aspect ratio to [3/2] for larger images
+                            2. Removed heavy gradient background (was painting over images)
                             3. Using relative positioning for container
                           */}
-                          <div className="aspect-[4/3] overflow-hidden relative shadow-md border-b border-charcoal/5 bg-secondary/20">
+                          <div className="aspect-[3/2] overflow-hidden relative shadow-md border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery>
                               {/*
                                 KEY FIXES:
@@ -197,14 +197,14 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                           </div>
 
                           {/* Product Title */}
-                          <div className="p-4 pb-0">
+                          <div className="p-5 pb-0">
                             <ProductSlug asChild>
                               {({ slug }) => (
                                 <Navigation
                                   data-testid="title-navigation"
                                   route={`${productPageRoute}/${slug}`}
                                 >
-                                  <CardTitle className="text-charcoal mb-2 line-clamp-2 hover:text-primary transition-colors font-heading text-base">
+                                  <CardTitle className="text-charcoal mb-3 line-clamp-2 hover:text-primary transition-colors font-heading text-lg">
                                     <ProductName variant="paragraph" />
                                   </CardTitle>
                                 </Navigation>
@@ -245,12 +245,12 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                           </div>
                         </CardContent>
 
-                        <CardFooter className="p-4 pt-0 flex-col space-y-3">
+                        <CardFooter className="p-5 pt-0 flex-col space-y-3">
                           {/* Price and Stock */}
                           <div className="w-full">
                             <div className="w-full flex items-center justify-between mb-2">
                               <div className="flex items-center gap-2">
-                                <ProductPrice className="text-lg font-bold text-charcoal" />
+                                <ProductPrice className="text-xl font-bold text-charcoal" />
                                 <ProductCompareAtPrice className="text-sm font-medium text-foreground/50 line-through" />
                               </div>
                               <ProductStock
