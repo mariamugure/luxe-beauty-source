@@ -41,7 +41,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Call Us',
-      content: '1-800-LUXE-SPA',
+      content: '855-LUXE-3652 or (855) 589-3652',
       description: 'Monday - Friday, 9am - 6pm EST'
     }
   ];

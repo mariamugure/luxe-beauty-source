@@ -82,7 +82,7 @@ export default function Footer() {
             <h4 className="font-heading text-xl mb-4">Contact</h4>
             <ul className="space-y-2">
               <li className="font-paragraph text-sm text-white/70">
-                Phone: 1-800-SPA-EQUIP
+                Phone: 855-LUXE-3652 or (855) 589-3652
               </li>
               <li className="font-paragraph text-sm text-white/70">
                 Email: support@luxespa.com
