@@ -384,7 +384,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {categories.map((category, index) => (
               <motion.div
                 key={category.slug}
@@ -392,25 +392,33 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group relative h-[400px]"
+                className="group flex flex-col h-full"
               >
-                <Link to={`/store/${category.slug}`} className="block w-full h-full">
-                  <div className="w-full h-full relative overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 transition-colors">
-                    <Image
-                      src={category.image}
-                      alt={category.name}
-                      width={600}
-                      className="w-full h-3/4 object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                <Link to={`/store/${category.slug}`} className="block w-full h-full flex flex-col">
+                  <div className="w-full flex flex-col h-full relative overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 transition-all duration-300">
+                    <div className="relative w-full h-64 overflow-hidden bg-background">
+                      <Image
+                        src={category.image}
+                        alt={category.name}
+                        width={600}
+                        height={400}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
                     
                     {/* Content */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-white p-6 border-t border-charcoal/10">
-                      <h3 className="font-heading text-2xl text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
-                        {category.name}
-                      </h3>
-                      <p className="font-paragraph text-charcoal/60 text-sm">
-                        {category.description}
-                      </p>
+                    <div className="flex-1 bg-white p-8 border-t border-charcoal/10 flex flex-col justify-between">
+                      <div>
+                        <h3 className="font-heading text-2xl text-charcoal mb-2 group-hover:text-gold-accent transition-colors">
+                          {category.name}
+                        </h3>
+                        <p className="font-paragraph text-charcoal/60 text-sm leading-relaxed">
+                          {category.description}
+                        </p>
+                      </div>
+                      <div className="mt-4 inline-flex items-center text-gold-accent font-paragraph text-sm font-medium group-hover:translate-x-1 transition-transform">
+                        Explore →
+                      </div>
                     </div>
                   </div>
                 </Link>
