@@ -52,7 +52,7 @@ interface ProductListProps {
 
 export const ProductListSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {Array.from({ length: 12 }).map((_, i) => (
         <Card
           key={i}
@@ -63,7 +63,7 @@ export const ProductListSkeleton = () => {
 
           {/* Content Skeleton */}
           <CardContent className="p-4">
-            <div className="min-h-[320px] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
+            <div className="aspect-[4/3] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
             <div className="space-y-3">
               <div className="h-4 bg-surface-loading rounded animate-pulse"></div>
               <div className="h-3 bg-surface-loading rounded w-2/3 animate-pulse"></div>
@@ -167,43 +167,54 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                   )}
                 </ProductListPrimitive.FilterResetTrigger>
 
-                {/* Products Grid - Single column on mobile, 2 on large screens */}
+                {/* Products Grid - 3 columns max for proper card sizing */}
                 <Products>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <ProductRepeater>
                       <Card className="relative hover:shadow-2xl transition-all duration-300 group h-full flex flex-col bg-white border border-charcoal/10 hover:border-gold-accent/30 justify-between overflow-hidden">
                         {/* Product Ribbon */}
                         <ProductRibbon />
                         <CardContent className="p-0 pb-0">
-                          {/* Product Image */}
-                          <div className="min-h-[320px] bg-gradient-to-br from-secondary/80 to-secondary/60 overflow-hidden relative shadow-md border-b border-charcoal/5 flex items-center justify-center">
+                          {/*
+                            KEY FIXES FOR IMAGE DISPLAY:
+                            1. Removed heavy gradient background (was painting over images)
+                            2. Changed to landscape aspect-[4/3]
+                            3. Using relative positioning for container
+                          */}
+                          <div className="aspect-[4/3] overflow-hidden relative shadow-md border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery>
-                              <StyledMediaGallery.Root className="w-full h-full">
-                                <StyledMediaGallery.Viewport className="transition-transform duration-700 ease-out group-hover:scale-105" />
+                              {/*
+                                KEY FIXES:
+                                4. Added absolute inset-0 so gallery fills entire container
+                                5. Added w-full h-full object-cover on Viewport
+                              */}
+                              <StyledMediaGallery.Root className="w-full h-full absolute inset-0">
+                                <StyledMediaGallery.Viewport className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                               </StyledMediaGallery.Root>
                             </ProductMediaGallery>
-                            {/* Enhanced overlay effect */}
+                            {/* Subtle hover overlay — does NOT cover image at rest */}
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                           </div>
 
                           {/* Product Title */}
-                          <div className="p-5 pb-0">
+                          <div className="p-4 pb-0">
                             <ProductSlug asChild>
                               {({ slug }) => (
                                 <Navigation
                                   data-testid="title-navigation"
                                   route={`${productPageRoute}/${slug}`}
                                 >
-                                  <CardTitle className="text-charcoal mb-3 hover:text-primary transition-colors font-heading text-xl">
+                                  <CardTitle className="text-charcoal mb-2 line-clamp-2 hover:text-primary transition-colors font-heading text-base">
                                     <ProductName variant="paragraph" />
                                   </CardTitle>
                                 </Navigation>
                               )}
                             </ProductSlug>
-                            {/* Enhanced Product Variants */}
+
+                            {/* Product Variants */}
                             <ProductVariants>
                               <ProductVariantOptions>
-                                <div className="mb-4 space-y-2">
+                                <div className="mb-3 space-y-2">
                                   <ProductVariantOptionRepeater>
                                     <div className="space-y-2">
                                       <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
@@ -225,16 +236,17 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
 
                             {/* Reset Selections */}
                             <ProductVariantSelectorReset className="text-xs underline p-0" />
-                            {/* Product Description */}
+
+                            {/* Description - reduced to 2 lines */}
                             <ProductDescription
                               as="html"
-                              className="text-foreground/70 text-base mb-4 leading-relaxed"
+                              className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed"
                             />
                           </div>
                         </CardContent>
 
                         <CardFooter className="p-4 pt-0 flex-col space-y-3">
-                          {/* Enhanced Price and Stock */}
+                          {/* Price and Stock */}
                           <div className="w-full">
                             <div className="w-full flex items-center justify-between mb-2">
                               <div className="flex items-center gap-2">
@@ -250,7 +262,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                                 }}
                               />
                             </div>
-                            {/* Trust & Buying Info Micro-lines */}
+                            {/* Trust & Buying Info */}
                             <div className="space-y-1 text-xs text-foreground/60 border-t border-charcoal/5 pt-2">
                               <div className="flex items-center gap-1">
                                 <span className="text-gold-accent">•</span>
@@ -266,7 +278,8 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                               </div>
                             </div>
                           </div>
-                          {/* Enhanced Action Buttons - Extract price from product data */}
+
+                          {/* Action Buttons */}
                           <ProductActionButtons price={0} />
 
                           <ProductSlug asChild>
