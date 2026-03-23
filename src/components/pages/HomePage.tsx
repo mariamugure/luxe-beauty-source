@@ -394,7 +394,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group relative h-[400px]"
               >
-                <Link to="/store" className="block w-full h-full">
+                <Link to={`/store/${category.slug}`} className="block w-full h-full">
                   <div className="w-full h-full relative overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 transition-colors">
                     <Image
                       src={category.image}
