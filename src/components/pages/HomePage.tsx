@@ -388,7 +388,7 @@ export default function HomePage() {
             {categories.map((category, index) => (
               <motion.div
                 key={category.slug}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 1, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -484,7 +484,7 @@ export default function HomePage() {
             ].map((product, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
@@ -559,7 +559,7 @@ export default function HomePage() {
                 benefits.map((benefit, index) => (
                   <motion.div
                     key={benefit._id}
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 1, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -612,7 +612,7 @@ export default function HomePage() {
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -889,7 +889,7 @@ const FAQItem = ({ question, answer, index }: { question?: string; answer?: stri
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 1, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
