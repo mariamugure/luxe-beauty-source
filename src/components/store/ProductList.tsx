@@ -171,7 +171,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                           <div className="aspect-square overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery>
                               <StyledMediaGallery.Root className="absolute inset-0 w-full h-full">
-                                <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" />
+                                <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 [&>img]:object-contain [&>img]:w-full [&>img]:h-full" />
                               </StyledMediaGallery.Root>
                             </ProductMediaGallery>
 
