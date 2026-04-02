@@ -29,7 +29,6 @@ import ContactPage from '@/components/pages/ContactPage';
 import FAQPage from '@/components/pages/FAQPage';
 import BlogPage from '@/components/pages/BlogPage';
 import BlogPostPage from '@/components/pages/BlogPostPage';
-import PrivacyPolicyPage from '@/components/pages/PrivacyPolicyPage';
 
 // Layout component that includes ScrollToTop and WixServicesProvider
 function Layout() {
@@ -86,10 +85,6 @@ const router = createBrowserRouter([
       {
         path: "blog/:id",
         element: <BlogPostPage />,
-      },
-      {
-        path: "privacy-policy",
-        element: <PrivacyPolicyPage />,
       },
       {
         path: "products/:slug",

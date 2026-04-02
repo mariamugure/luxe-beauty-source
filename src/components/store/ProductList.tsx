@@ -9,7 +9,7 @@ import {
 } from '@wix/stores/services';
 
 import React from 'react';
-import { useNavigation } from './NavigationContext';
+import { useNavigation } from '../NavigationContext';
 
 import { ChoiceColor, ChoiceText } from '@/components/ui/store/Choice';
 import {
@@ -168,10 +168,10 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                         <ProductRibbon />
 
                         <CardContent className="p-0 flex-1 flex flex-col">
-                          <div className="aspect-square overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
+                          <div className="aspect-[3/2] overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery>
                               <StyledMediaGallery.Root className="absolute inset-0 w-full h-full">
-                                <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 [&>img]:object-contain [&>img]:w-full [&>img]:h-full" />
+                                <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" />
                               </StyledMediaGallery.Root>
                             </ProductMediaGallery>
 
@@ -258,7 +258,7 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                             </div>
                           </div>
 
-                          <ProductActionButtons />
+                          <ProductActionButtons price={0} />
 
                           <ProductSlug asChild>
                             {({ slug }) => (
