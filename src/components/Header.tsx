@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { MiniCart } from '@/wix-verticals/react-pages/react-router/routes/root';
+import { useCart } from '@/integrations';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { itemCount, actions } = useCart();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -65,7 +66,18 @@ export default function Header() {
                 </Button>
               </Link>
             )}
-            <MiniCart />
+            <button
+              onClick={actions.toggleCart}
+              className="relative p-2 text-charcoal hover:text-primary transition-colors"
+              aria-label="Shopping cart"
+            >
+              <ShoppingCart className="w-6 h-6" />
+              {itemCount > 0 && (
+                <span className="absolute top-0 right-0 bg-gold-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </button>
             
             {/* Mobile menu button */}
             <button
