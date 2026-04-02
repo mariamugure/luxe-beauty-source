@@ -215,7 +215,7 @@ export default function HomePage() {
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 1, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 className="bg-gradient-to-br from-charcoal/40 via-charcoal/30 to-transparent p-8 md:p-12 backdrop-blur-sm"
@@ -236,7 +236,7 @@ export default function HomePage() {
 
               {/* Trust Bullets */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-wrap gap-6 mb-12"
@@ -260,7 +260,7 @@ export default function HomePage() {
 
               {/* CTAs */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 1, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-12"
@@ -317,7 +317,7 @@ export default function HomePage() {
 
               {/* Purchase Confidence - Trust Stats */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="bg-white/95 p-8 border border-white/20 shadow-lg"
@@ -350,7 +350,7 @@ export default function HomePage() {
 
         {/* Scroll Indicator */}
         <motion.div 
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"

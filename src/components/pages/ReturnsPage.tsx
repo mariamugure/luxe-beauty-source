@@ -34,12 +34,12 @@ export default function ReturnsPage() {
       <section className="w-full bg-white py-24">
         <div className="max-w-[100rem] mx-auto px-8">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
               <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
                 <RotateCcw className="w-10 h-10 text-primary" />
               </div>
