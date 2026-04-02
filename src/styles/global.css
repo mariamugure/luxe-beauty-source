@@ -38,4 +38,9 @@
   .text-sm.text-gold-accent {
     color: #B8941F;
   }
+
+  /* Ensure all sections visible regardless of JS animation state */
+  .w-full, section, [class*="section"] {
+    opacity: 1 !important;
+  }
 }
