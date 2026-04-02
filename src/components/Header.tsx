@@ -17,6 +17,7 @@ export default function Header() {
     { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
   ];
 
   const [showStickyQuote, setShowStickyQuote] = useState(false);
