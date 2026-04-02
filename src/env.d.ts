@@ -1,9 +1,10 @@
 import type { PageMetadata } from "@wix/astro-pages";
+import type { AstroGlobal } from "astro";
 
 /// <reference types="astro/client" />
 /// <reference path="../.astro/types.d.ts" />
 
-declare const Astro: Readonly<import("astro").AstroGlobal>;
+declare const Astro: Readonly<AstroGlobal>;
 
 declare global {
   interface SDKTypeMode {
