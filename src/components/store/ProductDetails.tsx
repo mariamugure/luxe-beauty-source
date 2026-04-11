@@ -60,24 +60,26 @@ export default function ProductDetails({
         data-item-id={product._id}
       >
         {/* Product Images */}
-        <div className="space-y-4">
-          {/* Main Image */}
-          <div className="w-full bg-gradient-to-br from-secondary/80 to-secondary/60 rounded-lg overflow-hidden border border-charcoal/10 relative shadow-lg" style={{ aspectRatio: '1 / 1', minHeight: '500px' }}>
-            <StyledMediaGallery.Root>
-              <StyledMediaGallery.Viewport className="w-full h-full" />
-              <StyledMediaGallery.Previous />
-              <StyledMediaGallery.Next />
-              <StyledMediaGallery.Indicator />
-            </StyledMediaGallery.Root>
-          </div>
+        <ProductMediaGallery asChild>
+          <div className="space-y-4">
+            {/* Main Image */}
+            <div className="w-full bg-gradient-to-br from-secondary/80 to-secondary/60 rounded-lg overflow-hidden border border-charcoal/10 relative shadow-lg" style={{ aspectRatio: '1 / 1', minHeight: '500px' }}>
+              <StyledMediaGallery.Root className="w-full h-full">
+                <StyledMediaGallery.Viewport className="w-full h-full" />
+                <StyledMediaGallery.Previous />
+                <StyledMediaGallery.Next />
+                <StyledMediaGallery.Indicator />
+              </StyledMediaGallery.Root>
+            </div>
 
-          {/* Thumbnail Images */}
-          <StyledMediaGallery.Thumbnails>
-            <StyledMediaGallery.ThumbnailRepeater>
-              <StyledMediaGallery.ThumbnailItem className="border border-charcoal/10 hover:border-gold-accent/30 transition-colors" />
-            </StyledMediaGallery.ThumbnailRepeater>
-          </StyledMediaGallery.Thumbnails>
-        </div>
+            {/* Thumbnail Images */}
+            <StyledMediaGallery.Thumbnails>
+              <StyledMediaGallery.ThumbnailRepeater>
+                <StyledMediaGallery.ThumbnailItem className="border border-charcoal/10 hover:border-gold-accent/30 transition-colors" />
+              </StyledMediaGallery.ThumbnailRepeater>
+            </StyledMediaGallery.Thumbnails>
+          </div>
+        </ProductMediaGallery>
         {/* Product Info */}
         <div className="space-y-8 px-3">
           {/* Product Name & Price */}
