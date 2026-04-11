@@ -471,7 +471,7 @@ export default function HomePage() {
                 name: 'LaserTech Hair Removal Unit',
                 benefit: 'Professional-grade diode laser technology',
                 price: 'Financing from $550/mo',
-                image: 'https://images.pexels.com/photos/5619448/pexels-photo-5619448.jpeg?auto=compress&cs=tinysrgb&w=576&h=576&fit=crop',
+                image: 'https://static.wixstatic.com/media/5ea123_201ce8cb3b7a41d79c4c3d1c854d93ac~mv2.jpg',
                 shipsIn: '3-4 weeks'
               },
               {
