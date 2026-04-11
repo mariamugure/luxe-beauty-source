@@ -166,7 +166,7 @@ export default function HomePage() {
       name: 'Machine Body Sculpting Machine', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
-      image: 'https://static.wixstatic.com/media/5ea123_4bce85863b7c46e68271d2b3d9016484~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://static.wixstatic.com/media/5ea123_8439f5b069ca44eb86311ac4ef70c72d~mv2.jpg'
     },
     { 
       name: 'Facial Devices', 
