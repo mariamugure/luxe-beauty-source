@@ -178,7 +178,7 @@ export default function HomePage() {
       name: 'Hair Removal', 
       slug: 'hair-removal', 
       description: 'Professional laser solutions.',
-      image: 'https://images.pexels.com/photos/3985354/pexels-photo-3985354.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
+      image: 'https://static.wixstatic.com/media/5ea123_2f04a30ee7eb46e7b5c8c87b15ac66bc~mv2.jpg'
     },
     { 
       name: 'Accessories', 
