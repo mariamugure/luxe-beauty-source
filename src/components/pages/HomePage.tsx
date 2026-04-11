@@ -166,25 +166,25 @@ export default function HomePage() {
       name: 'Body Sculpting', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
-      image: 'https://static.wixstatic.com/media/5ea123_b8c71d1a488a43999f80065d38a98f6e~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://images.pexels.com/photos/5069432/pexels-photo-5069432.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
     },
     { 
       name: 'Facial Devices', 
       slug: 'facial-devices', 
       description: 'Precision rejuvenation systems.',
-      image: 'https://static.wixstatic.com/media/5ea123_9d39eefbea37449194d7d0715bf1309c~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://images.pexels.com/photos/5069494/pexels-photo-5069494.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
     },
     { 
       name: 'Hair Removal', 
       slug: 'hair-removal', 
       description: 'Professional laser solutions.',
-      image: 'https://static.wixstatic.com/media/5ea123_bda28fb9219441319b745a9055b426c8~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://images.pexels.com/photos/3985354/pexels-photo-3985354.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
     },
     { 
       name: 'Accessories', 
       slug: 'accessories', 
       description: 'Essential clinical supplies.',
-      image: 'https://static.wixstatic.com/media/5ea123_5ffe567c1c97465ba471494211498f9f~mv2.png?originWidth=576&originHeight=384'
+      image: 'https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
     }
   ];
 
@@ -203,7 +203,7 @@ export default function HomePage() {
         {/* Background Parallax Layer */}
         <div className="absolute inset-0 z-0">
           <ParallaxImage 
-            src="https://static.wixstatic.com/media/5ea123_be6dd48d9842444bbe9e9063c30b5f3d~mv2.png?originWidth=1152&originHeight=640"
+            src="https://images.pexels.com/photos/3188/love-romantic-bath-candlelight.jpg?auto=compress&cs=tinysrgb&w=1200&h=667&fit=crop"
             alt="Professional luxury medical spa treatment room with high-end body contouring equipment"
             className="w-full h-full"
           />
@@ -457,28 +457,28 @@ export default function HomePage() {
                 name: 'CryoSlim Pro Body Contouring',
                 benefit: 'Non-invasive fat reduction with proven results',
                 price: 'Financing from $450/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_a5f25a4178ba4599af4a01c0c4f945d4~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://images.pexels.com/photos/5069406/pexels-photo-5069406.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
                 shipsIn: '2-3 weeks'
               },
               {
                 name: 'HydraGlow Facial System',
                 benefit: 'Multi-step facial treatment for all skin types',
                 price: 'Financing from $325/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_6ac135a508164796966ca4033c534c75~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://images.pexels.com/photos/7446671/pexels-photo-7446671.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
                 shipsIn: '2-3 weeks'
               },
               {
                 name: 'LaserTech Hair Removal Unit',
                 benefit: 'Professional-grade diode laser technology',
                 price: 'Financing from $550/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_379ee0bfe52f4b2fb9daf6399237c9ce~mv2.png?originWidth=576&originHeight=576',
+                image: 'https://images.pexels.com/photos/5619448/pexels-photo-5619448.jpeg?auto=compress&cs=tinysrgb&w=576&h=576&fit=crop',
                 shipsIn: '3-4 weeks'
               },
               {
                 name: 'RF Skin Tightening Device',
                 benefit: 'Radio frequency for collagen stimulation',
                 price: 'Financing from $375/mo',
-                image: 'https://static.wixstatic.com/media/5ea123_de6d7485ad564de896b677bafbc9a517~mv2.png?originWidth=384&originHeight=384',
+                image: 'https://images.pexels.com/photos/5069510/pexels-photo-5069510.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
                 shipsIn: '2-3 weeks'
               }
             ].map((product, index) => (
@@ -654,7 +654,7 @@ export default function HomePage() {
       <section className="w-full bg-charcoal text-white py-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
            <Image 
-             src="https://static.wixstatic.com/media/5ea123_ba6e8a37de02491da93ffc9a733b0e2c~mv2.png?originWidth=1152&originHeight=640"
+             src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=1200&h=667&fit=crop"
              alt="Luxury infrared sauna equipment in professional medical spa setting"
              className="w-full h-full object-cover grayscale"
            />
@@ -811,7 +811,7 @@ export default function HomePage() {
           >
             <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-secondary">
                <Image 
-                 src="https://static.wixstatic.com/media/5ea123_a83218fcb2dd4e6898ee3ccd90e5f7fe~mv2.png?originWidth=576&originHeight=640"
+                 src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=576&h=640&fit=crop"
                  alt="High-End Spa Equipment"
                  className="w-full h-full object-cover"
                />
