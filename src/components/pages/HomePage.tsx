@@ -172,7 +172,7 @@ export default function HomePage() {
       name: 'Facial Devices', 
       slug: 'facial-devices', 
       description: 'Precision rejuvenation systems.',
-      image: 'https://images.pexels.com/photos/5069494/pexels-photo-5069494.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
+      image: 'https://static.wixstatic.com/media/5ea123_ccf5a73d50a6495d947c45fddfac8c18~mv2.jpg'
     },
     { 
       name: 'Hair Removal', 
