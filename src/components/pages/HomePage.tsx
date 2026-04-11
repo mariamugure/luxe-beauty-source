@@ -203,7 +203,7 @@ export default function HomePage() {
         {/* Background Parallax Layer */}
         <div className="absolute inset-0 z-0">
           <ParallaxImage 
-            src="https://images.pexels.com/photos/3188/love-romantic-bath-candlelight.jpg?auto=compress&cs=tinysrgb&w=1200&h=667&fit=crop"
+            src="https://static.wixstatic.com/media/5ea123_62bcfeed2f384769a71939835967b05c~mv2.jpg"
             alt="Professional luxury medical spa treatment room with high-end body contouring equipment"
             className="w-full h-full"
           />
