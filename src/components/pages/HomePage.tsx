@@ -464,7 +464,7 @@ export default function HomePage() {
                 name: 'HydraGlow Facial System',
                 benefit: 'Multi-step facial treatment for all skin types',
                 price: 'Financing from $325/mo',
-                image: 'https://images.pexels.com/photos/7446671/pexels-photo-7446671.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+                image: 'https://static.wixstatic.com/media/5ea123_aef9c139900d412f9e8c95ae14db1a49~mv2.jpg',
                 shipsIn: '2-3 weeks'
               },
               {
