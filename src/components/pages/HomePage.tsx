@@ -457,7 +457,7 @@ export default function HomePage() {
                 name: 'CryoSlim Pro Body Contouring',
                 benefit: 'Non-invasive fat reduction with proven results',
                 price: 'Financing from $450/mo',
-                image: 'https://images.pexels.com/photos/5069406/pexels-photo-5069406.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+                image: 'https://static.wixstatic.com/media/5ea123_bf1c3584d2f242699cd8041723f08cab~mv2.jpg',
                 shipsIn: '2-3 weeks'
               },
               {
