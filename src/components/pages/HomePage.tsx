@@ -163,7 +163,7 @@ export default function HomePage() {
   // Canonical Data Source: Categories
   const categories = [
     { 
-      name: 'Machine Body Sculpting Machine', 
+      name: 'Body Sculpting Machine', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
       image: 'https://static.wixstatic.com/media/5ea123_8439f5b069ca44eb86311ac4ef70c72d~mv2.jpg'
