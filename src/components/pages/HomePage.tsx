@@ -184,7 +184,7 @@ export default function HomePage() {
       name: 'Accessories', 
       slug: 'accessories', 
       description: 'Essential clinical supplies.',
-      image: 'https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
+      image: 'https://static.wixstatic.com/media/5ea123_7a1150d9125641f58fd9f7fafed2f438~mv2.jpg'
     }
   ];
 
