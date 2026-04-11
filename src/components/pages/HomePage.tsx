@@ -478,7 +478,7 @@ export default function HomePage() {
                 name: 'RF Skin Tightening Device',
                 benefit: 'Radio frequency for collagen stimulation',
                 price: 'Financing from $375/mo',
-                image: 'https://images.pexels.com/photos/5069510/pexels-photo-5069510.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+                image: 'https://static.wixstatic.com/media/5ea123_25c7dac49b4d4645b96b30ad7f32ce25~mv2.png',
                 shipsIn: '2-3 weeks'
               }
             ].map((product, index) => (
