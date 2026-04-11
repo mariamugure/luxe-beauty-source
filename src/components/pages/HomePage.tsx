@@ -163,7 +163,7 @@ export default function HomePage() {
   // Canonical Data Source: Categories
   const categories = [
     { 
-      name: 'Body Sculpting', 
+      name: 'Machine Body Sculpting Machine', 
       slug: 'body-sculpting', 
       description: 'Advanced contouring technology.',
       image: 'https://images.pexels.com/photos/5069432/pexels-photo-5069432.jpeg?auto=compress&cs=tinysrgb&w=576&h=384&fit=crop'
