@@ -152,11 +152,10 @@ export async function storePageLoader({
     }
   );
 
+  // Always load products on both server and client
   const productListConfigPromise =
     loadProductsListServiceConfig(parsedSearchOptions);
-  const productListConfig = import.meta.env.SSR
-    ? await productListConfigPromise
-    : undefined;
+  const productListConfig = await productListConfigPromise;
 
   // Load SEO tags for the store page
   const seoTagsServiceConfig = await loadSEOTagsServiceConfig({
@@ -210,7 +209,7 @@ function StorePage() {
                 {/* Products load with skeleton using React Router's Await */}
                 <React.Suspense fallback={<StoreSkeleton />}>
                   <Await
-                    resolve={productListConfig ?? productListConfigPromise}
+                    resolve={productListConfig}
                     errorElement={<StoreError />}
                   >
                     {resolvedProductListConfig => {
