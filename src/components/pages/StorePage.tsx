@@ -87,6 +87,17 @@ function StorePageContent({ productsListConfig }: StorePageContentProps) {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-1 max-w-[100rem] mx-auto w-full px-8 py-12">
+        {/* Shop Banner Section */}
+        <div className="mb-12 rounded-lg overflow-hidden">
+          <Image
+            src="https://static.wixstatic.com/media/5ea123_94166ccf955949efb64e8e39af629e90~mv2.png"
+            alt="Shop Collection Banner"
+            width={1200}
+            height={400}
+            className="w-full h-auto object-cover"
+          />
+        </div>
+
         <div className="mb-12">
           <h1 className="text-5xl font-heading font-bold text-foreground mb-3">
             Our Collection
