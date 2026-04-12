@@ -5,7 +5,7 @@ import {
   parseUrlToSearchOptions,
 } from '@wix/stores/services';
 import { loadProductsListServiceConfig } from '@wix/stores/services';
-import ProductList from '@/components/store/ProductList';
+import ProductListWrapper from '@/components/store/ProductList';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ProductListSkeleton } from '@/components/store/ProductList';
@@ -215,7 +215,7 @@ function StorePage() {
                   >
                     {resolvedProductListConfig => {
                       return (
-                        <ProductList
+                        <ProductListWrapper
                           productPageRoute="/products"
                           productsListConfig={resolvedProductListConfig}
                           categoriesListConfig={categoriesListConfig}
