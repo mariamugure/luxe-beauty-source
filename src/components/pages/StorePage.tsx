@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useLoaderData, Await } from 'react-router-dom';
+import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Image } from '@/components/ui/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import { loadProductsListServiceConfig } from '@wix/stores/services';
 
 interface Product {
   _id: string;
@@ -46,39 +47,41 @@ function StoreSkeleton() {
   );
 }
 
-export async function storePageLoader() {
-  return {};
+function StoreError() {
+  return (
+    <div className="text-center py-12">
+      <p className="text-lg text-destructive mb-4">Failed to load products</p>
+      <Button onClick={() => window.location.reload()}>
+        Try Again
+      </Button>
+    </div>
+  );
 }
 
-function StorePage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+export async function storePageLoader() {
+  const productListConfigPromise = loadProductsListServiceConfig({
+    cursorPaging: {
+      limit: 50,
+    },
+  });
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
+  const productListConfig = import.meta.env.SSR
+    ? await productListConfigPromise
+    : undefined;
 
-        // Fetch products from Wix Stores
-        const response = await fetch('/api/products');
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
+  return {
+    productListConfigPromise,
+    productListConfig,
+  };
+}
 
-        const data = await response.json();
-        setProducts(data.items || []);
-      } catch (err) {
-        console.error('Error fetching products:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load products');
-      } finally {
-        setIsLoading(false);
-      }
-    };
+interface StorePageContentProps {
+  productsListConfig: any;
+}
 
-    fetchProducts();
-  }, []);
+function StorePageContent({ productsListConfig }: StorePageContentProps) {
+  const products = productsListConfig?.products || [];
+  const hasProducts = products.length > 0;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -93,16 +96,7 @@ function StorePage() {
           </p>
         </div>
 
-        {isLoading ? (
-          <StoreSkeleton />
-        ) : error ? (
-          <div className="text-center py-12">
-            <p className="text-lg text-destructive mb-4">{error}</p>
-            <Button onClick={() => window.location.reload()}>
-              Try Again
-            </Button>
-          </div>
-        ) : products.length === 0 ? (
+        {!hasProducts ? (
           <div className="text-center py-12">
             <p className="text-lg text-secondary-foreground">
               No products available at the moment
@@ -110,7 +104,7 @@ function StorePage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => {
+            {products.map((product: Product) => {
               const imageUrl =
                 product.media?.items?.[0]?.url ||
                 'https://static.wixstatic.com/media/5ea123_da901b39b81c45489e33f5c1e381928b~mv2.png?originWidth=384&originHeight=256';
@@ -183,6 +177,36 @@ function StorePage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function StorePage() {
+  const { productListConfigPromise, productListConfig } = useLoaderData<typeof storePageLoader>();
+
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex flex-col">
+        <Header />
+        <main className="flex-1 max-w-[100rem] mx-auto w-full px-8 py-12">
+          <div className="mb-12">
+            <h1 className="text-5xl font-heading font-bold text-foreground mb-3">
+              Our Collection
+            </h1>
+            <p className="text-lg font-paragraph text-secondary-foreground">
+              Browse our premium selection of spa and beauty equipment
+            </p>
+          </div>
+          <StoreSkeleton />
+        </main>
+        <Footer />
+      </div>
+    }>
+      <Await resolve={productListConfig ?? productListConfigPromise} errorElement={<StoreError />}>
+        {(resolvedProductListConfig) => (
+          <StorePageContent productsListConfig={resolvedProductListConfig} />
+        )}
+      </Await>
+    </Suspense>
   );
 }
 
