@@ -30,6 +30,7 @@ import FAQPage from '@/components/pages/FAQPage';
 import BlogPage from '@/components/pages/BlogPage';
 import BlogPostPage from '@/components/pages/BlogPostPage';
 import PrivacyPolicyPage from '@/components/pages/PrivacyPolicyPage';
+import StorePage, { storePageLoader } from '@/components/pages/StorePage';
 
 // Layout component that includes ScrollToTop and WixServicesProvider
 function Layout() {
@@ -109,8 +110,12 @@ const router = createBrowserRouter([
       },
       {
         path: "store",
-        element: <></>,
-        loader: defaultStoreCollectionRouteRedirectLoader,
+        element: (
+          <div className="bg-background">
+            <StorePage />
+          </div>
+        ),
+        loader: storePageLoader,
         index: true,
       },
       {
