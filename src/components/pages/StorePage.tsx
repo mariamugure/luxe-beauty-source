@@ -8,24 +8,41 @@ import { loadCategoriesListServiceConfig, loadProductsListServiceConfig } from '
 import ProductList, { ProductListSkeleton } from '@/components/store/ProductList';
 
 export async function storePageLoader() {
-  const productsListConfigPromise = loadProductsListServiceConfig({
-    cursorPaging: {
-      limit: 50,
-    },
-  });
+  // Helper function to retry failed requests
+  const retryWithBackoff = async (fn: () => Promise<any>, maxRetries = 3) => {
+    for (let i = 0; i < maxRetries; i++) {
+      try {
+        return await fn();
+      } catch (error) {
+        if (i === maxRetries - 1) throw error;
+        // Exponential backoff: 100ms, 200ms, 400ms
+        await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 100));
+      }
+    }
+  };
 
-  const categoriesListConfigPromise = loadCategoriesListServiceConfig({
-    cursorPaging: {
-      limit: 100,
-    },
-  });
+  const productsListConfigPromise = retryWithBackoff(() =>
+    loadProductsListServiceConfig({
+      cursorPaging: {
+        limit: 50,
+      },
+    })
+  );
+
+  const categoriesListConfigPromise = retryWithBackoff(() =>
+    loadCategoriesListServiceConfig({
+      cursorPaging: {
+        limit: 100,
+      },
+    })
+  );
 
   const productsListConfig = import.meta.env.SSR
-    ? await productsListConfigPromise
+    ? await productsListConfigPromise.catch(() => undefined)
     : undefined;
 
   const categoriesListConfig = import.meta.env.SSR
-    ? await categoriesListConfigPromise
+    ? await categoriesListConfigPromise.catch(() => undefined)
     : undefined;
 
   return {

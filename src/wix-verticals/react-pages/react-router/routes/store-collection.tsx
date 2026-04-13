@@ -137,8 +137,23 @@ export async function storeCollectionRouteLoader({
   params: { categorySlug?: string };
   request: Request;
 }) {
+  // Helper function to retry failed requests
+  const retryWithBackoff = async (fn: () => Promise<any>, maxRetries = 3) => {
+    for (let i = 0; i < maxRetries; i++) {
+      try {
+        return await fn();
+      } catch (error) {
+        if (i === maxRetries - 1) throw error;
+        // Exponential backoff: 100ms, 200ms, 400ms
+        await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 100));
+      }
+    }
+  };
+
   // Load categories first so we can pass them to parseUrlForProductsListSearch
-  const categoriesListConfig = await loadCategoriesListServiceConfig();
+  const categoriesListConfig = await retryWithBackoff(() =>
+    loadCategoriesListServiceConfig()
+  );
 
   // Find category by its real slug
   let selectedCategory = null;
@@ -156,9 +171,11 @@ export async function storeCollectionRouteLoader({
     throw new Response('Not Found', { status: 404 });
   }
 
-  const { items: customizations = [] } = await customizationsV3
-    .queryCustomizations()
-    .find();
+  const { items: customizations = [] } = await retryWithBackoff(() =>
+    customizationsV3
+      .queryCustomizations()
+      .find()
+  );
 
   const parsedSearchOptions = await parseUrlToSearchOptions(
     request.url,
@@ -175,19 +192,22 @@ export async function storeCollectionRouteLoader({
       },
     }
   );
-  const productListConfigPromise =
-    loadProductsListServiceConfig(parsedSearchOptions);
+  const productListConfigPromise = retryWithBackoff(() =>
+    loadProductsListServiceConfig(parsedSearchOptions)
+  );
   const productListConfig = import.meta.env.SSR
-    ? await productListConfigPromise
+    ? await productListConfigPromise.catch(() => undefined)
     : undefined;
 
   // Load SEO tags for the category
   const categoryName = selectedCategory.name || '';
-  const seoTagsServiceConfig = await loadSEOTagsServiceConfig({
-    pageUrl: request.url,
-    itemType: seoTags.ItemType.STORES_CATEGORY,
-    itemData: createCategorySeoConfig(categoryName, params.categorySlug),
-  });
+  const seoTagsServiceConfig = await retryWithBackoff(() =>
+    loadSEOTagsServiceConfig({
+      pageUrl: request.url,
+      itemType: seoTags.ItemType.STORES_CATEGORY,
+      itemData: createCategorySeoConfig(categoryName, params.categorySlug),
+    })
+  );
 
   return {
     productListConfigPromise,
