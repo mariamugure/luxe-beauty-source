@@ -184,9 +184,11 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                         <CardContent className="p-0 flex-1 flex flex-col">
                           <div className="aspect-[3/2] overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery asChild>
-                              <StyledMediaGallery.Root className="absolute inset-0 w-full h-full">
-                                <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" />
-                              </StyledMediaGallery.Root>
+                              <div className="w-full h-full">
+                                <StyledMediaGallery.Root className="absolute inset-0 w-full h-full">
+                                  <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" />
+                                </StyledMediaGallery.Root>
+                              </div>
                             </ProductMediaGallery>
 
                             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
