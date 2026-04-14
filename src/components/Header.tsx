@@ -16,6 +16,7 @@ export default function Header() {
     { name: 'Returns', href: '/returns' },
     { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
+    { name: 'For Suppliers', href: '/suppliers' },
     { name: 'Contact', href: '/contact' },
     { name: 'Privacy Policy', href: '/privacy-policy' },
   ];

@@ -32,6 +32,7 @@ const FAQPage = lazy(() => import('@/components/pages/FAQPage'));
 const BlogPage = lazy(() => import('@/components/pages/BlogPage'));
 const BlogPostPage = lazy(() => import('@/components/pages/BlogPostPage'));
 const PrivacyPolicyPage = lazy(() => import('@/components/pages/PrivacyPolicyPage'));
+const SuppliersPage = lazy(() => import('@/components/pages/SuppliersPage'));
 
 // Fallback loading component
 function PageLoader() {
@@ -139,6 +140,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <PrivacyPolicyPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "suppliers",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <SuppliersPage />
           </Suspense>
         ),
       },
