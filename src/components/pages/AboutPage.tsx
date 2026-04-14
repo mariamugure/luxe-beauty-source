@@ -147,39 +147,7 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="w-full bg-background py-20">
         <div className="max-w-[100rem] mx-auto px-8">
-          <div className="grid md:grid-cols-3 gap-8">
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white p-8 rounded-lg text-center space-y-4 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h3 className="font-heading text-2xl text-charcoal">Product Specs</h3>
-              <p className="font-paragraph text-secondary-foreground">
-                Explore detailed sourcing information and technical specifications.
-              </p>
-              <Link to="/product-catalog" className="inline-flex items-center gap-2 text-primary hover:text-charcoal transition-colors duration-300 font-paragraph font-semibold">
-                View Catalog <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-lg text-center space-y-4 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h3 className="font-heading text-2xl text-charcoal">Partner With Us</h3>
-              <p className="font-paragraph text-secondary-foreground">
-                Join our network of authorized distributors and unlock premium margins.
-              </p>
-              <Link to="/suppliers" className="inline-flex items-center gap-2 text-primary hover:text-charcoal transition-colors duration-300 font-paragraph font-semibold">
-                Learn More <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </div>
         </div>
       </section>
       <Footer />
