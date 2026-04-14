@@ -596,59 +596,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- TESTIMONIALS SECTION --- */}
-      <section className="w-full bg-secondary/30 py-24">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="text-center mb-16">
-            <SectionLabel className="justify-center">Trusted by Professionals</SectionLabel>
-            <h2 className="font-heading text-4xl md:text-5xl text-charcoal">What Our Clients Say</h2>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: 'Sarah M.', location: 'Miami, FL', role: 'Medical Spa Owner', purchased: 'CryoSlim Pro', clinic: 'Luxury Medical Spa', outcome: 'Increased body contouring revenue by 40%', verified: true, text: 'The equipment quality is exceptional. Our clients notice the difference, and the warranty gives us peace of mind.' },
-              { name: 'James R.', location: 'Austin, TX', role: 'Wellness Clinic Director', purchased: 'HydraGlow Facial System', clinic: 'Dermatology Clinic', outcome: 'Reduced treatment time by 30%', verified: true, text: 'Professional-grade performance at a fair price. The financing made it easy to upgrade our entire facility.' },
-              { name: 'Emily C.', location: 'Los Angeles, CA', role: 'Aesthetic Practitioner', purchased: 'LaserTech Hair Removal', clinic: 'Aesthetic Center', outcome: 'Booked out 3 months in advance', verified: true, text: 'Outstanding support team. They helped us choose the right equipment and provided guidance on setup.' }
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 1, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 border border-charcoal/10"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-gold-accent text-gold-accent" />
-                    ))}
-                  </div>
-                  {testimonial.verified && (
-                    <span className="text-xs font-paragraph text-gold-accent border border-gold-accent px-2 py-1" title="Verified purchases via order ID">
-                      VERIFIED BUYER
-                    </span>
-                  )}
-                </div>
-                <p className="font-paragraph text-charcoal/70 mb-6 leading-relaxed">
-                  "{testimonial.text}"
-                </p>
-                <div>
-                  <div className="font-heading text-lg text-charcoal">{testimonial.name}</div>
-                  <div className="font-paragraph text-xs text-charcoal/60 mb-3">Purchased: {testimonial.purchased} • {testimonial.clinic}</div>
-                  <div className="font-paragraph text-sm text-gold-accent font-medium">{testimonial.outcome}</div>
-                  <div className="font-paragraph text-sm text-charcoal/60 mt-2">{testimonial.role} • {testimonial.location}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <p className="font-paragraph text-xs text-charcoal/50">
-              * Verified purchases via order ID
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* --- FINANCING BANNER (Visual Break) --- */}
       <section className="w-full bg-charcoal text-white py-32 relative overflow-hidden">
