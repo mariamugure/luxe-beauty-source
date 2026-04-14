@@ -52,31 +52,23 @@ interface ProductListProps {
 
 export const ProductListSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {Array.from({ length: 12 }).map((_, i) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+      {Array.from({ length: 6 }).map((_, i) => (
         <Card
           key={i}
           className="overflow-hidden relative bg-surface-card border-surface-subtle"
         >
-          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-surface-loading/30 to-transparent" />
-
           <CardContent className="p-4">
             <div className="aspect-[4/3] bg-surface-loading rounded-lg mb-4 animate-pulse"></div>
             <div className="space-y-3">
               <div className="h-4 bg-surface-loading rounded animate-pulse"></div>
               <div className="h-3 bg-surface-loading rounded w-2/3 animate-pulse"></div>
-              <div className="flex gap-2 mt-3">
-                <div className="w-6 h-6 bg-surface-loading rounded-full animate-pulse"></div>
-                <div className="w-6 h-6 bg-surface-loading rounded-full animate-pulse"></div>
-                <div className="w-6 h-6 bg-surface-loading rounded-full animate-pulse"></div>
-              </div>
               <div className="flex justify-between items-center mt-4">
                 <div className="h-6 bg-surface-loading rounded w-16 animate-pulse"></div>
                 <div className="h-4 bg-surface-loading rounded w-20 animate-pulse"></div>
               </div>
             </div>
           </CardContent>
-
           <CardFooter className="p-4 pt-0">
             <div className="space-y-2 w-full">
               <div className="h-10 bg-surface-loading rounded animate-pulse"></div>
@@ -96,6 +88,14 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
 }) => {
   const Navigation = useNavigation();
 
+  if (!productsListConfig) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-lg text-destructive mb-4">Unable to load products - configuration missing</p>
+      </div>
+    );
+  }
+
   return (
     <TooltipProvider>
       <ProductList productsListConfig={productsListConfig} variant="grid">
@@ -108,7 +108,6 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  {/* keep existing CategoryPicker code here if needed */}
                 </div>
                 <SortDropdown />
               </div>
@@ -162,13 +161,13 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                 </ProductListPrimitive.FilterResetTrigger>
 
                 <Products>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <ProductRepeater>
                       <Card className="relative group h-full flex flex-col justify-between overflow-hidden bg-white border border-charcoal/10 hover:border-gold-accent/30 hover:shadow-2xl transition-all duration-300">
                         <ProductRibbon />
 
                         <CardContent className="p-0 flex-1 flex flex-col">
-                          <div className="aspect-[3/2] overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
+                          <div className="aspect-square overflow-hidden relative border-b border-charcoal/5 bg-secondary/20">
                             <ProductMediaGallery>
                               <StyledMediaGallery.Root className="absolute inset-0 w-full h-full">
                                 <StyledMediaGallery.Viewport className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" />
@@ -185,46 +184,20 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                                   data-testid="title-navigation"
                                   route={`${productPageRoute}/${slug}`}
                                 >
-                                  <CardTitle className="text-charcoal mb-3 line-clamp-2 hover:text-primary transition-colors font-heading text-lg min-h-[3.5rem]">
+                                  <CardTitle className="text-charcoal mb-2 line-clamp-2 hover:text-primary transition-colors font-heading text-base sm:text-lg">
                                     <ProductName variant="paragraph" />
                                   </CardTitle>
                                 </Navigation>
                               )}
                             </ProductSlug>
 
-                            <ProductVariants>
-                              <ProductVariantOptions>
-                                <div className="mb-3 space-y-2 min-h-[3rem]">
-                                  <ProductVariantOptionRepeater>
-                                    <div className="space-y-2">
-                                      <OptionName className="text-content-secondary text-xs font-medium uppercase tracking-wide" />
-                                      <OptionChoices>
-                                        <div className="flex flex-wrap gap-2">
-                                          <OptionChoiceRepeater>
-                                            <>
-                                              <ChoiceColor className="w-8 h-8 border-2" />
-                                              <ChoiceText className="text-xs" />
-                                            </>
-                                          </OptionChoiceRepeater>
-                                        </div>
-                                      </OptionChoices>
-                                    </div>
-                                  </ProductVariantOptionRepeater>
-                                </div>
-                              </ProductVariantOptions>
-                            </ProductVariants>
-
-                            <div className="mb-3 min-h-[1.25rem]">
-                              <ProductVariantSelectorReset className="text-xs underline p-0" />
-                            </div>
-
-                            <div className="min-h-[3rem]">
-                              <ProductDescription className="text-foreground/70 text-sm mb-3 line-clamp-2 leading-relaxed" />
+                            <div className="mb-2">
+                              <ProductDescription className="text-foreground/70 text-sm line-clamp-2 leading-relaxed" />
                             </div>
                           </div>
                         </CardContent>
 
-                        <CardFooter className="p-5 pt-0 flex-col space-y-3">
+                        <CardFooter className="p-5 pt-2 flex-col space-y-3">
                           <div className="w-full">
                             <div className="w-full flex items-center justify-between mb-2 gap-3">
                               <div className="flex items-center gap-2 flex-wrap">
@@ -273,19 +246,6 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
                                   className="w-full bg-primary text-white hover:bg-charcoal transition-colors"
                                 >
                                   View Product
-                                  <svg
-                                    className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="2"
-                                      d="M9 5l7 7-7 7"
-                                    />
-                                  </svg>
                                 </Button>
                               </Navigation>
                             )}
