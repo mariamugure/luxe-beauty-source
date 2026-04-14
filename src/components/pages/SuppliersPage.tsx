@@ -138,6 +138,107 @@ export default function SuppliersPage() {
             </div>
           </motion.div>
 
+          {/* Vision & Market Opportunity */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="mb-24"
+          >
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8"
+              >
+                <div>
+                  <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">
+                    Vision & Market Opportunity
+                  </h2>
+                  <p className="font-paragraph text-lg text-secondary-foreground leading-relaxed">
+                    We're building the trusted distributor network that independent beauty professionals have been asking for.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <h3 className="font-heading text-2xl text-charcoal">The Market Gap</h3>
+                    <p className="font-paragraph text-secondary-foreground leading-relaxed">
+                      Independent beauty professionals spend 2-3x more for professional-grade equipment due to lack of accessible distributors. They're forced to work with limited suppliers, face inflated prices, and struggle to access quality products at scale.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="font-heading text-2xl text-charcoal">Our Solution</h3>
+                    <p className="font-paragraph text-secondary-foreground leading-relaxed">
+                      We're creating an accessible, transparent distribution network that connects independent professionals directly to premium spa equipment at fair prices. By partnering with us, you help close this gap and serve an underserved market segment.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="font-heading text-2xl text-charcoal">Early Partner Advantage</h3>
+                    <p className="font-paragraph text-secondary-foreground leading-relaxed">
+                      As we grow, you grow. Early partners will benefit from first-mover advantage in this underserved market segment, stronger margins, and deeper integration with our brand as we scale.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8 }}
+                className="space-y-6"
+              >
+                {[
+                  {
+                    label: 'Market Size',
+                    value: '$2.5B+',
+                    description: 'Professional beauty equipment market'
+                  },
+                  {
+                    label: 'Growth Rate',
+                    value: '8-12%',
+                    description: 'Annual market growth'
+                  },
+                  {
+                    label: 'Underserved',
+                    value: '60%+',
+                    description: 'Independent professionals without quality access'
+                  },
+                  {
+                    label: 'Price Gap',
+                    value: '2-3x',
+                    description: 'Cost multiplier for independent buyers'
+                  },
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: idx * 0.1 }}
+                    className="bg-secondary/10 border border-primary/20 rounded-lg p-6 space-y-2"
+                  >
+                    <p className="font-paragraph text-sm text-secondary-foreground">
+                      {stat.label}
+                    </p>
+                    <p className="font-heading text-3xl text-charcoal">
+                      {stat.value}
+                    </p>
+                    <p className="font-paragraph text-sm text-secondary-foreground">
+                      {stat.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.section>
+
           {/* Key Information Grid */}
           <motion.div
             initial={{ opacity: 0 }}
