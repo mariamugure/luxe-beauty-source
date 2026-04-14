@@ -138,7 +138,85 @@ export default function SuppliersPage() {
             </div>
           </motion.div>
 
+          {/* Vision & Market Opportunity Section */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="mb-24 bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-12 md:p-16"
+          >
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8"
+              >
+                <div>
+                  <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">
+                    Vision & Market Opportunity
+                  </h2>
+                  <p className="font-paragraph text-lg text-secondary-foreground leading-relaxed">
+                    The luxury spa and aesthetic equipment market is experiencing unprecedented growth. With increasing demand for non-invasive treatments and wellness solutions, there's never been a better time to enter this high-margin industry.
+                  </p>
+                </div>
 
+                <div className="space-y-4">
+                  {[
+                    'Global market projected to reach $15B+ by 2030',
+                    'CAGR of 12-15% across aesthetic and wellness sectors',
+                    'Rising consumer spending on self-care and wellness',
+                    'Expanding medical spa and clinic networks worldwide',
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                      className="flex items-start gap-4"
+                    >
+                      <TrendingUp className="text-primary flex-shrink-0 mt-1" size={24} />
+                      <span className="font-paragraph text-secondary-foreground">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-2 gap-6"
+              >
+                {[
+                  { icon: BarChart3, label: 'Market Size', value: '$15B+' },
+                  { icon: TrendingUp, label: 'Annual Growth', value: '12-15%' },
+                  { icon: Users, label: 'Industry Expansion', value: 'Rapid' },
+                  { icon: Award, label: 'Opportunity', value: 'Prime' },
+                ].map((stat, idx) => {
+                  const Icon = stat.icon;
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                      className="bg-white rounded-lg p-6 text-center space-y-3 border border-primary/10"
+                    >
+                      <Icon className="text-primary mx-auto" size={32} />
+                      <p className="font-paragraph text-sm text-secondary-foreground">{stat.label}</p>
+                      <p className="font-heading text-2xl text-charcoal">{stat.value}</p>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </motion.section>
 
           {/* Key Information Grid */}
           <motion.div
