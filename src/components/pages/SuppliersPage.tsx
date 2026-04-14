@@ -1,5 +1,5 @@
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Mail, MapPin, TrendingUp, FileText, CheckCircle, ArrowRight, Users, Zap, Award, BarChart3, Clock, DollarSign } from 'lucide-react';
 import { motion } from 'framer-motion';
 
