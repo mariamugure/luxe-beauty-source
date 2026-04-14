@@ -96,6 +96,20 @@ export const ProductListWrapper: React.FC<ProductListProps> = ({
 }) => {
   const Navigation = useNavigation();
 
+  // Debug: Check if config is valid
+  if (!productsListConfig) {
+    console.error('ProductListWrapper: productsListConfig is missing or invalid', {
+      productsListConfig,
+      productPageRoute,
+      categoriesListConfig,
+    });
+    return (
+      <div className="text-center py-12">
+        <p className="text-lg text-destructive mb-4">Unable to load products - configuration missing</p>
+      </div>
+    );
+  }
+
   return (
     <TooltipProvider>
       <ProductList productsListConfig={productsListConfig} variant="grid">
