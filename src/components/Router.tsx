@@ -4,9 +4,9 @@ import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 
 // Import Wix Services Provider
-import { 
-  rootRouteLoader, 
-  WixServicesProvider 
+import {
+  rootRouteLoader,
+  WixServicesProvider
 } from '@/wix-verticals/react-pages/react-router/routes/root';
 import {
   ProductDetailsRoute,
@@ -30,7 +30,6 @@ import FAQPage from '@/components/pages/FAQPage';
 import BlogPage from '@/components/pages/BlogPage';
 import BlogPostPage from '@/components/pages/BlogPostPage';
 import PrivacyPolicyPage from '@/components/pages/PrivacyPolicyPage';
-import StorePage, { storePageLoader } from '@/components/pages/StorePage';
 
 // Layout component that includes ScrollToTop and WixServicesProvider
 function Layout() {
@@ -110,12 +109,8 @@ const router = createBrowserRouter([
       },
       {
         path: "store",
-        element: (
-          <div className="bg-background">
-            <StorePage />
-          </div>
-        ),
-        loader: storePageLoader,
+        element: <></>,
+        loader: defaultStoreCollectionRouteRedirectLoader,
         index: true,
       },
       {
