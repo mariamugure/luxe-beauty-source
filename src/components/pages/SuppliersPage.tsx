@@ -56,10 +56,10 @@ export default function SuppliersPage() {
               <span className="font-paragraph text-sm text-gold-accent font-semibold">Partnership Opportunity</span>
             </div>
             <h1 className="font-heading text-6xl md:text-8xl leading-tight">
-              Become a Partner
+              Sell Your Products With Us
             </h1>
             <p className="font-paragraph text-xl md:text-2xl text-secondary max-w-2xl leading-relaxed">
-              Join our network of authorized distributors and unlock premium margins, dedicated support, and exclusive access to luxury spa equipment.
+              Partner with Luxe Spa Equipment to expand your market reach. We're actively seeking premium manufacturers to feature in our curated catalog and reach our growing customer base.
             </p>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -107,17 +107,17 @@ export default function SuppliersPage() {
               >
                 <div>
                   <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">
-                    Why Partner With Luxe Spa Equipment?
+                    Why Sell Through Luxe Spa Equipment?
                   </h2>
                   <p className="font-paragraph text-lg text-secondary-foreground leading-relaxed">
-                    We're a rapidly growing luxury spa equipment brand with strong market demand, premium product quality, and a commitment to partner success. This is the ideal time to join our distribution network.
+                    We're a rapidly growing luxury spa equipment retailer with strong market demand, premium positioning, and a dedicated customer base. Manufacturers partner with us to expand their reach and increase sales without managing their own direct-to-consumer channels.
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   {[
                     'Launched 2024 with explosive growth trajectory',
-                    'Premium positioning in high-margin market',
+                    'Premium positioning attracts high-value customers',
                     'Strong brand recognition and customer loyalty',
                     'Expanding product lines and market reach',
                   ].map((item, idx) => (
@@ -144,10 +144,10 @@ export default function SuppliersPage() {
                 className="grid grid-cols-2 gap-6"
               >
                 {[
-                  { icon: Users, label: 'Growing Network', value: '50+' },
-                  { icon: TrendingUp, label: 'YoY Growth', value: '300%' },
+                  { icon: Users, label: 'Growing Customer Base', value: '10K+' },
+                  { icon: TrendingUp, label: 'Monthly Growth', value: '25%' },
                   { icon: Award, label: 'Market Position', value: 'Premium' },
-                  { icon: BarChart3, label: 'Margin Range', value: '35-45%' },
+                  { icon: BarChart3, label: 'Avg Order Value', value: '$2.5K+' },
                 ].map((stat, idx) => {
                   const Icon = stat.icon;
                   return (
