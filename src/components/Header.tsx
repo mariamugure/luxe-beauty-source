@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { MiniCart } from '@/wix-verticals/react-pages/react-router/routes/root';
+import { MiniCartIcon } from '@/components/ecom/MiniCart';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function Header() {
                 </Button>
               </Link>
             )}
-            <MiniCart />
+            <MiniCartIcon />
             
             {/* Mobile menu button */}
             <button
