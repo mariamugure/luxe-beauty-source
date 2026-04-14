@@ -46,7 +46,7 @@ export default function ContactPage() {
     },
     {
       icon: MapPin,
-      title: 'Visit Us',
+      title: 'Business Address',
       content: '113 S Perry Street Suite 206, Lawrenceville, GA 30046',
       description: 'Our showroom location'
     }
