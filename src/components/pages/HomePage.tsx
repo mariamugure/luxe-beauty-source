@@ -2,13 +2,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
-import { Shield, Truck, Award, Star, X, ArrowRight, Plus, Minus, ChevronDown, TrendingUp, BarChart3, Users } from 'lucide-react';
+import { Shield, Truck, Award, Star, X, ArrowRight, Plus, Minus, ChevronDown, TrendingUp, BarChart3, Users, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Image } from '@/components/ui/image';
 import { BaseCrudService } from '@/integrations';
-import { BrandBenefits, FAQs } from '@/entities';
+import { BrandBenefits, FAQs, DistributorTestimonials } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import StickyCTA from '@/components/StickyCTA';
@@ -54,8 +54,10 @@ export default function HomePage() {
   // --- Data Fidelity: State & Effects ---
   const [benefits, setBenefits] = useState<BrandBenefits[]>([]);
   const [faqs, setFaqs] = useState<FAQs[]>([]);
+  const [suppliers, setSuppliers] = useState<DistributorTestimonials[]>([]);
   const [isLoadingBenefits, setIsLoadingBenefits] = useState(true);
   const [isLoadingFaqs, setIsLoadingFaqs] = useState(true);
+  const [isLoadingSuppliers, setIsLoadingSuppliers] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [email, setEmail] = useState('');
 
@@ -70,6 +72,7 @@ export default function HomePage() {
   useEffect(() => {
     loadBenefits();
     loadFaqs();
+    loadSuppliers();
   }, []);
 
   useEffect(() => {
@@ -143,6 +146,17 @@ export default function HomePage() {
       console.error('Error loading FAQs:', error);
     } finally {
       setIsLoadingFaqs(false);
+    }
+  };
+
+  const loadSuppliers = async () => {
+    try {
+      const result = await BaseCrudService.getAll<DistributorTestimonials>('distributortestimonials', [], { limit: 3 });
+      setSuppliers(result.items);
+    } catch (error) {
+      console.error('Error loading suppliers:', error);
+    } finally {
+      setIsLoadingSuppliers(false);
     }
   };
 
@@ -748,6 +762,147 @@ export default function HomePage() {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* --- SUPPLIER PARTNERS SECTION --- */}
+      <section className="w-full bg-secondary/10 py-32 border-t border-charcoal/5">
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16">
+            <div>
+              <SectionLabel>Strategic Partnerships</SectionLabel>
+              <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">Our Supplier Partners</h2>
+              <p className="font-paragraph text-charcoal/60 text-lg max-w-2xl leading-relaxed">
+                We partner with leading manufacturers and distributors worldwide to bring you premium equipment and exceptional service.
+              </p>
+            </div>
+            <Link to="/suppliers">
+              <Button variant="outline" className="hidden lg:flex border-charcoal/20 hover:bg-charcoal hover:text-white rounded-none px-8 py-6 mt-8 lg:mt-0">
+                Explore Partnership Opportunities
+              </Button>
+            </Link>
+          </div>
+
+          {isLoadingSuppliers ? (
+            <div className="h-96 flex items-center justify-center text-charcoal/30">Loading supplier information...</div>
+          ) : suppliers.length > 0 ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.6 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+            >
+              {suppliers.map((supplier, index) => (
+                <motion.div
+                  key={supplier._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white border border-charcoal/10 hover:border-gold-accent/30 rounded-lg overflow-hidden transition-all duration-300 group"
+                >
+                  {/* Partner Image */}
+                  {supplier.partnerImage && (
+                    <div className="relative w-full h-48 overflow-hidden bg-background">
+                      <Image
+                        src={supplier.partnerImage}
+                        alt={supplier.partnerName || 'Partner'}
+                        width={400}
+                        height={300}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
+                  )}
+
+                  {/* Content */}
+                  <div className="p-8 space-y-4">
+                    <div>
+                      <h3 className="font-heading text-2xl text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
+                        {supplier.partnerName}
+                      </h3>
+                      {supplier.partnerTitle && (
+                        <p className="font-paragraph text-sm text-gold-accent font-semibold">
+                          {supplier.partnerTitle}
+                        </p>
+                      )}
+                      {supplier.company && (
+                        <p className="font-paragraph text-sm text-charcoal/60">
+                          {supplier.company}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Testimonial */}
+                    {supplier.testimonialText && (
+                      <p className="font-paragraph text-charcoal/70 leading-relaxed italic text-sm">
+                        "{supplier.testimonialText}"
+                      </p>
+                    )}
+
+                    {/* Growth Metric */}
+                    {supplier.growthMetric && (
+                      <div className="flex items-center gap-2 pt-4 border-t border-charcoal/10">
+                        <TrendingUp className="w-4 h-4 text-gold-accent" />
+                        <span className="font-heading text-sm text-charcoal">{supplier.growthMetric}</span>
+                      </div>
+                    )}
+
+                    {/* Company Website Link */}
+                    {supplier.companyWebsite && (
+                      <a
+                        href={supplier.companyWebsite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-gold-accent hover:text-charcoal transition-colors duration-300 font-paragraph text-sm font-semibold pt-2"
+                      >
+                        Visit Company
+                        <ArrowRight size={16} />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : null}
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-r from-charcoal to-charcoal/90 text-white rounded-lg p-12 md:p-16 text-center space-y-6"
+          >
+            <div>
+              <h3 className="font-heading text-4xl md:text-5xl mb-4">
+                Interested in Becoming a Partner?
+              </h3>
+              <p className="font-paragraph text-lg text-white/80 max-w-2xl mx-auto">
+                We're actively seeking premium manufacturers and distributors to join our network. Explore partnership opportunities and grow your business with us.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Link to="/suppliers">
+                <Button className="bg-gold-accent text-charcoal hover:bg-gold-accent/90 rounded-none px-10 py-6 text-lg font-semibold transition-all duration-300">
+                  Learn About Partnerships
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-charcoal rounded-none px-10 py-6 text-lg font-semibold transition-all duration-300">
+                  Contact Us
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+
+          <div className="mt-12 lg:hidden flex justify-center">
+            <Link to="/suppliers">
+              <Button variant="outline" className="border-charcoal/20 hover:bg-charcoal hover:text-white rounded-none px-8 py-6">
+                Explore Partnership Opportunities
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
