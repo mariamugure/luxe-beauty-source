@@ -672,100 +672,107 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* --- VISION & MARKET OPPORTUNITY SECTION --- */}
+      {/* --- SELL YOUR PRODUCTS WITH US SECTION --- */}
       <section className="w-full bg-white py-32 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-12 md:p-16"
-          >
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className="space-y-8"
-              >
-                <div>
-                  <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">
-                    Vision & Market Opportunity
-                  </h2>
-                  <p className="font-paragraph text-lg text-secondary-foreground leading-relaxed">
-                    The luxury spa and aesthetic equipment market is experiencing unprecedented growth. With increasing demand for non-invasive treatments and wellness solutions, there's never been a better time to enter this high-margin industry.
-                  </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+            >
+              <SectionLabel>Partnership Opportunity</SectionLabel>
+              <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-8 leading-tight">
+                Sell Your Products <br />
+                <span className="text-[#B8941F] italic">With Us</span>
+              </h2>
+              <p className="font-paragraph text-lg text-charcoal/70 leading-relaxed mb-8 max-w-xl">
+                Partner with Luxe Spa Equipment to expand your market reach. We're actively seeking premium manufacturers to feature in our curated catalog and reach our growing customer base.
+              </p>
+              
+              {/* Key Benefits */}
+              <div className="space-y-6 mb-12">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <CheckCircle className="w-6 h-6 text-gold-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-xl text-charcoal mb-2">Access to Premium Market</h3>
+                    <p className="font-paragraph text-charcoal/60">Reach medical spas, wellness clinics, and aesthetic professionals actively seeking quality equipment</p>
+                  </div>
                 </div>
-
-                <div className="space-y-4">
-                  {[
-                    'Global market projected to reach $15B+ by 2030',
-                    'CAGR of 12-15% across aesthetic and wellness sectors',
-                    'Rising consumer spending on self-care and wellness',
-                    'Expanding medical spa and clinic networks worldwide',
-                  ].map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      className="flex items-start gap-4"
-                    >
-                      <TrendingUp className="text-primary flex-shrink-0 mt-1" size={24} />
-                      <span className="font-paragraph text-secondary-foreground">{item}</span>
-                    </motion.div>
-                  ))}
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <CheckCircle className="w-6 h-6 text-gold-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-xl text-charcoal mb-2">Curated Visibility</h3>
+                    <p className="font-paragraph text-charcoal/60">Your products featured in our carefully selected catalog with dedicated product pages and marketing support</p>
+                  </div>
                 </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-2 gap-6"
-              >
-                {[
-                  { icon: BarChart3, label: 'Market Size', value: '$15B+' },
-                  { icon: TrendingUp, label: 'Annual Growth', value: '12-15%' },
-                  { icon: Users, label: 'Industry Expansion', value: 'Rapid' },
-                  { icon: Award, label: 'Opportunity', value: 'Prime' },
-                ].map((stat, idx) => {
-                  const Icon = stat.icon;
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      className="bg-white rounded-lg p-6 text-center space-y-3 border border-primary/10"
-                    >
-                      <Icon className="text-primary mx-auto" size={32} />
-                      <p className="font-paragraph text-sm text-secondary-foreground">{stat.label}</p>
-                      <p className="font-heading text-2xl text-charcoal">{stat.value}</p>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </div>
-          </motion.div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <CheckCircle className="w-6 h-6 text-gold-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-xl text-charcoal mb-2">Growing Customer Base</h3>
+                    <p className="font-paragraph text-charcoal/60">Connect with our expanding network of qualified buyers in the medical spa and aesthetic industry</p>
+                  </div>
+                </div>
+              </div>
+              
+              <Link to="/partner-application">
+                <Button className="bg-gold-accent text-white hover:bg-gold-accent/90 rounded-none px-10 py-8 text-lg font-semibold transition-all duration-300 group">
+                  Apply as a Partner <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </motion.div>
+            
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative overflow-hidden bg-background border border-charcoal/10 aspect-square">
+                <Image
+                  src="https://static.wixstatic.com/media/5ea123_62bcfeed2f384769a71939835967b05c~mv2.jpg"
+                  alt="Premium spa equipment manufacturing and partnership"
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent"></div>
+                
+                {/* Overlay Stats */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div>
+                      <div className="font-heading text-3xl mb-1">500+</div>
+                      <p className="font-paragraph text-sm text-white/80">Active Customers</p>
+                    </div>
+                    <div>
+                      <div className="font-heading text-3xl mb-1">50+</div>
+                      <p className="font-paragraph text-sm text-white/80">Premium Partners</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
       {/* --- SUPPLIER PARTNERS SECTION --- */}
       <section className="w-full bg-secondary/10 py-32 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16">
-            <div>
-              <SectionLabel>Strategic Partnerships</SectionLabel>
-              <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">Our Supplier Partners</h2>
-              <p className="font-paragraph text-charcoal/60 text-lg max-w-2xl leading-relaxed">
-                We partner with leading manufacturers and distributors worldwide to bring you premium equipment and exceptional service.
-              </p>
-            </div>
+
             <Link to="/suppliers">
               <Button variant="outline" className="hidden lg:flex border-charcoal/20 hover:bg-charcoal hover:text-white rounded-none px-8 py-6 mt-8 lg:mt-0">
                 Explore Partnership Opportunities
@@ -793,53 +800,8 @@ export default function HomePage() {
                   className="bg-white border border-charcoal/10 hover:border-gold-accent/30 rounded-lg overflow-hidden transition-all duration-300 group"
                 >
                   {/* Partner Image */}
-
                   {/* Content */}
-                  <div className="p-8 space-y-4">
-                    <div>
-                      <h3 className="font-heading text-2xl text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
-                        {supplier.partnerName}
-                      </h3>
-                      {supplier.partnerTitle && (
-                        <p className="font-paragraph text-sm text-gold-accent font-semibold">
-                          {supplier.partnerTitle}
-                        </p>
-                      )}
-                      {supplier.company && (
-                        <p className="font-paragraph text-sm text-charcoal/60">
-                          {supplier.company}
-                        </p>
-                      )}
-                    </div>
 
-                    {/* Testimonial */}
-                    {supplier.testimonialText && (
-                      <p className="font-paragraph text-charcoal/70 leading-relaxed italic text-sm">
-                        "{supplier.testimonialText}"
-                      </p>
-                    )}
-
-                    {/* Growth Metric */}
-                    {supplier.growthMetric && (
-                      <div className="flex items-center gap-2 pt-4 border-t border-charcoal/10">
-                        <TrendingUp className="w-4 h-4 text-gold-accent" />
-                        <span className="font-heading text-sm text-charcoal">{supplier.growthMetric}</span>
-                      </div>
-                    )}
-
-                    {/* Company Website Link */}
-                    {supplier.companyWebsite && (
-                      <a
-                        href={supplier.companyWebsite}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-gold-accent hover:text-charcoal transition-colors duration-300 font-paragraph text-sm font-semibold pt-2"
-                      >
-                        Visit Company
-                        <ArrowRight size={16} />
-                      </a>
-                    )}
-                  </div>
                 </motion.div>
               ))}
             </motion.div>
