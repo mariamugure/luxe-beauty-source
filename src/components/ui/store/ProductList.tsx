@@ -12,7 +12,7 @@ export const ProductList = ProductListPrimitive.Root;
  * Container for the actual product grid/list display.
  * Handles empty states.
  */
-export const Products = React.forwardRef
+export const Products = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
@@ -50,7 +50,7 @@ Products.displayName = 'Products';
  * Repeater component that renders each product in the list.
  * Renders items as direct children so the parent CSS grid controls layout.
  */
-export const ProductRepeater = React.forwardRef
+export const ProductRepeater = React.forwardRef<
   React.ElementRef<typeof ProductListPrimitive.ProductRepeater>,
   React.ComponentPropsWithoutRef<typeof ProductListPrimitive.ProductRepeater>
 >((props, ref) => {
@@ -61,7 +61,7 @@ ProductRepeater.displayName = 'ProductRepeater';
 /**
  * Load more trigger component.
  */
-export const ProductLoadMoreTrigger = React.forwardRef
+export const ProductLoadMoreTrigger = React.forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement> & {
     label?: React.ReactNode;
@@ -105,7 +105,7 @@ ProductLoadMoreTrigger.displayName = 'ProductLoadMoreTrigger';
 /**
  * Displays the total number of products currently shown.
  */
-export const ProductTotalsDisplayed = React.forwardRef
+export const ProductTotalsDisplayed = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     label?: string;

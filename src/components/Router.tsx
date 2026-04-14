@@ -1,7 +1,9 @@
 import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 // Import Wix Services Provider
 import {
@@ -19,17 +21,26 @@ import {
 import { defaultStoreCollectionRouteRedirectLoader } from '@/wix-verticals/react-pages/react-router/routes/store-redirect';
 import { Cart } from '@/wix-verticals/react-pages/react-router/routes/cart';
 
-// Import pages
-import HomePage from '@/components/pages/HomePage';
-import AboutPage from '@/components/pages/AboutPage';
-import FinancingPage from '@/components/pages/FinancingPage';
-import ShippingPage from '@/components/pages/ShippingPage';
-import ReturnsPage from '@/components/pages/ReturnsPage';
-import ContactPage from '@/components/pages/ContactPage';
-import FAQPage from '@/components/pages/FAQPage';
-import BlogPage from '@/components/pages/BlogPage';
-import BlogPostPage from '@/components/pages/BlogPostPage';
-import PrivacyPolicyPage from '@/components/pages/PrivacyPolicyPage';
+// Lazy load pages to prevent circular imports
+const HomePage = lazy(() => import('@/components/pages/HomePage'));
+const AboutPage = lazy(() => import('@/components/pages/AboutPage'));
+const FinancingPage = lazy(() => import('@/components/pages/FinancingPage'));
+const ShippingPage = lazy(() => import('@/components/pages/ShippingPage'));
+const ReturnsPage = lazy(() => import('@/components/pages/ReturnsPage'));
+const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
+const FAQPage = lazy(() => import('@/components/pages/FAQPage'));
+const BlogPage = lazy(() => import('@/components/pages/BlogPage'));
+const BlogPostPage = lazy(() => import('@/components/pages/BlogPostPage'));
+const PrivacyPolicyPage = lazy(() => import('@/components/pages/PrivacyPolicyPage'));
+
+// Fallback loading component
+function PageLoader() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <LoadingSpinner />
+    </div>
+  );
+}
 
 // Layout component that includes ScrollToTop and WixServicesProvider
 function Layout() {
@@ -50,46 +61,86 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <HomePage />
+          </Suspense>
+        ),
         routeMetadata: {
           pageIdentifier: 'home',
         },
       },
       {
         path: "about",
-        element: <AboutPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AboutPage />
+          </Suspense>
+        ),
       },
       {
         path: "financing",
-        element: <FinancingPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FinancingPage />
+          </Suspense>
+        ),
       },
       {
         path: "shipping",
-        element: <ShippingPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ShippingPage />
+          </Suspense>
+        ),
       },
       {
         path: "returns",
-        element: <ReturnsPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ReturnsPage />
+          </Suspense>
+        ),
       },
       {
         path: "contact",
-        element: <ContactPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ContactPage />
+          </Suspense>
+        ),
       },
       {
         path: "faq",
-        element: <FAQPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FAQPage />
+          </Suspense>
+        ),
       },
       {
         path: "blog",
-        element: <BlogPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <BlogPage />
+          </Suspense>
+        ),
       },
       {
         path: "blog/:id",
-        element: <BlogPostPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <BlogPostPage />
+          </Suspense>
+        ),
       },
       {
         path: "privacy-policy",
-        element: <PrivacyPolicyPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <PrivacyPolicyPage />
+          </Suspense>
+        ),
       },
       {
         path: "products/:slug",
