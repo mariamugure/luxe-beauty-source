@@ -38,7 +38,6 @@ export default function SuppliersPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-br from-charcoal to-charcoal/90 text-white py-24 md:py-40 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -85,7 +84,6 @@ export default function SuppliersPage() {
           </motion.div>
         </div>
       </section>
-
       {/* Main Content */}
       <section className="w-full py-20 md:py-32 bg-white">
         <div className="max-w-[100rem] mx-auto px-6 md:px-12">
@@ -136,235 +134,10 @@ export default function SuppliersPage() {
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-2 gap-6"
-              >
-                {[
-                  { icon: Users, label: 'Growing Customer Base', value: '10K+' },
-                  { icon: TrendingUp, label: 'Monthly Growth', value: '25%' },
-                  { icon: Award, label: 'Market Position', value: 'Premium' },
-                  { icon: BarChart3, label: 'Avg Order Value', value: '$2.5K+' },
-                ].map((stat, idx) => {
-                  const Icon = stat.icon;
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      className="bg-secondary/20 rounded-lg p-6 text-center space-y-3"
-                    >
-                      <Icon className="text-primary mx-auto" size={32} />
-                      <p className="font-paragraph text-sm text-secondary-foreground">{stat.label}</p>
-                      <p className="font-heading text-2xl text-charcoal">{stat.value}</p>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
             </div>
           </motion.div>
-
           {/* Vision & Market Opportunity Section */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className="mb-24 bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-12 md:p-16"
-          >
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className="space-y-8"
-              >
-                <div>
-                  <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">
-                    Vision & Market Opportunity
-                  </h2>
-                  <p className="font-paragraph text-lg text-secondary-foreground leading-relaxed">
-                    The luxury spa and aesthetic equipment market is experiencing unprecedented growth. With increasing demand for non-invasive treatments and wellness solutions, there's never been a better time to enter this high-margin industry.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    'Global market projected to reach $15B+ by 2030',
-                    'CAGR of 12-15% across aesthetic and wellness sectors',
-                    'Rising consumer spending on self-care and wellness',
-                    'Expanding medical spa and clinic networks worldwide',
-                  ].map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      className="flex items-start gap-4"
-                    >
-                      <TrendingUp className="text-primary flex-shrink-0 mt-1" size={24} />
-                      <span className="font-paragraph text-secondary-foreground">{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-2 gap-6"
-              >
-                {[
-                  { icon: BarChart3, label: 'Market Size', value: '$15B+' },
-                  { icon: TrendingUp, label: 'Annual Growth', value: '12-15%' },
-                  { icon: Users, label: 'Industry Expansion', value: 'Rapid' },
-                  { icon: Award, label: 'Opportunity', value: 'Prime' },
-                ].map((stat, idx) => {
-                  const Icon = stat.icon;
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      className="bg-white rounded-lg p-6 text-center space-y-3 border border-primary/10"
-                    >
-                      <Icon className="text-primary mx-auto" size={32} />
-                      <p className="font-paragraph text-sm text-secondary-foreground">{stat.label}</p>
-                      <p className="font-heading text-2xl text-charcoal">{stat.value}</p>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </div>
-          </motion.section>
-
           {/* Key Information Grid */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className="mb-24"
-          >
-            <h2 className="font-heading text-5xl text-charcoal mb-12">Partnership Requirements</h2>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid md:grid-cols-3 gap-8"
-            >
-              {/* Target Volume */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="border-2 border-primary/20 hover:border-primary/50 rounded-xl p-8 space-y-6 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <TrendingUp className="text-primary" size={28} />
-                  </div>
-                  <h3 className="font-heading text-2xl text-charcoal">Order Volume</h3>
-                </div>
-                <p className="font-paragraph text-secondary-foreground">
-                  We're looking for distributors capable of handling:
-                </p>
-                <ul className="font-paragraph text-secondary-foreground space-y-3">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Minimum annual orders of 50+ units</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Scalable growth potential</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Dedicated sales support</span>
-                  </li>
-                </ul>
-              </motion.div>
-
-              {/* Geographic Focus */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="border-2 border-primary/20 hover:border-primary/50 rounded-xl p-8 space-y-6 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <MapPin className="text-primary" size={28} />
-                  </div>
-                  <h3 className="font-heading text-2xl text-charcoal">Geographic Focus</h3>
-                </div>
-                <p className="font-paragraph text-secondary-foreground">
-                  We're currently prioritizing:
-                </p>
-                <ul className="font-paragraph text-secondary-foreground space-y-3">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>North America (US & Canada)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Western Europe</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Strategic international markets</span>
-                  </li>
-                </ul>
-              </motion.div>
-
-              {/* How to Apply */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="border-2 border-primary/20 hover:border-primary/50 rounded-xl p-8 space-y-6 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <FileText className="text-primary" size={28} />
-                  </div>
-                  <h3 className="font-heading text-2xl text-charcoal">Ideal Partner Profile</h3>
-                </div>
-                <p className="font-paragraph text-secondary-foreground text-sm">
-                  We're looking for partners with:
-                </p>
-                <ul className="font-paragraph text-secondary-foreground space-y-3 text-sm">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Established distribution network</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Luxury market experience</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary font-bold text-lg">•</span>
-                    <span>Strong customer relationships</span>
-                  </li>
-                </ul>
-              </motion.div>
-            </motion.div>
-          </motion.div>
 
           {/* Distributor Success Stories Section */}
           {!isLoading && testimonials.length > 0 && (
@@ -375,7 +148,7 @@ export default function SuppliersPage() {
               transition={{ duration: 0.6 }}
               className="mb-24"
             >
-              <h2 className="font-heading text-5xl text-charcoal mb-12">Distributor Success Stories</h2>
+
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -443,7 +216,6 @@ export default function SuppliersPage() {
               </motion.div>
             </motion.section>
           )}
-
           {/* Partnership Benefits */}
           <motion.section
             initial={{ opacity: 0 }}
@@ -524,7 +296,6 @@ export default function SuppliersPage() {
               })}
             </motion.div>
           </motion.section>
-
           {/* Application Process Section */}
           <motion.section
             id="application-process"
@@ -647,7 +418,6 @@ export default function SuppliersPage() {
           </motion.section>
         </div>
       </section>
-
       <Footer />
     </div>
   );
