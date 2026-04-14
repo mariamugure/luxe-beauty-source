@@ -1,9 +1,40 @@
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Mail, MapPin, TrendingUp, FileText, CheckCircle, ArrowRight, Users, Zap, Award, BarChart3, Clock, DollarSign } from 'lucide-react';
+import { Mail, MapPin, TrendingUp, FileText, CheckCircle, ArrowRight, Users, Zap, Award, BarChart3, Clock, DollarSign, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Image } from '@/components/ui/image';
+import { BaseCrudService } from '@/integrations';
+
+interface DistributorTestimonial {
+  _id: string;
+  partnerName?: string;
+  partnerTitle?: string;
+  company?: string;
+  companyWebsite?: string;
+  testimonialText?: string;
+  partnerImage?: string;
+  growthMetric?: string;
+}
 
 export default function SuppliersPage() {
+  const [testimonials, setTestimonials] = useState<DistributorTestimonial[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        const result = await BaseCrudService.getAll<DistributorTestimonial>('distributortestimonials');
+        setTestimonials(result.items || []);
+      } catch (error) {
+        console.error('Error loading testimonials:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadTestimonials();
+  }, []);
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -44,11 +75,11 @@ export default function SuppliersPage() {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="#contact-section"
+                href="/partner-application"
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-charcoal px-8 py-4 rounded-lg font-paragraph font-semibold transition-all duration-300"
               >
-                <Mail size={20} />
-                Contact Us
+                <FileText size={20} />
+                Application Form
               </a>
             </motion.div>
           </motion.div>
@@ -334,6 +365,84 @@ export default function SuppliersPage() {
               </motion.div>
             </motion.div>
           </motion.div>
+
+          {/* Distributor Success Stories Section */}
+          {!isLoading && testimonials.length > 0 && (
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.6 }}
+              className="mb-24"
+            >
+              <h2 className="font-heading text-5xl text-charcoal mb-12">Distributor Success Stories</h2>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid md:grid-cols-2 gap-8"
+              >
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial._id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="bg-white border-2 border-primary/20 hover:border-primary/50 rounded-xl p-8 space-y-6 transition-all duration-300"
+                  >
+                    {/* Header with Image and Info */}
+                    <div className="flex items-start gap-4">
+                      {testimonial.partnerImage && (
+                        <div className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-secondary/20">
+                          <Image
+                            src={testimonial.partnerImage}
+                            alt={testimonial.partnerName || 'Partner'}
+                            className="w-full h-full object-cover"
+                            width={64}
+                          />
+                        </div>
+                      )}
+                      <div className="flex-grow">
+                        <h3 className="font-heading text-xl text-charcoal">{testimonial.partnerName}</h3>
+                        <p className="font-paragraph text-sm text-primary font-semibold">{testimonial.partnerTitle}</p>
+                        {testimonial.company && (
+                          <p className="font-paragraph text-sm text-secondary-foreground">{testimonial.company}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Testimonial Text */}
+                    <p className="font-paragraph text-secondary-foreground leading-relaxed italic">
+                      "{testimonial.testimonialText}"
+                    </p>
+
+                    {/* Growth Metric */}
+                    {testimonial.growthMetric && (
+                      <div className="flex items-center gap-3 pt-4 border-t border-primary/10">
+                        <Star className="text-gold-accent flex-shrink-0" size={20} />
+                        <span className="font-heading text-lg text-charcoal">{testimonial.growthMetric}</span>
+                      </div>
+                    )}
+
+                    {/* Company Website Link */}
+                    {testimonial.companyWebsite && (
+                      <a
+                        href={testimonial.companyWebsite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-primary hover:text-charcoal transition-colors duration-300 font-paragraph text-sm font-semibold"
+                      >
+                        Visit Company
+                        <ArrowRight size={16} />
+                      </a>
+                    )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.section>
+          )}
 
           {/* Partnership Benefits */}
           <motion.section

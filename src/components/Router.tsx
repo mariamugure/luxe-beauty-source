@@ -33,6 +33,9 @@ const BlogPage = lazy(() => import('@/components/pages/BlogPage'));
 const BlogPostPage = lazy(() => import('@/components/pages/BlogPostPage'));
 const PrivacyPolicyPage = lazy(() => import('@/components/pages/PrivacyPolicyPage'));
 const SuppliersPage = lazy(() => import('@/components/pages/SuppliersPage'));
+const TeamPage = lazy(() => import('@/components/pages/TeamPage'));
+const PartnerApplicationPage = lazy(() => import('@/components/pages/PartnerApplicationPage'));
+const ProductCatalogPage = lazy(() => import('@/components/pages/ProductCatalogPage'));
 
 // Fallback loading component
 function PageLoader() {
@@ -148,6 +151,30 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <SuppliersPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "team",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <TeamPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "partner-application",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <PartnerApplicationPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "product-catalog",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ProductCatalogPage />
           </Suspense>
         ),
       },

@@ -46,6 +46,31 @@ export interface BrandBenefits {
 
 
 /**
+ * Collection ID: distributortestimonials
+ * Interface for DistributorTestimonials
+ */
+export interface DistributorTestimonials {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  partnerName?: string;
+  /** @wixFieldType text */
+  partnerTitle?: string;
+  /** @wixFieldType text */
+  company?: string;
+  /** @wixFieldType url */
+  companyWebsite?: string;
+  /** @wixFieldType text */
+  testimonialText?: string;
+  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  partnerImage?: string;
+  /** @wixFieldType text */
+  growthMetric?: string;
+}
+
+
+/**
  * Collection ID: faqs
  * Interface for FAQs
  */
@@ -63,6 +88,50 @@ export interface FAQs {
   isFeatured?: boolean;
   /** @wixFieldType datetime */
   lastUpdated?: Date | string;
+}
+
+
+/**
+ * Collection ID: productspecs
+ * Interface for ProductSpecifications
+ */
+export interface ProductSpecifications {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  productName?: string;
+  /** @wixFieldType text */
+  manufacturer?: string;
+  /** @wixFieldType text */
+  countryOfOrigin?: string;
+  /** @wixFieldType text */
+  certifications?: string;
+  /** @wixFieldType text */
+  specifications?: string;
+  /** @wixFieldType url */
+  downloadUrl?: string;
+}
+
+
+/**
+ * Collection ID: teammembers
+ * Interface for TeamMembers
+ */
+export interface TeamMembers {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  name?: string;
+  /** @wixFieldType text */
+  title?: string;
+  /** @wixFieldType text */
+  bio?: string;
+  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  profileImage?: string;
+  /** @wixFieldType url */
+  linkedInUrl?: string;
 }
 
 
