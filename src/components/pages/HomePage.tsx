@@ -219,7 +219,7 @@ export default function HomePage() {
             alt="Professional luxury medical spa treatment room with high-end body contouring equipment"
             className="w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/70 to-charcoal/85" />
+
         </div>
 
         {/* Content Layer */}
