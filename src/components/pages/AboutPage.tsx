@@ -31,6 +31,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+
       {/* Hero Section */}
       <section className="w-full bg-secondary py-24">
         <div className="max-w-[100rem] mx-auto px-8 text-center">
@@ -52,6 +53,7 @@ export default function AboutPage() {
           </motion.p>
         </div>
       </section>
+
       {/* Story Section */}
       <section className="w-full bg-white py-24">
         <div className="max-w-[100rem] mx-auto px-8">
@@ -87,6 +89,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       {/* Values Section */}
       <section className="w-full bg-background py-24">
         <div className="max-w-[100rem] mx-auto px-8">
@@ -122,6 +125,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       {/* Mission Section */}
       <section className="w-full bg-primary py-20">
         <div className="max-w-[100rem] mx-auto px-8 text-center">
@@ -144,10 +148,41 @@ export default function AboutPage() {
           </motion.p>
         </div>
       </section>
+
       {/* CTA Section */}
       <section className="w-full bg-background py-20">
         <div className="max-w-[100rem] mx-auto px-8">
           <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg text-center space-y-4 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="font-heading text-2xl text-charcoal">Meet Our Team</h3>
+              <p className="font-paragraph text-secondary-foreground">
+                Get to know the passionate professionals behind Luxe Spa Equipment.
+              </p>
+              <Link to="/team" className="inline-flex items-center gap-2 text-primary hover:text-charcoal transition-colors duration-300 font-paragraph font-semibold">
+                View Team <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-8 rounded-lg text-center space-y-4 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="font-heading text-2xl text-charcoal">Product Specs</h3>
+              <p className="font-paragraph text-secondary-foreground">
+                Explore detailed sourcing information and technical specifications.
+              </p>
+              <Link to="/product-catalog" className="inline-flex items-center gap-2 text-primary hover:text-charcoal transition-colors duration-300 font-paragraph font-semibold">
+                View Catalog <ArrowRight size={16} />
+              </Link>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -164,24 +199,10 @@ export default function AboutPage() {
                 Learn More <ArrowRight size={16} />
               </Link>
             </motion.div>
-          <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white p-8 rounded-lg text-center space-y-4 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h3 className="font-heading text-2xl text-charcoal">Product Specs</h3>
-              <p className="font-paragraph text-secondary-foreground">
-                Explore detailed sourcing information and technical specifications.
-              </p>
-              <Link to="/product-catalog" className="inline-flex items-center gap-2 text-primary hover:text-charcoal transition-colors duration-300 font-paragraph font-semibold">
-                View Catalog <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-            </div>
+          </div>
         </div>
       </section>
+
       <Footer />
     </div>
   );

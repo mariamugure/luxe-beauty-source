@@ -675,7 +675,84 @@ export default function HomePage() {
       {/* --- VISION & MARKET OPPORTUNITY SECTION --- */}
       <section className="w-full bg-white py-32 border-t border-charcoal/5">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-12 md:p-16"
+          >
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8"
+              >
+                <div>
+                  <h2 className="font-heading text-5xl md:text-6xl text-charcoal mb-6">
+                    Vision & Market Opportunity
+                  </h2>
+                  <p className="font-paragraph text-lg text-secondary-foreground leading-relaxed">
+                    The luxury spa and aesthetic equipment market is experiencing unprecedented growth. With increasing demand for non-invasive treatments and wellness solutions, there's never been a better time to enter this high-margin industry.
+                  </p>
+                </div>
 
+                <div className="space-y-4">
+                  {[
+                    'Global market projected to reach $15B+ by 2030',
+                    'CAGR of 12-15% across aesthetic and wellness sectors',
+                    'Rising consumer spending on self-care and wellness',
+                    'Expanding medical spa and clinic networks worldwide',
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                      className="flex items-start gap-4"
+                    >
+                      <TrendingUp className="text-primary flex-shrink-0 mt-1" size={24} />
+                      <span className="font-paragraph text-secondary-foreground">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-2 gap-6"
+              >
+                {[
+                  { icon: BarChart3, label: 'Market Size', value: '$15B+' },
+                  { icon: TrendingUp, label: 'Annual Growth', value: '12-15%' },
+                  { icon: Users, label: 'Industry Expansion', value: 'Rapid' },
+                  { icon: Award, label: 'Opportunity', value: 'Prime' },
+                ].map((stat, idx) => {
+                  const Icon = stat.icon;
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                      className="bg-white rounded-lg p-6 text-center space-y-3 border border-primary/10"
+                    >
+                      <Icon className="text-primary mx-auto" size={32} />
+                      <p className="font-paragraph text-sm text-secondary-foreground">{stat.label}</p>
+                      <p className="font-heading text-2xl text-charcoal">{stat.value}</p>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
       {/* --- SUPPLIER PARTNERS SECTION --- */}
@@ -716,8 +793,53 @@ export default function HomePage() {
                   className="bg-white border border-charcoal/10 hover:border-gold-accent/30 rounded-lg overflow-hidden transition-all duration-300 group"
                 >
                   {/* Partner Image */}
-                  {/* Content */}
 
+                  {/* Content */}
+                  <div className="p-8 space-y-4">
+                    <div>
+                      <h3 className="font-heading text-2xl text-charcoal mb-1 group-hover:text-gold-accent transition-colors">
+                        {supplier.partnerName}
+                      </h3>
+                      {supplier.partnerTitle && (
+                        <p className="font-paragraph text-sm text-gold-accent font-semibold">
+                          {supplier.partnerTitle}
+                        </p>
+                      )}
+                      {supplier.company && (
+                        <p className="font-paragraph text-sm text-charcoal/60">
+                          {supplier.company}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Testimonial */}
+                    {supplier.testimonialText && (
+                      <p className="font-paragraph text-charcoal/70 leading-relaxed italic text-sm">
+                        "{supplier.testimonialText}"
+                      </p>
+                    )}
+
+                    {/* Growth Metric */}
+                    {supplier.growthMetric && (
+                      <div className="flex items-center gap-2 pt-4 border-t border-charcoal/10">
+                        <TrendingUp className="w-4 h-4 text-gold-accent" />
+                        <span className="font-heading text-sm text-charcoal">{supplier.growthMetric}</span>
+                      </div>
+                    )}
+
+                    {/* Company Website Link */}
+                    {supplier.companyWebsite && (
+                      <a
+                        href={supplier.companyWebsite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-gold-accent hover:text-charcoal transition-colors duration-300 font-paragraph text-sm font-semibold pt-2"
+                      >
+                        Visit Company
+                        <ArrowRight size={16} />
+                      </a>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
