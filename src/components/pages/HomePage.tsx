@@ -70,9 +70,17 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    loadBenefits();
-    loadFaqs();
-    loadSuppliers();
+    // Defer CMS data loading to improve initial page load performance
+    // Load benefits and FAQs after a short delay to prioritize above-the-fold content
+    const benefitsTimer = setTimeout(() => loadBenefits(), 1500);
+    const faqsTimer = setTimeout(() => loadFaqs(), 2000);
+    const suppliersTimer = setTimeout(() => loadSuppliers(), 2500);
+
+    return () => {
+      clearTimeout(benefitsTimer);
+      clearTimeout(faqsTimer);
+      clearTimeout(suppliersTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -563,7 +571,16 @@ export default function HomePage() {
             {/* Scrolling Content */}
             <div className="lg:w-2/3 grid grid-cols-1 gap-12">
               {isLoadingBenefits ? (
-                <div className="h-96 flex items-center justify-center text-charcoal/30">Loading benefits...</div>
+                <div className="space-y-12">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="bg-background p-12 border border-charcoal/5 animate-pulse">
+                      <div className="w-16 h-16 bg-charcoal/10 mb-8"></div>
+                      <div className="h-8 bg-charcoal/10 mb-4 w-3/4"></div>
+                      <div className="h-4 bg-charcoal/10 mb-2"></div>
+                      <div className="h-4 bg-charcoal/10 w-5/6"></div>
+                    </div>
+                  ))}
+                </div>
               ) : (
                 benefits.map((benefit, index) => (
                   <motion.div
@@ -829,7 +846,13 @@ export default function HomePage() {
             
             <div className="lg:col-span-8">
               {isLoadingFaqs ? (
-                <div className="py-12 text-charcoal/40">Loading FAQs...</div>
+                <div className="space-y-4">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="border-b border-charcoal/10 py-6 animate-pulse">
+                      <div className="h-6 bg-charcoal/10 mb-4 w-3/4"></div>
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
